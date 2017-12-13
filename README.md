@@ -1,7 +1,6 @@
 # CPU_RISC-V
 My simple CPU designed on Basys3 with RISC-V standard.
 
-
 ## References
 1.三步教你用Verilog写一个CPU
 [[1]](http://marshal-r.iteye.com/blog/2170100)
