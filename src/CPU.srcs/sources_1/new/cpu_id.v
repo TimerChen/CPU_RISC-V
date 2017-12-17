@@ -29,8 +29,8 @@ module CPU_ID(
 	r0, r1,
 	r0_is, r1_is,
 
-	opCode, opType
-	wr_is, wr
+	opCode, opType,
+	wrIs, wr,
 
 	//
 
@@ -39,15 +39,15 @@ module CPU_ID(
 	rd0, rd1, imm
 	);
 	input wire 		  clk, rst, state;
-	input wire [ 4:0] i_id;
-	output reg [ 4:0] i_id_o;
+	input wire [ 31:0] i_id;
+	output reg [ 31:0] i_id_o;
 	input wire [31:0] opCode_i;
 
 	output reg [ 4:0] r0, r1;
 	output reg 		  r0_is, r1_is;
 	output reg [ 6:0] opCode;
 	output reg [ 2:0] opType;
-	output reg        is_w;
+	output reg        wrIs;
 	output reg [ 4:0] wr;
 
 
@@ -61,10 +61,9 @@ module CPU_ID(
 			i_id_o <= 5'b0;
 			r0 <= 5'b0;
 			r1 <= 5'b0;
-			opCode <= `OP_IMM
+			opCode <= `OP_IMM;
 			opType <= 3'b0;
-			opSp <= 1'b0;
-			is_w <= `False;
+			wrIs <= `False;
 			wr <= 32'b0;
 			r0_is <= `False;
 			r1_is <= `False;
@@ -103,17 +102,17 @@ module CPU_ID(
 					imm <= {{21{opCode_i[31]}}, opCode_i[30:20]};
 				end
 				`STORE: begin
-					is_w <= 'False;
-					wd  <= opCode_i[11: 7];
+					wrIs <= `False;
+					wr  <= opCode_i[11: 7];
 					r0 <= opCode_i[19:15];
 					r1 <= 5'b0;
 					r0_is <= `True;
 					r1_is <= `False;
-					imm <= {{21{opCode_i[31]}}, opCode_i[30:25], opCode_i[11:7]}
+					imm <= {{21{opCode_i[31]}}, opCode_i[30:25], opCode_i[11:7]};
 				end
 				`OP_IMM: begin
-					is_w <= `True;
-					wd  <= opCode_i[11: 7];
+					wrIs <= `True;
+					wr  <= opCode_i[11: 7];
 					r0 <= opCode_i[19:15];
 					r1 <= 5'b0;
 					r0_is <= `True;
@@ -121,8 +120,8 @@ module CPU_ID(
 					imm <= {{21{opCode_i[31]}}, opCode_i[30:20]};
 				end
 				`OP: begin
-					is_w <= `True;
-					wd  <= opCode_i[11: 7];
+					wrIs <= `True;
+					wr  <= opCode_i[11: 7];
 					r0 <= opCode_i[19:15];
 					r1 <= 5'b0;
 					r0_is <= `True;
@@ -135,9 +134,9 @@ module CPU_ID(
 				default: begin
 					r0 <= 32'b0;
 					r1 <= 32'b0;
-					opcode <= `OP_IMM
-					optype <= 3'b0;
-					is_w <= 1'b0;
+					opCode <= `OP_IMM;
+					opType <= 3'b0;
+					wrIs <= 1'b0;
 					wr <= 32'b0;
 				end
 			endcase
@@ -155,7 +154,7 @@ module CPU_ID(
 				rd1 <= rd1_i;
 			else
 				rd1 <= imm;
-			end
+
 		end
 	end
 	//Get rd1

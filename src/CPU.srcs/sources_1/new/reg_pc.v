@@ -23,15 +23,15 @@
 
 module Reg_PC (
 	clk, rst,
-	isw, pcIn,
+	wIs, pcIn,
 	pc, ce
 	);
-	input wire clk, rst, isw;
+	input wire clk, rst, wIs;
 	input wire [31:0] pcIn;
 	output reg [31:0] pc;
 	output reg ce;
 
-	reg [XLEN-1:0] regs[31:0];
+	reg [`XLEN-1:0] regs[31:0];
 
 	always @ ( posedge clk ) begin
 		if (ce == `False)

@@ -1,0 +1,17 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../CPU.srcs/sources_1/new/cpu_core.v" \
+"../../../../CPU.srcs/sources_1/new/cpu_ex.v" \
+"../../../../CPU.srcs/sources_1/new/cpu_id.v" \
+"../../../../CPU.srcs/sources_1/new/cpu_if.v" \
+"../../../../CPU.srcs/sources_1/new/cpu_mem.v" \
+"../../../../CPU.srcs/sources_1/new/instcache.v" \
+"../../../../CPU.srcs/sources_1/new/reg_pc.v" \
+"../../../../CPU.srcs/sources_1/new/regfile.v" \
+"../../../../CPU.srcs/sources_1/new/top.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

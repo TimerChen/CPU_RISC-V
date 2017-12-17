@@ -1,0 +1,16 @@
+0.6
+2017.3
+Oct  4 2017
+20:11:37
+C:/Users/TimeMachine/Desktop/Architecture/task2/src/CPU.sim/sim_1/behav/xsim/glbl.v,1507081072,verilog,,,,glbl,,,,,,,,
+,,,,,,test0,,,,,,,,
+C:/Users/TimeMachine/Desktop/Architecture/task2/src/CPU.srcs/sources_1/new/cpu_core.v,1513534011,verilog,,C:/Users/TimeMachine/Desktop/Architecture/task2/src/CPU.srcs/sources_1/new/cpu_ex.v,C:/Users/TimeMachine/Desktop/Architecture/task2/src/CPU.srcs/sources_1/new/def.v,CPU_Core,,,,,,,,
+C:/Users/TimeMachine/Desktop/Architecture/task2/src/CPU.srcs/sources_1/new/cpu_ex.v,1513533577,verilog,,C:/Users/TimeMachine/Desktop/Architecture/task2/src/CPU.srcs/sources_1/new/cpu_id.v,C:/Users/TimeMachine/Desktop/Architecture/task2/src/CPU.srcs/sources_1/new/def.v,CPU_EX,,,,,,,,
+C:/Users/TimeMachine/Desktop/Architecture/task2/src/CPU.srcs/sources_1/new/cpu_id.v,1513533568,verilog,,C:/Users/TimeMachine/Desktop/Architecture/task2/src/CPU.srcs/sources_1/new/cpu_if.v,C:/Users/TimeMachine/Desktop/Architecture/task2/src/CPU.srcs/sources_1/new/def.v,CPU_ID,,,,,,,,
+C:/Users/TimeMachine/Desktop/Architecture/task2/src/CPU.srcs/sources_1/new/cpu_if.v,1513533549,verilog,,C:/Users/TimeMachine/Desktop/Architecture/task2/src/CPU.srcs/sources_1/new/cpu_mem.v,C:/Users/TimeMachine/Desktop/Architecture/task2/src/CPU.srcs/sources_1/new/def.v,CPU_IF,,,,,,,,
+C:/Users/TimeMachine/Desktop/Architecture/task2/src/CPU.srcs/sources_1/new/cpu_mem.v,1513533586,verilog,,C:/Users/TimeMachine/Desktop/Architecture/task2/src/CPU.srcs/sources_1/new/instcache.v,C:/Users/TimeMachine/Desktop/Architecture/task2/src/CPU.srcs/sources_1/new/def.v,CPU_MEM,,,,,,,,
+C:/Users/TimeMachine/Desktop/Architecture/task2/src/CPU.srcs/sources_1/new/def.v,1513427007,verilog,,,,,,,,,,,,
+C:/Users/TimeMachine/Desktop/Architecture/task2/src/CPU.srcs/sources_1/new/instcache.v,1513531996,verilog,,C:/Users/TimeMachine/Desktop/Architecture/task2/src/CPU.srcs/sources_1/new/reg_pc.v,C:/Users/TimeMachine/Desktop/Architecture/task2/src/CPU.srcs/sources_1/new/def.v,InstCache,,,,,,,,
+C:/Users/TimeMachine/Desktop/Architecture/task2/src/CPU.srcs/sources_1/new/reg_pc.v,1513533265,verilog,,C:/Users/TimeMachine/Desktop/Architecture/task2/src/CPU.srcs/sources_1/new/regfile.v,C:/Users/TimeMachine/Desktop/Architecture/task2/src/CPU.srcs/sources_1/new/def.v,Reg_PC,,,,,,,,
+C:/Users/TimeMachine/Desktop/Architecture/task2/src/CPU.srcs/sources_1/new/regfile.v,1513529273,verilog,,C:/Users/TimeMachine/Desktop/Architecture/task2/src/CPU.srcs/sources_1/new/top.v,C:/Users/TimeMachine/Desktop/Architecture/task2/src/CPU.srcs/sources_1/new/def.v,RegFile,,,,,,,,
+C:/Users/TimeMachine/Desktop/Architecture/task2/src/CPU.srcs/sources_1/new/top.v,1513533297,verilog,,C:/Users/TimeMachine/Desktop/Architecture/task2/src/CPU.srcs/sim_1/new/test0.v,,Top,,,,,,,,

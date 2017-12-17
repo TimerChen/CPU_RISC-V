@@ -22,22 +22,21 @@
 module CPU_IF(
 	clk, rst, state,
 	pc, i_datain,
-	i_id, opcode
+	i_id, opCode
 	);
 	input wire clk, rst, state;
-	input wire [4:0] pc;
+	input wire [31:0] pc;
 	input wire [31:0] i_datain;
-	output reg [4:0] i_id;
-	output reg [31:0] opcode;
+	output reg [31:0] i_id;
+	output reg [31:0] opCode;
 
-	reg [31:0] pc;
 
 	always @(posedge clk) begin
 		if (rst == `True) begin
-			opcode <= {25'b0, `OP_IMM};
-			pc <= 32'd0; //??
+			opCode <= {25'b0, `OP_IMM};
+			i_id <= 32'd0; //??
 		end	else begin
-			opcode <= i_datain;
+			opCode <= i_datain;
 			i_id <= pc;
 		end
 	end

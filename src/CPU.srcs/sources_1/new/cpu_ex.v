@@ -35,8 +35,8 @@ module CPU_EX(
 	);
 	input wire clk, rst, state, stall;
 
-	input wire [ 4:0] i_id;
-	output reg [ 4:0] i_id_o;
+	input wire [ 31:0] i_id;
+	output reg [ 31:0] i_id_o;
 
 	input wire        wrIs;
 	input wire [ 4:0] wr;
@@ -123,15 +123,15 @@ module CPU_EX(
 						wrData <= rd0 & rd1;
 					end
 					`SLLI: begin
-						{wrData, tmpOut} <= {tmp0, 1'b0} << rd1[4:0];
+						wrData <= rd0 << rd1[4:0];
 					end
 					`SRLI: begin //SRLI && SRAI
 						if (imm[10] == 0)
 							//SRLI
-							{tmpOut, wrData} <= {1'b0, rd0} >> rd1[4:0];
+							wrData <= rd0 >> rd1[4:0];
 						else
 							//SRAI
-							{tmpOut, wrData} <= {rd0[31], rd0} >> rd1[4:0];
+							wrData <= (rd0 >> rd1[4:0]) | ({32{rd0[31]}} << (6'd32 - {1'b0, rd1[4:0]}));
 					end
 					default: ;
 				endcase
@@ -156,15 +156,15 @@ module CPU_EX(
 						wrData <= rd0 ^ rd1;
 					end
 					`SLL: begin
-						{wrData, tmpOut} <= {rd0, 1'b0} << rd1[4:0];
+						wrData <= rd0 << rd1[4:0];
 					end
 					`SRL: begin //SRL && SRA
 						if (imm[10] == 0)
 							//SRL
-							{tmpOut, wrData} <= {1'b0, rd0} >> rd1[4:0];
+							wrData <= rd0 >> rd1[4:0];
 						else
 							//SRA
-							{tmpOut, wrData} <= {rd0[31], rd0} >> rd1[4:0];
+							wrData <= (rd0 >> rd1[4:0]) | ({32{rd0[31]}} << (6'd32 - {1'b0, rd1[4:0]}));
 					end
 					`OR: begin
 						wrData <= rd0 | rd1;

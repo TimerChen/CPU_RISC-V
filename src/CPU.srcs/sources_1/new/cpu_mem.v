@@ -20,13 +20,15 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module CPU_MEM(
-	clk, rst, state, stall
+	clk, rst, state, stall,
 
 	i_id, i_id_o,
 
 	wrIs, wr,
 	opCode, opType,
 	rd0, rd1, imm,
+
+	opCode_o, opType_o,
 
 	memIs, memType,
 	memData_o, memAdd,
@@ -38,16 +40,19 @@ module CPU_MEM(
 
 	input wire clk, rst, state, stall;
 
-	input wire [ 4:0] i_id;
-	output reg [ 4:0] i_id_o;
+	input wire [ 31:0] i_id;
+	output reg [ 31:0] i_id_o;
 
 	input wire        wrIs;
 	input wire [ 4:0] wr;
 	input wire [ 6:0] opCode;
+	output reg [ 6:0] opCode_o;
 	input wire [ 2:0] opType;
+	output reg [ 2:0] opType_o;
 	input wire [31:0] rd0, rd1, imm;
 
-	output reg 		  memIs, memType;
+	output reg 		  memIs;
+	output reg [ 3:0] memType;
 	output reg [31:0] memData_o, memAdd;
 
 	input wire [31:0] memData_i;
@@ -67,6 +72,8 @@ module CPU_MEM(
 			opCode_o <= 7'b0;
 			opType_o <= 3'b0;
 		end	else if (stall != `True) begin
+			opCode_o <= opCode;
+			opType_o <= opType;
 			case (opCode)
 				`LOAD: begin
 					memIs <= `True;
