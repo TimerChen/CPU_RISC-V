@@ -1,0 +1,15 @@
+./CPU.srcs/sim/test0.v
+
+
+./CPU.srcs/sources/cpu_core.v
+./CPU.srcs/sources/cpu_ex.v
+./CPU.srcs/sources/cpu_id.v
+./CPU.srcs/sources/cpu_if.v
+./CPU.srcs/sources/cpu_mem.v
+./CPU.srcs/sources/datacache.v
+./CPU.srcs/sources/def.v
+./CPU.srcs/sources/instcache.v
+./CPU.srcs/sources/regfile.v
+./CPU.srcs/sources/reg_pc.v
+./CPU.srcs/sources/top.v
+

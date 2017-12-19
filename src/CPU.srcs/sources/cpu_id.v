@@ -38,42 +38,43 @@ module CPU_ID(
 
 	rd0, rd1, imm
 	);
-	input wire 		  clk, rst, state;
-	input wire [ 31:0] i_id;
-	output reg [ 31:0] i_id_o;
-	input wire [31:0] opCode_i;
+	input wire 		     clk, rst, state;
+	input wire [ 31 : 0] i_id;
+	output reg [ 31 : 0] i_id_o;
+	input wire [ 31 : 0] opCode_i;
 
-	output reg [ 4:0] r0, r1;
-	output reg 		  r0_is, r1_is;
-	output reg [ 6:0] opCode;
-	output reg [ 2:0] opType;
-	output reg        wrIs;
-	output reg [ 4:0] wr;
+	output reg [ 4 : 0] r0, r1;
+	output reg 		  	r0_is, r1_is;
+	output reg [ 6 : 0] opCode;
+	output reg [ 2 : 0] opType;
+	output reg       	wrIs;
+	output reg [ 4 : 0] wr;
 
 
-	input wire [31:0] rd0_i, rd1_i;
-	output reg [31:0] rd0, rd1;
-	output reg [31:0] imm;
+	input wire [31 : 0] rd0_i, rd1_i;
+	output reg [31 : 0] rd0, rd1;
+	output reg [31 : 0] imm;
 
 	//Translate Code
 	always @(posedge clk) begin
 		if (rst == `True) begin
 			i_id_o <= 5'b0;
-			r0 <= 5'b0;
-			r1 <= 5'b0;
+			r0     <= 5'b0;
+			r1     <= 5'b0;
 			opCode <= `OP_IMM;
 			opType <= 3'b0;
-			wrIs <= `False;
-			wr <= 32'b0;
-			r0_is <= `False;
-			r1_is <= `False;
-
-			imm <= 32'b0;
+			wrIs   <= `False;
+			wr     <= 32'b0;
+			r0_is  <= `False;
+			r1_is  <= `False;
+			rd0    <= 32'b0;
+			rd1    <= 32'b0;
+			imm    <= 32'b0;
 		end	else begin
 			i_id_o <= i_id;
-			opCode = opCode_i[ 6: 0];
-			opType = opCode_i[14:12];
-			case (opCode)
+			opCode <= opCode_i[ 6: 0];
+			opType <= opCode_i[14:12];
+			case (opCode_i[6:0])
 				`LUI: begin
 
 					imm <= {opCode_i[31:12], 12'b0};
@@ -102,42 +103,46 @@ module CPU_ID(
 					imm <= {{21{opCode_i[31]}}, opCode_i[30:20]};
 				end
 				`STORE: begin
-					wrIs <= `False;
-					wr  <= opCode_i[11: 7];
-					r0 <= opCode_i[19:15];
-					r1 <= 5'b0;
+					wrIs  <= `False;
+					wr    <= opCode_i[11: 7];
+					r0    <= opCode_i[19:15];
+					r1    <= 5'b0;
 					r0_is <= `True;
 					r1_is <= `False;
-					imm <= {{21{opCode_i[31]}}, opCode_i[30:25], opCode_i[11:7]};
+					imm   <= {{21{opCode_i[31]}}, opCode_i[30:25], opCode_i[11:7]};
 				end
 				`OP_IMM: begin
-					wrIs <= `True;
-					wr  <= opCode_i[11: 7];
-					r0 <= opCode_i[19:15];
-					r1 <= 5'b0;
+					if (`DEBUG == `True)
+						$display("ID: OP_IMM");
+					wrIs  <= `True;
+					wr    <= opCode_i[11: 7];
+					r0    <= opCode_i[19:15];
+					r1    <= 5'b0;
 					r0_is <= `True;
 					r1_is <= `False;
-					imm <= {{21{opCode_i[31]}}, opCode_i[30:20]};
+					imm   <= {{21{opCode_i[31]}}, opCode_i[30:20]};
 				end
 				`OP: begin
-					wrIs <= `True;
-					wr  <= opCode_i[11: 7];
-					r0 <= opCode_i[19:15];
-					r1 <= 5'b0;
+					if (`DEBUG == `True)
+						$display("ID: OP");
+					wrIs  <= `True;
+					wr    <= opCode_i[11: 7];
+					r0    <= opCode_i[19:15];
+					r1    <= 5'b0;
 					r0_is <= `True;
 					r1_is <= `False;
-					imm <= {opCode_i[31:12], 12'b0};
+					imm   <= {opCode_i[31:12], 12'b0};
 				end
 				`MISC_MEM: begin
 
 				end
 				default: begin
-					r0 <= 32'b0;
-					r1 <= 32'b0;
+					r0     <= 32'b0;
+					r1     <= 32'b0;
 					opCode <= `OP_IMM;
 					opType <= 3'b0;
-					wrIs <= 1'b0;
-					wr <= 32'b0;
+					wrIs   <= 1'b0;
+					wr     <= 32'b0;
 				end
 			endcase
 		end
@@ -145,12 +150,12 @@ module CPU_ID(
 
 	//Get rd0 & rd1
 	always @ ( * ) begin
-		if (rst == `False) begin
+		if (rst == `True) begin
 			rd0 <= 32'b0;
 			rd1 <= 32'b1;
 		end else begin
 			rd0 <= rd0_i;
-			if (r1_is)
+			if (r1_is == `True)
 				rd1 <= rd1_i;
 			else
 				rd1 <= imm;

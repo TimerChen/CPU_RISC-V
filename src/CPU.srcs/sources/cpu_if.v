@@ -19,33 +19,25 @@
 // Additional Comments:
 //
 //////////////////////////////////////////////////////////////////////////////////
-
-
-module Reg_PC (
-	clk, rst,
-	wIs, pcIn,
-	pc, ce
+module CPU_IF(
+	clk, rst, state,
+	pc, i_datain,
+	i_id, opCode
 	);
-	input wire clk, rst, wIs;
-	input wire [31:0] pcIn;
-	output reg [31:0] pc;
-	output reg ce;
+	input wire clk, rst, state;
+	input wire [31:0] pc;
+	input wire [31:0] i_datain;
+	output reg [31:0] i_id;
+	output reg [31:0] opCode;
 
-	reg [`XLEN-1:0] regs[31:0];
 
-	always @ ( posedge clk ) begin
-		if (ce == `False)
-			pc <= 32'd0;
-		else
-			pc <= pc + 5'd4;
-	end
-
-	always @ ( posedge clk ) begin
+	always @(posedge clk) begin
 		if (rst == `True) begin
-			ce <= `False;
-		end else begin
-			ce <= `True;
+			opCode <= {25'b0, `OP_IMM};
+			i_id   <= 32'd0;           //??
+		end	else begin
+			opCode <= i_datain;
+			i_id   <= pc;
 		end
 	end
-
-endmodule // RegFile
+endmodule

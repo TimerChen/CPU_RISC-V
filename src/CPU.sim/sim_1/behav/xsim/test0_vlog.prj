@@ -1,15 +1,15 @@
 # compile verilog/system verilog design source files
-verilog xil_defaultlib  \
-"../../../../CPU.srcs/sources_1/new/cpu_core.v" \
-"../../../../CPU.srcs/sources_1/new/cpu_ex.v" \
-"../../../../CPU.srcs/sources_1/new/cpu_id.v" \
-"../../../../CPU.srcs/sources_1/new/cpu_if.v" \
-"../../../../CPU.srcs/sources_1/new/cpu_mem.v" \
-"../../../../CPU.srcs/sources_1/new/instcache.v" \
-"../../../../CPU.srcs/sources_1/new/reg_pc.v" \
-"../../../../CPU.srcs/sources_1/new/regfile.v" \
-"../../../../CPU.srcs/sources_1/new/top.v" \
-"../../../../CPU.srcs/sim_1/new/test0.v" \
+verilog xil_defaultlib  -i "../../../../CPU.srcs" \
+"../../../../CPU.srcs/sources/cpu_core.v" \
+"../../../../CPU.srcs/sources/cpu_ex.v" \
+"../../../../CPU.srcs/sources/cpu_id.v" \
+"../../../../CPU.srcs/sources/cpu_if.v" \
+"../../../../CPU.srcs/sources/cpu_mem.v" \
+"../../../../CPU.srcs/sources/instcache.v" \
+"../../../../CPU.srcs/sources/reg_pc.v" \
+"../../../../CPU.srcs/sources/regfile.v" \
+"../../../../CPU.srcs/sources/top.v" \
+"../../../../CPU.srcs/sim/test0.v" \
 
 # compile glbl module
 verilog xil_defaultlib "glbl.v"

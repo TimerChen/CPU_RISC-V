@@ -19,25 +19,35 @@
 // Additional Comments:
 //
 //////////////////////////////////////////////////////////////////////////////////
-module CPU_IF(
-	clk, rst, state,
-	pc, i_datain,
-	i_id, opCode
+
+
+module Reg_PC (
+	clk, rst,
+	wIs, pcIn,
+	pc, ce
 	);
-	input wire clk, rst, state;
-	input wire [31:0] pc;
-	input wire [31:0] i_datain;
-	output reg [31:0] i_id;
-	output reg [31:0] opCode;
+	input wire clk, rst, wIs;
+	input wire [31:0] pcIn;
+	output reg [31:0] pc;
+	output reg ce;
+	reg [`XLEN-1:0] regs[31:0];
 
-
-	always @(posedge clk) begin
-		if (rst == `True) begin
-			opCode <= {25'b0, `OP_IMM};
-			i_id <= 32'd0; //??
-		end	else begin
-			opCode <= i_datain;
-			i_id <= pc;
+	always @ ( posedge clk ) begin
+		if (ce == `False) begin
+			pc <= 32'd0;
+		end else begin
+			$display("pc+4:%d", pc);
+			pc = pc + 32'd4;
 		end
 	end
-endmodule
+
+	always @ ( posedge clk ) begin
+		$display("update ce:%d %d", rst, ce);
+		if (rst == `True) begin
+			ce <= `False;
+		end else begin
+			ce <= `True;
+		end
+	end
+
+endmodule // RegFile

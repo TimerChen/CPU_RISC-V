@@ -50,7 +50,7 @@ module CPU_Core(
 	wire [31:0] id_regData0, id_regData1,
 				mem_writeData, out_writeData;
 	wire	   rf_readReg0Is, rf_readReg1Is,
-				mem_writeRegIs, out_writeRegIs; 
+				mem_writeRegIs, out_writeRegIs;
 	RegFile regFile(
 		.clk(clk),
 		.rst(rst),
@@ -64,7 +64,7 @@ module CPU_Core(
 		.wr1(out_writeReg), .wd1(out_writeData)
 		);
 	InstCache iCache(
-		.clk(clk), .rst(rst), .state(state), .stall(1'b0),
+		.clk(clk), .rst(rst), .ce(ce), .stall(1'b0),
 		.pc(pc),
 		.instOut(if_inst)
 		);
@@ -102,7 +102,7 @@ module CPU_Core(
 
 		.rd0(ex_regData0), .rd1(ex_regData1), .imm(ex_imm)
 		);
-		
+
 	wire [ 6:0] mem_inst;
 	wire [ 2:0] mem_instType;
 	wire [ 4:0] mem_WriteReg;
@@ -118,7 +118,7 @@ module CPU_Core(
 		.opCode(ex_inst), .opType(ex_instType),
 		.rd0(ex_regData0), .rd1(ex_regData1), .imm(ex_imm),
 
-		.wrIs_o(mem_writeRegIs), .wr_o(mem_writeReg), .wrData(mem_writeData),
+		.wrIs_o(mem_writeRegIs), .wr_o(mem_writeReg), .wrData_o(mem_writeData),
 		.opCode_o(mem_inst), .opType_o(mem_instType),
 		.rd0_o(mem_regData0), .rd1_o(mem_regData1), .imm_o(mem_imm)
 		);
@@ -132,7 +132,7 @@ module CPU_Core(
 
 		.i_id(mem_instID), .i_id_o(out_instID),
 
-		.wrIs(mem_writeRegIs), .wr(mem_writeReg),
+		.wrIs(mem_writeRegIs), .wr(mem_writeReg), .wrData(mem_writeData),
 		.opCode(mem_inst), .opType(mem_instType),
 		.rd0(mem_regData0), .rd1(mem_regData1), .imm(mem_imm),
 
@@ -140,7 +140,7 @@ module CPU_Core(
 		.memData_o(dCache_writeData), .memAdd(dCache_writeAddr),
 		.memData_i(dCache_readData),
 
-		.wrIs_o(out_writeRegIs), .wr_o(out_writeReg), .wrData(out_writeData)
+		.wrIs_o(out_writeRegIs), .wr_o(out_writeReg), .wrData_o(out_writeData)
 		);
 
 

@@ -24,7 +24,7 @@ module CPU_MEM(
 
 	i_id, i_id_o,
 
-	wrIs, wr,
+	wrIs, wr, wrData,
 	opCode, opType,
 	rd0, rd1, imm,
 
@@ -34,7 +34,7 @@ module CPU_MEM(
 	memData_o, memAdd,
 	memData_i,
 
-	wrIs_o, wr_o, wrData
+	wrIs_o, wr_o, wrData_o
 
 	);
 
@@ -45,6 +45,7 @@ module CPU_MEM(
 
 	input wire        wrIs;
 	input wire [ 4:0] wr;
+	input wire [31:0] wrData;
 	input wire [ 6:0] opCode;
 	output reg [ 6:0] opCode_o;
 	input wire [ 2:0] opType;
@@ -59,39 +60,46 @@ module CPU_MEM(
 
 	output reg 		  wrIs_o;
 	output reg [ 4:0] wr_o;
-	output reg [31:0] wrData;
+	output reg [31:0] wrData_o;
 
 
 
 	always @(posedge clk) begin
 		if (rst == `True) begin
-			i_id_o <= 5'b0;
-			wrIs_o <= `False;
-			wr_o <= 4'b0;
-			wrData <= 32'b0;
+			i_id_o   <= 5'b0;
+			wrIs_o   <= `False;
+			wr_o     <= 4'b0;
+			wrData_o <= 32'b0;
 			opCode_o <= 7'b0;
 			opType_o <= 3'b0;
 		end	else if (stall != `True) begin
+			$display("[MEM]0");
 			opCode_o <= opCode;
 			opType_o <= opType;
 			case (opCode)
 				`LOAD: begin
-					memIs <= `True;
-					memType <= {1'b0, opType};
-					memAdd <= rd0;
+					$display("[MEM]load");
+					memIs     <= `True;
+					memType   <= {1'b0, opType};
+					memAdd    <= rd0;
 					memData_o <= 32'b0;
 				end
 				`STORE: begin
-					memIs <= `True;
-					memType <= {1'b1, opType};
-					memAdd <= rd0;
+					$display("[MEM]store");
+					memIs     <= `True;
+					memType   <= {1'b1, opType};
+					memAdd    <= rd0;
 					memData_o <= rd1;
 				end
 				default: begin
-					memIs <= `False;
-					memType <= 4'b0;
-					memAdd <= 32'b0;
+					$display("[MEM]default");
+					memIs     <= `False;
+					memType   <= 4'b0;
+					memAdd    <= 32'b0;
 					memData_o <= 32'b0;
+					wrIs_o    <= wrIs;
+					wr_o      <= wr;
+					wrData_o  <= wrData;
 				end
 			endcase
 		end
@@ -100,17 +108,13 @@ module CPU_MEM(
 
 	always @ ( * ) begin
 		if (rst == `True) begin
-			wr_o <= 1'b0;
-			wrData <= 32'b0;
+			wr_o     <= 1'b0;
+			wrData_o <= 32'b0;
 		end	else if (stall != `True) begin
 			if (opCode == `LOAD) begin
-				wrIs_o <= `True;
-				wr_o <= wr;
-				wrData <= memData_i;
-			end else begin
-				wrIs_o <= `False;
-				wr_o <= 5'b0;
-				wrData <= 32'b0;
+				wrIs_o   <= `True;
+				wr_o     <= wr;
+				wrData_o <= memData_i;
 			end
 		end
 	end
