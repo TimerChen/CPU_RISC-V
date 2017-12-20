@@ -45,13 +45,13 @@ module RegFile (
 			rd1 <= 32'd0;
 		end else begin
 			if (rr0 == 5'd0)
-				rd0 = 32'd0;
+				rd0 <= 32'd0;
 			else if (wr0Is == `True && rr0 == wr0)
-				rd0 = wd0;
+				rd0 <= wd0;
 			else if (wr1Is == `True && rr0 == wr1)
-				rd0 = wd1;
+				rd0 <= wd1;
 			else
-				rd0 = regs[rr0];
+				rd0 <= regs[rr0];
 		end
 	end
 
@@ -61,13 +61,13 @@ module RegFile (
 			rd1 <= 32'd0;
 		end else begin
 			if (rr1 == 5'd0)
-				rd1 = 32'd0;
-			else if (wr0Is == `True && rr0 == wr0)
-				rd1 = wd0;
-			else if (wr1Is == `True && rr0 == wr1)
-				rd1 = wd1;
+				rd1 <= 32'd0;
+			else if (wr0Is == `True && rr1 == wr0)
+				rd1 <= wd0;
+			else if (wr1Is == `True && rr1 == wr1)
+				rd1 <= wd1;
 			else
-				rd1 = regs[rr1];
+				rd1 <= regs[rr1];
 		end
 	end
 

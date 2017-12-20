@@ -12,14 +12,14 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="1040518183fs"></ZoomEndTime>
-      <Cursor1Time time="750000000fs"></Cursor1Time>
+      <ZoomEndTime time="980609561fs"></ZoomEndTime>
+      <Cursor1Time time="1000000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="171"></NameColumnWidth>
-      <ValueColumnWidth column_width="278"></ValueColumnWidth>
+      <ValueColumnWidth column_width="274"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="18" />
+   <WVObjectSize size="10" />
    <wvobject fp_name="/test0/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -28,71 +28,121 @@
       <obj_property name="ElementShortName">rst</obj_property>
       <obj_property name="ObjectShortName">rst</obj_property>
    </wvobject>
-   <wvobject fp_name="/test0/top/cpu/regpc/pc" type="array">
-      <obj_property name="ElementShortName">pc[31:0]</obj_property>
-      <obj_property name="ObjectShortName">pc[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   <wvobject fp_name="group98" type="group">
+      <obj_property name="label">PC</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/test0/top/cpu/regpc/pc" type="array">
+         <obj_property name="ElementShortName">pc[31:0]</obj_property>
+         <obj_property name="ObjectShortName">pc[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
    </wvobject>
-   <wvobject fp_name="/test0/top/cpu/regpc/ce" type="logic">
-      <obj_property name="ElementShortName">ce</obj_property>
-      <obj_property name="ObjectShortName">ce</obj_property>
+   <wvobject fp_name="group97" type="group">
+      <obj_property name="label">RF</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/test0/top/cpu/regFile/wr1Is" type="logic">
+         <obj_property name="ElementShortName">wr1Is</obj_property>
+         <obj_property name="ObjectShortName">wr1Is</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test0/top/cpu/regFile/wr1" type="array">
+         <obj_property name="ElementShortName">wr1[4:0]</obj_property>
+         <obj_property name="ObjectShortName">wr1[4:0]</obj_property>
+      </wvobject>
    </wvobject>
-   <wvobject fp_name="/test0/top/cpu/regFile/regs[0]" type="array">
-      <obj_property name="ElementShortName">[0][31:0]</obj_property>
-      <obj_property name="ObjectShortName">[0][31:0]</obj_property>
+   <wvobject fp_name="group96" type="group">
+      <obj_property name="label">IF</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/test0/top/cpu/IF/i_datain" type="array">
+         <obj_property name="ElementShortName">i_datain[31:0]</obj_property>
+         <obj_property name="ObjectShortName">i_datain[31:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
+      </wvobject>
    </wvobject>
-   <wvobject fp_name="/test0/top/cpu/regFile/regs[1]" type="array">
-      <obj_property name="ElementShortName">[1][31:0]</obj_property>
-      <obj_property name="ObjectShortName">[1][31:0]</obj_property>
+   <wvobject fp_name="group95" type="group">
+      <obj_property name="label">ID</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
    </wvobject>
-   <wvobject fp_name="/test0/top/cpu/regFile/regs[2]" type="array">
-      <obj_property name="ElementShortName">[2][31:0]</obj_property>
-      <obj_property name="ObjectShortName">[2][31:0]</obj_property>
+   <wvobject fp_name="group94" type="group">
+      <obj_property name="label">EX</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/test0/top/cpu/EX/i_id" type="array">
+         <obj_property name="ElementShortName">i_id[31:0]</obj_property>
+         <obj_property name="ObjectShortName">i_id[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test0/top/cpu/EX/opCode" type="array">
+         <obj_property name="ElementShortName">opCode[6:0]</obj_property>
+         <obj_property name="ObjectShortName">opCode[6:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test0/top/cpu/EX/opType" type="array">
+         <obj_property name="ElementShortName">opType[2:0]</obj_property>
+         <obj_property name="ObjectShortName">opType[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test0/top/cpu/EX/wrData_o" type="array">
+         <obj_property name="ElementShortName">wrData_o[31:0]</obj_property>
+         <obj_property name="ObjectShortName">wrData_o[31:0]</obj_property>
+      </wvobject>
    </wvobject>
-   <wvobject fp_name="/test0/top/cpu/regFile/regs[3]" type="array">
-      <obj_property name="ElementShortName">[3][31:0]</obj_property>
-      <obj_property name="ObjectShortName">[3][31:0]</obj_property>
+   <wvobject fp_name="group93" type="group">
+      <obj_property name="label">MEM</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/test0/top/cpu/MEM/i_id" type="array">
+         <obj_property name="ElementShortName">i_id[31:0]</obj_property>
+         <obj_property name="ObjectShortName">i_id[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test0/top/cpu/MEM/opCode" type="array">
+         <obj_property name="ElementShortName">opCode[6:0]</obj_property>
+         <obj_property name="ObjectShortName">opCode[6:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test0/top/cpu/MEM/opType" type="array">
+         <obj_property name="ElementShortName">opType[2:0]</obj_property>
+         <obj_property name="ObjectShortName">opType[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test0/top/cpu/MEM/wrData" type="array">
+         <obj_property name="ElementShortName">wrData[31:0]</obj_property>
+         <obj_property name="ObjectShortName">wrData[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test0/top/cpu/MEM/rd0" type="array">
+         <obj_property name="ElementShortName">rd0[31:0]</obj_property>
+         <obj_property name="ObjectShortName">rd0[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test0/top/cpu/MEM/rd1" type="array">
+         <obj_property name="ElementShortName">rd1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">rd1[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test0/top/cpu/MEM/imm" type="array">
+         <obj_property name="ElementShortName">imm[31:0]</obj_property>
+         <obj_property name="ObjectShortName">imm[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test0/top/cpu/MEM/wr_o" type="array">
+         <obj_property name="ElementShortName">wr_o[4:0]</obj_property>
+         <obj_property name="ObjectShortName">wr_o[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test0/top/cpu/MEM/wrData_o" type="array">
+         <obj_property name="ElementShortName">wrData_o[31:0]</obj_property>
+         <obj_property name="ObjectShortName">wrData_o[31:0]</obj_property>
+      </wvobject>
    </wvobject>
-   <wvobject fp_name="/test0/top/cpu/IF/i_datain" type="array">
-      <obj_property name="ElementShortName">i_datain[31:0]</obj_property>
-      <obj_property name="ObjectShortName">i_datain[31:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
+   <wvobject fp_name="group113" type="group">
+      <obj_property name="label">iCache</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/test0/top/cpu/iCache/inst" type="array">
+         <obj_property name="ElementShortName">inst[1023:0][7:0]</obj_property>
+         <obj_property name="ObjectShortName">inst[1023:0][7:0]</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+      </wvobject>
    </wvobject>
-   <wvobject fp_name="/test0/top/cpu/ID/rd0" type="array">
-      <obj_property name="ElementShortName">rd0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">rd0[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test0/top/cpu/ID/rd1" type="array">
-      <obj_property name="ElementShortName">rd1[31:0]</obj_property>
-      <obj_property name="ObjectShortName">rd1[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test0/top/cpu/regFile/rr0" type="array">
-      <obj_property name="ElementShortName">rr0[4:0]</obj_property>
-      <obj_property name="ObjectShortName">rr0[4:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test0/top/cpu/ID/r0" type="array">
-      <obj_property name="ElementShortName">r0[4:0]</obj_property>
-      <obj_property name="ObjectShortName">r0[4:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test0/top/cpu/ID/r0_is" type="logic">
-      <obj_property name="ElementShortName">r0_is</obj_property>
-      <obj_property name="ObjectShortName">r0_is</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test0/top/cpu/ID/imm" type="array">
-      <obj_property name="ElementShortName">imm[31:0]</obj_property>
-      <obj_property name="ObjectShortName">imm[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test0/top/cpu/ID/i_id" type="array">
-      <obj_property name="ElementShortName">i_id[31:0]</obj_property>
-      <obj_property name="ObjectShortName">i_id[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test0/top/cpu/ID/rd0_i" type="array">
-      <obj_property name="ElementShortName">rd0_i[31:0]</obj_property>
-      <obj_property name="ObjectShortName">rd0_i[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test0/top/cpu/ID/r1_is" type="logic">
-      <obj_property name="ElementShortName">r1_is</obj_property>
-      <obj_property name="ObjectShortName">r1_is</obj_property>
+   <wvobject fp_name="group114" type="group">
+      <obj_property name="label">dCache</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
    </wvobject>
 </wave_config>

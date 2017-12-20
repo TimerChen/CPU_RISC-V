@@ -128,10 +128,10 @@ module CPU_ID(
 					wrIs  <= `True;
 					wr    <= opCode_i[11: 7];
 					r0    <= opCode_i[19:15];
-					r1    <= 5'b0;
+					r1    <= opCode_i[24:20];
 					r0_is <= `True;
-					r1_is <= `False;
-					imm   <= {opCode_i[31:12], 12'b0};
+					r1_is <= `True;
+					imm   <= {{16{opCode_i[31]}},opCode_i[30:25]};
 				end
 				`MISC_MEM: begin
 

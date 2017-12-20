@@ -31,7 +31,7 @@ module InstCache(
 	output reg [31:0] instOut;
 
 
-	reg [7:0] inst[1023:0];
+	reg [7:0] inst[0:1023];
 
 
 	always @ ( * ) begin

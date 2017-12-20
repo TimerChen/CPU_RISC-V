@@ -35,10 +35,10 @@ module CPU_EX(
 	);
 	input wire clk, rst, state, stall;
 
-	input wire [ 31 : 0] i_id;
-	output reg [ 31 : 0] i_id_o;
+	input wire [31 : 0] i_id;
+	output reg [31 : 0] i_id_o;
 
-	input wire         wrIs;
+	input wire 			wrIs;
 	input wire [ 4 : 0] wr;
 	input wire [ 6 : 0] opCode;
 	input wire [ 2 : 0] opType;
@@ -83,7 +83,6 @@ module CPU_EX(
 			end
 			`AUIPC: begin
 
-
 			end
 			`JAL: begin
 
@@ -109,10 +108,10 @@ module CPU_EX(
 						wrData_o <= rd0 + rd1;
 					end
 					`SLTI: begin
-						wrData_o <= rd0 < rd1 ? 32'b1 : 32'b0;
+						wrData_o <= $signed(rd0) < $signed(rd1) ? 32'b1 : 32'b0;
 					end
 					`SLTIU: begin// ????
-						wrData_o <= {1'b0, rd0} < {1'b0, rd1} ? 32'b1 : 32'b0;
+						wrData_o <= $unsigned({1'b0, rd0}) < $unsigned({1'b0, rd1}) ? 32'b1 : 32'b0;
 					end
 					`XORI: begin
 						wrData_o <= rd0 ^ rd1;
@@ -140,7 +139,7 @@ module CPU_EX(
 			`OP: begin
 				case (opType)
 					`ADD: begin //ADD & SUB
-						if (imm[10] == 0)
+						if (imm[5] == 0)
 							//ADD
 							wrData_o <= rd0 + rd1;
 						else
@@ -148,10 +147,10 @@ module CPU_EX(
 							wrData_o <= rd0 - rd1;
 					end
 					`SLT: begin
-						wrData_o <= rd0 < rd1 ? 32'b1 : 32'b0;
+						wrData_o <= $signed(rd0) < $signed(rd1) ? 32'b1 : 32'b0;
 					end
 					`SLTU: begin// ????
-						wrData_o <= {1'b0, rd0} < {1'b0, rd1} ? 32'b1 : 32'b0;
+						wrData_o <= $unsigned({1'b0, rd0}) < $unsigned({1'b0, rd1}) ? 32'b1 : 32'b0;
 					end
 					`XOR: begin
 						wrData_o <= rd0 ^ rd1;
@@ -160,7 +159,7 @@ module CPU_EX(
 						wrData_o <= rd0 << rd1[4:0];
 					end
 					`SRL: begin //SRL && SRA
-						if (imm[10] == 0)
+						if (imm[5] == 0)
 							//SRL
 							wrData_o <= rd0 >> rd1[4:0];
 						else
