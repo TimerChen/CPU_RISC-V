@@ -82,10 +82,19 @@ module CPU_Core(
 	wire [31:0] ex_regData0, ex_regData1,
 				ex_imm;
 	wire		   ex_writeRegIs;
-	CPU_ID ID(
-		.clk(clk), .rst(rst), .state(state),
 
-		.i_id(id_instID), .opCode_i(id_inst),
+	wire [31:0]	id0_inst, id0_instID;
+	CPU_IDTrans idTrans(
+		.clk(clk), .rst(rst), .stall(1'b0),
+
+		.i_id(id_instID), .opCode(id_inst),
+		.i_id_o(id0_instID), .opCode_o(id0_inst)
+		);
+
+	CPU_ID ID(
+		.clk(clk), .rst(rst), .stall(1'b0),
+
+		.i_id(id0_instID), .opCode_i(id0_inst),
 		.i_id_o(ex_instID),
 
 		//
@@ -105,18 +114,39 @@ module CPU_Core(
 
 	wire [ 6:0] mem_inst;
 	wire [ 2:0] mem_instType;
-	wire [ 4:0] mem_WriteReg;
 	wire [31:0] mem_instID,
 				mem_regData0, mem_regData1,
 				mem_imm;
-	CPU_EX EX(
-		.clk(clk), .rst(rst), .state(state), .stall(1'b0),
 
-		.i_id(ex_instID), .i_id_o(mem_instID),
+	wire [ 6:0] ex0_inst;
+	wire [31:0] ex0_instID;
+	wire [ 2:0] ex0_instType;
+	wire [ 4:0] ex0_WriteReg;
+	wire [31:0] ex0_regData0, ex0_regData1,
+				ex0_imm;
+	wire		ex0_writeRegIs;
+
+	CPU_EXTrans exTrans(
+		.clk(clk), .rst(rst), .stall(1'b0),
+
+		.i_id(ex_instID), .i_id_o(ex0_instID),
 
 		.wrIs(ex_writeRegIs), .wr(ex_WriteReg),
 		.opCode(ex_inst), .opType(ex_instType),
 		.rd0(ex_regData0), .rd1(ex_regData1), .imm(ex_imm),
+
+		.wrIs_o(ex0_writeRegIs), .wr_o(ex0_WriteReg),
+		.opCode_o(ex0_inst), .opType_o(ex0_instType),
+		.rd0_o(ex0_regData0), .rd1_o(ex0_regData1), .imm_o(ex0_imm)
+		);
+	CPU_EX EX(
+		.clk(clk), .rst(rst), .state(state), .stall(1'b0),
+
+		.i_id(ex0_instID), .i_id_o(mem_instID),
+
+		.wrIs(ex0_writeRegIs), .wr(ex0_WriteReg),
+		.opCode(ex0_inst), .opType(ex0_instType),
+		.rd0(ex0_regData0), .rd1(ex0_regData1), .imm(ex0_imm),
 
 		.wrIs_o(mem_writeRegIs), .wr_o(mem_writeReg), .wrData_o(mem_writeData),
 		.opCode_o(mem_inst), .opType_o(mem_instType),
@@ -127,14 +157,35 @@ module CPU_Core(
 	wire [31:0] dCache_writeData,
 				dCache_writeAddr, dCache_readData;
 	wire		   dCache_is;
+
+	wire [ 6:0] mem0_inst;
+	wire [ 2:0] mem0_instType;
+	wire [ 4:0] mem0_writeReg;
+	wire [31:0] mem0_instID,
+				mem0_regData0, mem0_regData1,
+				mem0_imm,
+				mem0_writeData;
+	CPU_MEMTrans memTrans(
+		.clk(clk), .rst(rst), .stall(1'b0),
+
+		.i_id(mem_instID), .i_id_o(mem0_instID),
+
+		.opCode(mem_inst), .opType(mem_instType),
+		.wrIs(mem_writeRegIs), .wr(mem_writeReg), .wrData(mem_writeData),
+		.rd0(mem_regData0), .rd1(mem_regData1), .imm(mem_imm),
+
+		.opCode_o(mem0_inst), .opType_o(mem0_instType),
+		.wrIs_o(mem0_writeRegIs), .wr_o(mem0_writeReg), .wrData_o(mem0_writeData),
+		.rd0_o(mem0_regData0), .rd1_o(mem0_regData1), .imm_o(mem0_imm)
+		);
 	CPU_MEM MEM(
 		.clk(clk), .rst(rst), .state(state), .stall(1'b0),
 
-		.i_id(mem_instID), .i_id_o(out_instID),
+		.i_id(mem0_instID), .i_id_o(out_instID),
 
-		.wrIs(mem_writeRegIs), .wr(mem_writeReg), .wrData(mem_writeData),
-		.opCode(mem_inst), .opType(mem_instType),
-		.rd0(mem_regData0), .rd1(mem_regData1), .imm(mem_imm),
+		.wrIs(mem0_writeRegIs), .wr(mem0_writeReg), .wrData(mem0_writeData),
+		.opCode(mem0_inst), .opType(mem0_instType),
+		.rd0(mem0_regData0), .rd1(mem0_regData1), .imm(mem0_imm),
 
 		.memIs(dCache_is), .memType(dCache_type),
 		.memData_o(dCache_writeData), .memAdd(dCache_writeAddr),

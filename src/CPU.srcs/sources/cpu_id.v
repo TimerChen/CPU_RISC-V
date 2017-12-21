@@ -20,7 +20,7 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module CPU_ID(
-	clk, rst, state,
+	clk, rst, stall,
 
 	i_id, opCode_i, i_id_o,
 
@@ -38,7 +38,7 @@ module CPU_ID(
 
 	rd0, rd1, imm
 	);
-	input wire 		     clk, rst, state;
+	input wire 		     clk, rst, stall;
 	input wire [ 31 : 0] i_id;
 	output reg [ 31 : 0] i_id_o;
 	input wire [ 31 : 0] opCode_i;
@@ -56,7 +56,7 @@ module CPU_ID(
 	output reg [31 : 0] imm;
 
 	//Translate Code
-	always @(posedge clk) begin
+	always @( * ) begin
 		if (rst == `True) begin
 			i_id_o <= 5'b0;
 			r0     <= 5'b0;
@@ -70,28 +70,46 @@ module CPU_ID(
 			rd0    <= 32'b0;
 			rd1    <= 32'b0;
 			imm    <= 32'b0;
-		end	else begin
+		end	else if(stall != `True) begin
 			i_id_o <= i_id;
 			opCode <= opCode_i[ 6: 0];
 			opType <= opCode_i[14:12];
 			case (opCode_i[6:0])
 				`LUI: begin
-
-					imm <= {opCode_i[31:12], 12'b0};
+					wrIs  <= `True;
+					wr    <= opCode_i[11: 7];
+					r0    <= 5'b0;
+					r1    <= 5'b0;
+					r0_is <= `False;
+					r1_is <= `False;
+					imm   <= {opCode_i[31:12], 12'b0};
 				end
 				`AUIPC: begin
-
-
-					imm <= {opCode_i[31:12], 12'b0};
+					wrIs  <= `True;
+					wr    <= opCode_i[11: 7];
+					r0    <= 5'b0;
+					r1    <= 5'b0;
+					r0_is <= `False;
+					r1_is <= `False;
+					imm   <= {opCode_i[31:12], 12'b0};
 				end
 				`JAL: begin
-
-					imm <= {{12{opCode_i[31]}}, opCode_i[19:12], opCode_i[20], opCode_i[30:25], opCode_i[24:21], 1'b0};
+					wrIs  <= `True;
+					wr    <= opCode_i[11: 7];
+					r0    <= 5'd0;
+					r1    <= 5'd0;
+					r0_is <= `False;
+					r1_is <= `False;
+					imm   <= {{12{opCode_i[31]}}, opCode_i[19:12], opCode_i[20], opCode_i[30:25], opCode_i[24:21], 1'b0};
 				end
 				`JALR: begin
-
-
-					imm <= {{21{opCode_i[31]}}, opCode_i[30:20]};
+					wrIs  <= `True;
+					wr    <= opCode_i[11: 7];
+					r0    <= opCode_i[19:15];
+					r1    <= 5'b0;
+					r0_is <= `True;
+					r1_is <= `False;
+					imm   <= {{21{opCode_i[31]}}, opCode_i[30:20]};
 				end
 				`BRANCH: begin
 
@@ -154,11 +172,39 @@ module CPU_ID(
 			rd0 <= 32'b0;
 			rd1 <= 32'b1;
 		end else begin
-			rd0 <= rd0_i;
-			if (r1_is == `True)
-				rd1 <= rd1_i;
-			else
-				rd1 <= imm;
+			case (opCode_i[6:0])
+				`LUI: begin
+					rd0 <= imm;
+					rd1 <= 32'd0;
+				end
+				`AUIPC: begin
+					rd0 <= imm;
+					rd1 <= 32'd0;
+				end
+				`JAL: begin
+					rd0 <= imm;
+					rd1 <= 32'd0;
+				end
+				`JALR: begin
+					rd0 <= rd0_i;
+					rd1 <= imm;
+				end
+				`OP_IMM: begin
+					rd0 <= rd0_i;
+					if (r1_is == `True)
+						rd1 <= rd1_i;
+					else
+						rd1 <= imm;
+				end
+				`OP: begin
+					rd0 <= rd0_i;
+					if (r1_is == `True)
+						rd1 <= rd1_i;
+					else
+						rd1 <= imm;
+				end
+			endcase
+
 
 		end
 	end

@@ -1,5 +1,8 @@
 INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_core.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module CPU_Core
+INFO: [VRFC 10-2458] undeclared symbol mem0_writeRegIs, assumed default net type wire [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_core.v:179]
+INFO: [VRFC 10-2458] undeclared symbol mem0_writeRegaaa, assumed default net type wire [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_core.v:179]
+INFO: [VRFC 10-2458] undeclared symbol mem0_writeReg, assumed default net type wire [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_core.v:187]
 INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_ex.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module CPU_EX
 INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v" into library xil_defaultlib
@@ -8,6 +11,10 @@ INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Lessons/Architecture/task2/src/C
 INFO: [VRFC 10-311] analyzing module CPU_IF
 INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_mem.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module CPU_MEM
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_transmitter.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module CPU_IDTrans
+INFO: [VRFC 10-311] analyzing module CPU_EXTrans
+INFO: [VRFC 10-311] analyzing module CPU_MEMTrans
 INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Lessons/Architecture/task2/src/CPU.srcs/sources/instcache.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module InstCache
 INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v" into library xil_defaultlib

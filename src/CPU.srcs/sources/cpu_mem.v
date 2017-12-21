@@ -64,7 +64,7 @@ module CPU_MEM(
 
 
 
-	always @(posedge clk) begin
+	always @( * ) begin
 		if (rst == `True) begin
 			i_id_o   <= 5'b0;
 			wrIs_o   <= `False;

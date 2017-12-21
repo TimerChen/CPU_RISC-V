@@ -3,6 +3,8 @@ Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
 Running: E:/Xilinx/Vivado/2017.3/bin/unwrapped/win64.o/xelab.exe -wto 5a0d34fd0d0f4b298de6c04e6889c475 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot test0_behav xil_defaultlib.test0 xil_defaultlib.glbl -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
+WARNING: [VRFC 10-278] actual bit length 1 differs from formal bit length 5 for port wr_o [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_core.v:179]
+WARNING: [VRFC 10-278] actual bit length 1 differs from formal bit length 5 for port wr [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_core.v:187]
 Completed static elaboration
 Starting simulation data flow analysis
 Completed simulation data flow analysis
@@ -11,8 +13,11 @@ Compiling module xil_defaultlib.Reg_PC
 Compiling module xil_defaultlib.RegFile
 Compiling module xil_defaultlib.InstCache
 Compiling module xil_defaultlib.CPU_IF
+Compiling module xil_defaultlib.CPU_IDTrans
 Compiling module xil_defaultlib.CPU_ID
+Compiling module xil_defaultlib.CPU_EXTrans
 Compiling module xil_defaultlib.CPU_EX
+Compiling module xil_defaultlib.CPU_MEMTrans
 Compiling module xil_defaultlib.CPU_MEM
 Compiling module xil_defaultlib.CPU_Core
 Compiling module xil_defaultlib.Top

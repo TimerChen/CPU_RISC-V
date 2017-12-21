@@ -29,6 +29,7 @@ module CPU_EX(
 	rd0, rd1, imm,
 
 	wrIs_o, wr_o, wrData_o,
+	wPcIs_o, wPcData_o,
 	opCode_o, opType_o,
 	rd0_o, rd1_o, imm_o
 
@@ -47,15 +48,17 @@ module CPU_EX(
 	output reg          wrIs_o;
 	output reg [ 4 : 0] wr_o;
 	output reg [31 : 0] wrData_o;
+	output reg 			wPcIs_o;
+	output reg [31 : 0]	wPcData_o;
 	output reg [ 6 : 0] opCode_o;
 	output reg [ 2 : 0] opType_o;
 	output reg [31 : 0] rd0_o, rd1_o, imm_o;
 
-	reg tmp0, tmp1, tmpOut;
+	reg tmp0, tmp1, tmpOut, jumpFlag;
 
 
 
-	always @(posedge clk) begin
+	always @( * ) begin
 		if (rst == `True) begin
 			i_id_o <= 5'b0;
 
@@ -79,20 +82,46 @@ module CPU_EX(
 
 			case (opCode)
 			`LUI: begin
-
+				wrData_o <= imm;
 			end
 			`AUIPC: begin
-
+				wrData_o <= i_id + imm;
 			end
 			`JAL: begin
-
+				wrData_o  <= i_id + 4;
+				wPcIs_o     <= `True;
+				wPcData_o <= imm + i_id;
 			end
 			`JALR: begin
-
-
+				wrData_o  <= i_id + 4;
+				wPcIs_o     <= `True;
+				wPcData_o <= (rd0 + imm) & (-1 ^ 1);
 			end
 			`BRANCH: begin
+				case (opType)
+				`BEQ:
+					jumpFlag = (rd0 == rd1) ? 1'b1 : 1'b0;
+				`BNE:
+					jumpFlag = (rd0 != rd1) ? 1'b1 : 1'b0;
+				`BLT:
+					jumpFlag = ($signed(rd0) < $signed(rd1)) ? 1'b1 : 1'b0;
+				`BGE:
+					jumpFlag = ($signed(rd0) > $signed(rd1)) ? 1'b1 : 1'b0;
+				`BLTU:
+					jumpFlag = ($unsigned(rd0) < $unsigned(rd1)) ? 1'b1 : 1'b0;
+				`BGEU:
+					jumpFlag = ($unsigned(rd0) > $unsigned(rd1)) ? 1'b1 : 1'b0;
+				default:
+					jumpFlag = 1'b0;
+				endcase
 
+				if (jumpFlag) begin
+					wPcIs_o     <= `True;
+					wPcData_o <= i_id + imm;
+				end else begin
+					wPcIs_o     <= `False;
+					wPcData_o <= i_id + 4;
+				end
 			end
 
 			`LOAD: begin
@@ -104,75 +133,75 @@ module CPU_EX(
 			`OP_IMM: begin
 
 				case (opType)
-					`ADDI: begin
-						wrData_o <= rd0 + rd1;
-					end
-					`SLTI: begin
-						wrData_o <= $signed(rd0) < $signed(rd1) ? 32'b1 : 32'b0;
-					end
-					`SLTIU: begin// ????
-						wrData_o <= $unsigned({1'b0, rd0}) < $unsigned({1'b0, rd1}) ? 32'b1 : 32'b0;
-					end
-					`XORI: begin
-						wrData_o <= rd0 ^ rd1;
-					end
-					`ORI: begin
-						wrData_o <= rd0 | rd1;
-					end
-					`ANDI: begin
-						wrData_o <= rd0 & rd1;
-					end
-					`SLLI: begin
-						wrData_o <= rd0 << rd1[4:0];
-					end
-					`SRLI: begin //SRLI && SRAI
-						if (imm[10] == 0)
-							//SRLI
-							wrData_o <= rd0 >> rd1[4:0];
-						else
-							//SRAI
-							wrData_o <= (rd0 >> rd1[4:0]) | ({32{rd0[31]}} << (6'd32 - {1'b0, rd1[4:0]}));
-					end
-					default: ;
+				`ADDI: begin
+					wrData_o <= rd0 + rd1;
+				end
+				`SLTI: begin
+					wrData_o <= $signed(rd0) < $signed(rd1) ? 32'b1 : 32'b0;
+				end
+				`SLTIU: begin// ????
+					wrData_o <= $unsigned({1'b0, rd0}) < $unsigned({1'b0, rd1}) ? 32'b1 : 32'b0;
+				end
+				`XORI: begin
+					wrData_o <= rd0 ^ rd1;
+				end
+				`ORI: begin
+					wrData_o <= rd0 | rd1;
+				end
+				`ANDI: begin
+					wrData_o <= rd0 & rd1;
+				end
+				`SLLI: begin
+					wrData_o <= rd0 << rd1[4:0];
+				end
+				`SRLI: begin //SRLI && SRAI
+					if (imm[10] == 0)
+						//SRLI
+						wrData_o <= rd0 >> rd1[4:0];
+					else
+						//SRAI
+						wrData_o <= (rd0 >> rd1[4:0]) | ({32{rd0[31]}} << (6'd32 - {1'b0, rd1[4:0]}));
+				end
+				default: ;
 				endcase
 			end
 			`OP: begin
 				case (opType)
-					`ADD: begin //ADD & SUB
-						if (imm[5] == 0)
-							//ADD
-							wrData_o <= rd0 + rd1;
-						else
-							//SUB
-							wrData_o <= rd0 - rd1;
-					end
-					`SLT: begin
-						wrData_o <= $signed(rd0) < $signed(rd1) ? 32'b1 : 32'b0;
-					end
-					`SLTU: begin// ????
-						wrData_o <= $unsigned({1'b0, rd0}) < $unsigned({1'b0, rd1}) ? 32'b1 : 32'b0;
-					end
-					`XOR: begin
-						wrData_o <= rd0 ^ rd1;
-					end
-					`SLL: begin
-						wrData_o <= rd0 << rd1[4:0];
-					end
-					`SRL: begin //SRL && SRA
-						if (imm[5] == 0)
-							//SRL
-							wrData_o <= rd0 >> rd1[4:0];
-						else
-							//SRA
-							wrData_o <= (rd0 >> rd1[4:0]) | ({32{rd0[31]}} << (6'd32 - {1'b0, rd1[4:0]}));
-					end
-					`OR: begin
-						wrData_o <= rd0 | rd1;
-					end
-					`AND: begin
-						wrData_o <= rd0 & rd1;
-					end
-					default: ;
+				`ADD: begin //ADD & SUB
+					if (imm[5] == 0)
+						//ADD
+						wrData_o <= rd0 + rd1;
+					else
+						//SUB
+						wrData_o <= rd0 - rd1;
+				end
+				`SLT: begin
+					wrData_o <= $signed(rd0) < $signed(rd1) ? 32'b1 : 32'b0;
+				end
+				`SLTU: begin// ????
+					wrData_o <= $unsigned({1'b0, rd0}) < $unsigned({1'b0, rd1}) ? 32'b1 : 32'b0;
+				end
+				`XOR: begin
+					wrData_o <= rd0 ^ rd1;
+				end
+				`SLL: begin
+					wrData_o <= rd0 << rd1[4:0];
+				end
+				`SRL: begin //SRL && SRA
+					if (imm[5] == 0)
+						//SRL
+						wrData_o <= rd0 >> rd1[4:0];
+					else
+						//SRA
+						wrData_o <= (rd0 >> rd1[4:0]) | ({32{rd0[31]}} << (6'd32 - {1'b0, rd1[4:0]}));
+				end
+				`OR: begin
+					wrData_o <= rd0 | rd1;
+				end
+				`AND: begin
+					wrData_o <= rd0 & rd1;
+				end
+				default: ;
 				endcase
 			end
 			`MISC_MEM: begin

@@ -13,3 +13,5 @@
 ./CPU.srcs/sources/reg_pc.v
 ./CPU.srcs/sources/top.v
 
+./CPU.srcs/sources/cpu_transmitter.v
+./CPU.srcs/sources/cpu_controller.v
