@@ -27,21 +27,35 @@ module CPU_Core(
 
 	input wire clk, rst;
 
+	wire 		pc_writeIs;
+	wire [31:0]	pc_writeData;
+
 	reg state;
+	wire 		ce;
 	wire [31:0] pc;
-	wire ce;
-	reg [ 4:0] regReadReg0,regReadReg1,
+
+	reg [ 4:0]	regReadReg0,regReadReg1,
 				regWriteReg0, regWriteReg1;
-	reg [31:0] regReadData0, reaReadData1,
+	reg [31:0]	regReadData0, reaReadData1,
 				regWriteData0, regWriteData1;
 	wire [31:0]	if_inst, id_inst,
 				id_instID, ex_instID;
+	wire 		ex_rst_o;
+	wire [3:0]	cStall_i, cRst_i, cStall_o, cRst_o;
 
+	assign cStall_i = {1'b0, 1'b0, 1'b0, 1'b0};
+	assign cRst_i = {1'b0, ex_rst_o, 1'b0, 1'b0};
+
+	CPU_Controller controller(
+		.clk(clk), .rst(rst),
+		.stall_i(cStall_i), .rst_i(cRst_i),
+		.stall_o(cStall_o), .rst_o(cRst_o)
+		);
 	Reg_PC regpc(
 		.clk(clk),
 		.rst(rst),
-		.wIs(1'b0),
-		.pcIn(32'b0),
+		.wIs(pc_writeIs),
+		.pcIn(pc_writeData),
 		.pc(pc),
 		.ce(ce)
 		);
@@ -85,14 +99,14 @@ module CPU_Core(
 
 	wire [31:0]	id0_inst, id0_instID;
 	CPU_IDTrans idTrans(
-		.clk(clk), .rst(rst), .stall(1'b0),
+		.clk(clk), .rst(rst | cRst_o[1]), .stall(cStall_o[1]),
 
 		.i_id(id_instID), .opCode(id_inst),
 		.i_id_o(id0_instID), .opCode_o(id0_inst)
 		);
 
 	CPU_ID ID(
-		.clk(clk), .rst(rst), .stall(1'b0),
+		.clk(clk), .rst(rst), .stall(cStall_o[1]),
 
 		.i_id(id0_instID), .opCode_i(id0_inst),
 		.i_id_o(ex_instID),
@@ -127,7 +141,7 @@ module CPU_Core(
 	wire		ex0_writeRegIs;
 
 	CPU_EXTrans exTrans(
-		.clk(clk), .rst(rst), .stall(1'b0),
+		.clk(clk), .rst(rst | cRst_o[2]), .stall(cStall_o[2]),
 
 		.i_id(ex_instID), .i_id_o(ex0_instID),
 
@@ -140,7 +154,7 @@ module CPU_Core(
 		.rd0_o(ex0_regData0), .rd1_o(ex0_regData1), .imm_o(ex0_imm)
 		);
 	CPU_EX EX(
-		.clk(clk), .rst(rst), .state(state), .stall(1'b0),
+		.clk(clk), .rst(rst), .state(state), .stall(cStall_o[2]),
 
 		.i_id(ex0_instID), .i_id_o(mem_instID),
 
@@ -149,8 +163,10 @@ module CPU_Core(
 		.rd0(ex0_regData0), .rd1(ex0_regData1), .imm(ex0_imm),
 
 		.wrIs_o(mem_writeRegIs), .wr_o(mem_writeReg), .wrData_o(mem_writeData),
+		.wPcIs_o(pc_writeIs), .wPcData_o(pc_writeData),
 		.opCode_o(mem_inst), .opType_o(mem_instType),
-		.rd0_o(mem_regData0), .rd1_o(mem_regData1), .imm_o(mem_imm)
+		.rd0_o(mem_regData0), .rd1_o(mem_regData1), .imm_o(mem_imm),
+		.clear(ex_rst_o)
 		);
 	wire [31:0] out_instID;
 	wire [ 3:0] dCache_type;
@@ -166,7 +182,7 @@ module CPU_Core(
 				mem0_imm,
 				mem0_writeData;
 	CPU_MEMTrans memTrans(
-		.clk(clk), .rst(rst), .stall(1'b0),
+		.clk(clk), .rst(rst | cRst_o[3]), .stall(cStall_o[3]),
 
 		.i_id(mem_instID), .i_id_o(mem0_instID),
 
@@ -179,7 +195,7 @@ module CPU_Core(
 		.rd0_o(mem0_regData0), .rd1_o(mem0_regData1), .imm_o(mem0_imm)
 		);
 	CPU_MEM MEM(
-		.clk(clk), .rst(rst), .state(state), .stall(1'b0),
+		.clk(clk), .rst(rst), .state(state), .stall(cStall_o[3]),
 
 		.i_id(mem0_instID), .i_id_o(out_instID),
 

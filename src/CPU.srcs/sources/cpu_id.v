@@ -112,7 +112,12 @@ module CPU_ID(
 					imm   <= {{21{opCode_i[31]}}, opCode_i[30:20]};
 				end
 				`BRANCH: begin
-
+					wrIs  <= `False;
+					wr    <= 5'b0;
+					r0    <= opCode_i[19:15];
+					r1    <= opCode_i[24:20];
+					r0_is <= `True;
+					r1_is <= `True;
 					imm <= {{21{opCode_i[31]}}, opCode_i[7], opCode_i[30:25], opCode_i[11:8], 1'b0};
 				end
 
@@ -130,8 +135,9 @@ module CPU_ID(
 					imm   <= {{21{opCode_i[31]}}, opCode_i[30:25], opCode_i[11:7]};
 				end
 				`OP_IMM: begin
+					/*
 					if (`DEBUG == `True)
-						$display("ID: OP_IMM");
+						$display("ID: OP_IMM");*/
 					wrIs  <= `True;
 					wr    <= opCode_i[11: 7];
 					r0    <= opCode_i[19:15];
@@ -188,6 +194,10 @@ module CPU_ID(
 				`JALR: begin
 					rd0 <= rd0_i;
 					rd1 <= imm;
+				end
+				`BRANCH: begin
+					rd0 <= rd0_i;
+					rd1 <= rd1_i;
 				end
 				`OP_IMM: begin
 					rd0 <= rd0_i;

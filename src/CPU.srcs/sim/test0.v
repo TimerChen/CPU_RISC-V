@@ -51,10 +51,11 @@ module test0();
 	reg [31:0] count;
 	reg [31:0] i;
 	always @( posedge clk ) begin
+		$display("newCLK");
 		if (rst == `True) begin
 			count <= 0;
 		end else begin
-			if(count == 30) begin
+			if(count == 50) begin
 				stopFlag = 1'b1;
 				$display("end");
 				#200;

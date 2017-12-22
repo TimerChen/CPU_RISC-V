@@ -31,7 +31,9 @@ module CPU_EX(
 	wrIs_o, wr_o, wrData_o,
 	wPcIs_o, wPcData_o,
 	opCode_o, opType_o,
-	rd0_o, rd1_o, imm_o
+	rd0_o, rd1_o, imm_o,
+
+	clear
 
 	);
 	input wire clk, rst, state, stall;
@@ -54,22 +56,29 @@ module CPU_EX(
 	output reg [ 2 : 0] opType_o;
 	output reg [31 : 0] rd0_o, rd1_o, imm_o;
 
+	output reg clear;
+
 	reg tmp0, tmp1, tmpOut, jumpFlag;
 
 
 
 	always @( * ) begin
 		if (rst == `True) begin
-			i_id_o <= 5'b0;
+			i_id_o    <= 5'b0;
 
-			wrIs_o   <= `False;
-			wr_o     <= 4'b0;
-			wrData_o <= 32'b0;
-			opCode_o <= 7'b0;
-			opType_o <= 3'b0;
-			rd0_o    <= 32'b0;
-			rd1_o    <= 32'b0;
-			imm_o    <= 32'b0;
+			wrIs_o    <= `False;
+			wr_o      <= 4'b0;
+			wrData_o  <= 32'b0;
+			opCode_o  <= 7'b0;
+			opType_o  <= 3'b0;
+			rd0_o     <= 32'b0;
+			rd1_o     <= 32'b0;
+			imm_o     <= 32'b0;
+
+			wPcIs_o   <= 1'b0;
+			wPcData_o <= 32'b0;
+
+			clear     <= 1'b0;
 		end	else if (stall != `True) begin
 			i_id_o   <= i_id;
 			opCode_o <= opCode;
@@ -83,19 +92,27 @@ module CPU_EX(
 			case (opCode)
 			`LUI: begin
 				wrData_o <= imm;
+				wPcIs_o   <= 1'b0;
+				wPcData_o <= 32'b0;
+				clear    <= `False;
 			end
 			`AUIPC: begin
 				wrData_o <= i_id + imm;
+				wPcIs_o   <= 1'b0;
+				wPcData_o <= 32'b0;
+				clear    <= `False;
 			end
 			`JAL: begin
 				wrData_o  <= i_id + 4;
-				wPcIs_o     <= `True;
+				wPcIs_o   <= `True;
 				wPcData_o <= imm + i_id;
+				clear     <= `True;
 			end
 			`JALR: begin
 				wrData_o  <= i_id + 4;
-				wPcIs_o     <= `True;
+				wPcIs_o   <= `True;
 				wPcData_o <= (rd0 + imm) & (-1 ^ 1);
+				clear     <= `True;
 			end
 			`BRANCH: begin
 				case (opType)
@@ -114,24 +131,33 @@ module CPU_EX(
 				default:
 					jumpFlag = 1'b0;
 				endcase
-
-				if (jumpFlag) begin
+				$display("select jump? %d %d", rd0, rd1);
+				if (jumpFlag == 1'b1) begin
 					wPcIs_o     <= `True;
 					wPcData_o <= i_id + imm;
+					clear <= `True;
 				end else begin
+					$display("no jump!");
 					wPcIs_o     <= `False;
 					wPcData_o <= i_id + 4;
+					clear <= `False;
 				end
 			end
 
 			`LOAD: begin
-
+				wPcIs_o   <= 1'b0;
+				wPcData_o <= 32'b0;
+				clear <= `False;
 			end
 			`STORE: begin
-
+				wPcIs_o   <= 1'b0;
+				wPcData_o <= 32'b0;
+				clear <= `False;
 			end
 			`OP_IMM: begin
-
+				wPcIs_o   <= 1'b0;
+				wPcData_o <= 32'b0;
+				clear <= `False;
 				case (opType)
 				`ADDI: begin
 					wrData_o <= rd0 + rd1;
@@ -140,7 +166,7 @@ module CPU_EX(
 					wrData_o <= $signed(rd0) < $signed(rd1) ? 32'b1 : 32'b0;
 				end
 				`SLTIU: begin// ????
-					wrData_o <= $unsigned({1'b0, rd0}) < $unsigned({1'b0, rd1}) ? 32'b1 : 32'b0;
+					wrData_o <= $unsigned(rd0) < $unsigned(rd1) ? 32'b1 : 32'b0;
 				end
 				`XORI: begin
 					wrData_o <= rd0 ^ rd1;
@@ -166,6 +192,9 @@ module CPU_EX(
 				endcase
 			end
 			`OP: begin
+				wPcIs_o   <= 1'b0;
+				wPcData_o <= 32'b0;
+				clear <= `False;
 				case (opType)
 				`ADD: begin //ADD & SUB
 					if (imm[5] == 0)
@@ -179,7 +208,7 @@ module CPU_EX(
 					wrData_o <= $signed(rd0) < $signed(rd1) ? 32'b1 : 32'b0;
 				end
 				`SLTU: begin// ????
-					wrData_o <= $unsigned({1'b0, rd0}) < $unsigned({1'b0, rd1}) ? 32'b1 : 32'b0;
+					wrData_o <= $unsigned(rd0) < $unsigned(rd1) ? 32'b1 : 32'b0;
 				end
 				`XOR: begin
 					wrData_o <= rd0 ^ rd1;
@@ -205,6 +234,9 @@ module CPU_EX(
 				endcase
 			end
 			`MISC_MEM: begin
+				wPcIs_o   <= 1'b0;
+				wPcData_o <= 32'b0;
+				clear <= `False;
 
 			end
 			default: ;

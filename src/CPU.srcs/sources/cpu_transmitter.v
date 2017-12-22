@@ -33,7 +33,7 @@ module CPU_IDTrans(
 	always @(posedge clk) begin
 		if (rst == `True) begin
 			i_id_o   <= 32'b0;
-			opCode_o <= 32'b0;
+			opCode_o <= {25'b0,`OP_IMM};
 		end else if(stall != `True) begin
 			i_id_o   <= i_id;
 			opCode_o <= opCode;
@@ -78,8 +78,8 @@ module CPU_EXTrans (
 			i_id_o   <= 5'b0;
 			wrIs_o   <= `False;
 			wr_o     <= 4'b0;
-			opCode_o <= 7'b0;
-			opType_o <= 3'b0;
+			opCode_o <= `OP_IMM;
+			opType_o <= `ADDI;
 			rd0_o    <= 32'b0;
 			rd1_o    <= 32'b0;
 			imm_o    <= 32'b0;
@@ -136,8 +136,8 @@ module CPU_MEMTrans (
 			wrIs_o   <= `False;
 			wr_o     <= 4'b0;
 			wrData_o <= 32'b0;
-			opCode_o <= 7'b0;
-			opType_o <= 3'b0;
+			opCode_o <= `OP_IMM;
+			opType_o <= `ADDI;
 			rd0_o    <= 32'd0;
 			rd1_o    <= 32'd0;
 			imm_o    <= 32'd0;

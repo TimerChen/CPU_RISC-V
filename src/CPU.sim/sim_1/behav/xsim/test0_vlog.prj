@@ -1,5 +1,6 @@
 # compile verilog/system verilog design source files
 verilog xil_defaultlib  -i "../../../../CPU.srcs" \
+"../../../../CPU.srcs/sources/cpu_controller.v" \
 "../../../../CPU.srcs/sources/cpu_core.v" \
 "../../../../CPU.srcs/sources/cpu_ex.v" \
 "../../../../CPU.srcs/sources/cpu_id.v" \

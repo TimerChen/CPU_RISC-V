@@ -62,9 +62,10 @@ module CPU_MEM(
 	output reg [ 4:0] wr_o;
 	output reg [31:0] wrData_o;
 
-
-
 	always @( * ) begin
+
+		//$display("[MEM]%d %d %d %d %d %d %d", opCode, opType, rd0, rd1, wrIs, wr, wrData);
+		//$display("[MEM]%d %d", stall, rst);
 		if (rst == `True) begin
 			i_id_o   <= 5'b0;
 			wrIs_o   <= `False;
@@ -73,7 +74,6 @@ module CPU_MEM(
 			opCode_o <= 7'b0;
 			opType_o <= 3'b0;
 		end	else if (stall != `True) begin
-			$display("[MEM]0");
 			opCode_o <= opCode;
 			opType_o <= opType;
 			case (opCode)
@@ -92,7 +92,7 @@ module CPU_MEM(
 					memData_o <= rd1;
 				end
 				default: begin
-					$display("[MEM]default");
+					//$display("[MEM]default");
 					memIs     <= `False;
 					memType   <= 4'b0;
 					memAdd    <= 32'b0;

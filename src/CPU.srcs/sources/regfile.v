@@ -42,7 +42,7 @@ module RegFile (
 	//read0
 	always @(*) begin
 		if (rst == `True) begin
-			rd1 <= 32'd0;
+			rd0 <= 32'd0;
 		end else begin
 			if (rr0 == 5'd0)
 				rd0 <= 32'd0;

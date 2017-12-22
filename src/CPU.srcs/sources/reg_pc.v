@@ -37,10 +37,14 @@ module Reg_PC (
 			pc <= 32'd0;
 		end else begin
 			$display("pc+4:%d", pc);
-			pc = pc + 32'd4;
+			pc <= pc + 32'd4;
 		end
 	end
-
+	always @ ( * ) begin
+		if (ce == `True && wIs == `True) begin
+			pc <= pcIn;
+		end
+	end
 	always @ ( posedge clk ) begin
 		$display("update ce:%d %d", rst, ce);
 		if (rst == `True) begin
