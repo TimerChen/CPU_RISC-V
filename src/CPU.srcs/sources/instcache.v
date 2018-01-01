@@ -22,13 +22,15 @@
 module InstCache(
 	clk, rst, ce, stall,
 	pc,
-	instOut
+	instOut,
+	stall_o
 
 	);
 
 	input wire clk, rst, ce, stall;
 	input wire [31:0] pc;
 	output reg [31:0] instOut;
+	output reg 		  stall_o;
 
 
 	reg [7:0] inst[0:1023];
@@ -37,6 +39,7 @@ module InstCache(
 	always @ ( * ) begin
 		if (rst == `True) begin
 			instOut <= {25'd0, `OP_IMM};
+			stall_o <= 1'b0;
 		end	else if (ce == `True && stall != `True) begin
 			instOut <= {inst[pc+3],inst[pc+2],inst[pc+1],inst[pc]};
 		end

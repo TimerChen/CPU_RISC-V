@@ -22,31 +22,31 @@
 
 
 module Reg_PC (
-	clk, rst,
+	clk, rst, stall,
 	wIs, pcIn,
 	pc, ce
 	);
-	input wire clk, rst, wIs;
+	input wire clk, rst, stall, wIs;
 	input wire [31:0] pcIn;
 	output reg [31:0] pc;
 	output reg ce;
-	reg [`XLEN-1:0] regs[31:0];
+	reg [31:0] regs[31:0];
 
 	always @ ( posedge clk ) begin
 		if (ce == `False) begin
 			pc <= 32'd0;
-		end else begin
-			$display("pc+4:%d", pc);
+		end else if (!stall) begin
+			$display("pc(%d)+4", pc);
 			pc <= pc + 32'd4;
 		end
 	end
 	always @ ( * ) begin
-		if (ce == `True && wIs == `True) begin
+		if ({ce, wIs, stall} == 3'b110) begin
 			pc <= pcIn;
 		end
 	end
 	always @ ( posedge clk ) begin
-		$display("update ce:%d %d", rst, ce);
+		//$display("update ce:%d %d", rst, ce);
 		if (rst == `True) begin
 			ce <= `False;
 		end else begin

@@ -20,11 +20,11 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module CPU_IF(
-	clk, rst, state,
+	clk, rst, stall,
 	pc, i_datain,
 	i_id, opCode
 	);
-	input wire clk, rst, state;
+	input wire clk, rst, stall;
 	input wire [31:0] pc;
 	input wire [31:0] i_datain;
 	output reg [31:0] i_id;
@@ -35,7 +35,7 @@ module CPU_IF(
 		if (rst == `True) begin
 			opCode <= {25'b0, `OP_IMM};
 			i_id   <= 32'd0;           //??
-		end	else begin
+		end	else if(!stall) begin
 			opCode <= i_datain;
 			i_id   <= pc;
 		end

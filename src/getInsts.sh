@@ -1,4 +1,5 @@
 #! /bin/sh
+rm insts.mem
 cp insts.S ../tools/code_gener/insts.S
 cd ../tools/code_gener/
 make insts.data

@@ -34,7 +34,12 @@ module CPU_MEM(
 	memData_o, memAdd,
 	memData_i,
 
-	wrIs_o, wr_o, wrData_o
+	wrIs_o, wr_o, wrData_o,
+
+	stall_o,
+	cacheMiss, cacheReady,
+
+	ulk_o
 
 	);
 
@@ -62,6 +67,13 @@ module CPU_MEM(
 	output reg [ 4:0] wr_o;
 	output reg [31:0] wrData_o;
 
+	input wire cacheMiss, cacheReady;
+	output reg stall_o;
+
+	output reg ulk_o;
+
+	reg wating;
+
 	always @( * ) begin
 
 		//$display("[MEM]%d %d %d %d %d %d %d", opCode, opType, rd0, rd1, wrIs, wr, wrData);
@@ -73,7 +85,10 @@ module CPU_MEM(
 			wrData_o <= 32'b0;
 			opCode_o <= 7'b0;
 			opType_o <= 3'b0;
+			wating   <= 1'b0;
+			stall_o  <= 1'b0;
 		end	else if (stall != `True) begin
+			i_id_o   <= i_id;
 			opCode_o <= opCode;
 			opType_o <= opType;
 			case (opCode)
@@ -81,14 +96,14 @@ module CPU_MEM(
 					$display("[MEM]load");
 					memIs     <= `True;
 					memType   <= {1'b0, opType};
-					memAdd    <= rd0;
+					memAdd    <= wrData;
 					memData_o <= 32'b0;
 				end
 				`STORE: begin
 					$display("[MEM]store");
 					memIs     <= `True;
 					memType   <= {1'b1, opType};
-					memAdd    <= rd0;
+					memAdd    <= wrData;
 					memData_o <= rd1;
 				end
 				default: begin
@@ -97,24 +112,42 @@ module CPU_MEM(
 					memType   <= 4'b0;
 					memAdd    <= 32'b0;
 					memData_o <= 32'b0;
-					wrIs_o    <= wrIs;
-					wr_o      <= wr;
-					wrData_o  <= wrData;
 				end
 			endcase
 		end
 	end
+	//Cache miss
+	always @ ( posedge cacheMiss ) begin
+		wrIs_o   <= `False;
+		wr_o     <= 1'b0;
+		wrData_o <= 32'b0;
+		stall_o  <= 1'b1;
+		wating    = `True;
+	end
 
+	//Cache ready
+	always @ ( posedge cacheReady ) begin
+		stall_o <= 1'b0;
+		wating   = `False;
+	end
 
 	always @ ( * ) begin
 		if (rst == `True) begin
+			wrIs_o   <= `False;
 			wr_o     <= 1'b0;
 			wrData_o <= 32'b0;
+			ulk_o    <= `False;
 		end	else if (stall != `True) begin
-			if (opCode == `LOAD) begin
+			if (opCode == `LOAD && wating != `True) begin
+				ulk_o    <= `True;
 				wrIs_o   <= `True;
 				wr_o     <= wr;
 				wrData_o <= memData_i;
+			end else begin
+				ulk_o    <= `False;
+				wrIs_o   <= wrIs;
+				wr_o     <= wr;
+				wrData_o <= wrData;
 			end
 		end
 	end

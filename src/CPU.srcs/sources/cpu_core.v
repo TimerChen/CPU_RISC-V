@@ -43,8 +43,17 @@ module CPU_Core(
 	wire 		ex_rst_o;
 	wire [3:0]	cStall_i, cRst_i, cStall_o, cRst_o;
 
-	assign cStall_i = {1'b0, 1'b0, 1'b0, 1'b0};
-	assign cRst_i = {1'b0, ex_rst_o, 1'b0, 1'b0};
+	wire 		watingdCache, dCacheMiss, dCacheReady;
+	wire 		watingiCache, iCacheMiss, iCacheReady;
+	wire  		watingReg;
+	wire [ 3:0] dCache_type;
+	wire [31:0] dCache_writeData,
+				dCache_writeAddr, dCache_readData;
+	wire		dCache_is;
+
+
+	assign cStall_i = {watingdCache, 1'b0, watingReg, watingiCache};
+	assign cRst_i 	= {1'b0, ex_rst_o, 1'b0, 1'b0};
 
 	CPU_Controller controller(
 		.clk(clk), .rst(rst),
@@ -52,8 +61,7 @@ module CPU_Core(
 		.stall_o(cStall_o), .rst_o(cRst_o)
 		);
 	Reg_PC regpc(
-		.clk(clk),
-		.rst(rst),
+		.clk(clk), .rst(rst), .stall(cStall_o[0]),
 		.wIs(pc_writeIs),
 		.pcIn(pc_writeData),
 		.pc(pc),
@@ -65,10 +73,20 @@ module CPU_Core(
 				mem_writeData, out_writeData;
 	wire	   rf_readReg0Is, rf_readReg1Is,
 				mem_writeRegIs, out_writeRegIs;
+	wire 		id_lk, mem_ulk, id_lkd0, id_lkd1;
+
+	wire [ 4:0] ex_WriteReg;
+	wire [31:0] out_instID;
 	RegFile regFile(
 		.clk(clk),
 		.rst(rst),
 		.we(1'b1),
+		//change lock info at start of next clock
+		.lr0(ex_WriteReg), .lk0(id_lk), .lkId0(ex_instID),
+
+		.ulr0(out_writeReg), .ulk0(mem_ulk), .ulkId0(out_instID),
+
+		.lkd0(id_lkd0), .lkd1(id_lkd1),
 
 		.rr0(rf_readReg0), .rr1(rf_readReg1),
 		.rd0(id_regData0), .rd1(id_regData1),
@@ -78,13 +96,23 @@ module CPU_Core(
 		.wr1(out_writeReg), .wd1(out_writeData)
 		);
 	InstCache iCache(
-		.clk(clk), .rst(rst), .ce(ce), .stall(1'b0),
+		.clk(clk), .rst(rst), .ce(ce), .stall(cStall_o[0]),
 		.pc(pc),
-		.instOut(if_inst)
+		.instOut(if_inst),
+		.stall_o(watingiCache)
+		);
+
+	DataCache dCache(
+		.clk(clk), .rst(rst),
+
+		.memIs(dCache_is), .memType(dCache_type),
+		.memData_o(dCache_writeData), .memAdd(dCache_writeAddr),
+		.memData_i(dCache_readData),
+
+		.miss(dCacheMiss), .ready(dCacheReady)
 		);
 	CPU_IF IF(
-		.clk(clk),
-		.rst(rst),
+		.clk(clk), .rst(rst), .stall(cStall_o[0]),
 		.pc(pc),
 		.i_datain(if_inst),
 		.i_id(id_instID),
@@ -92,14 +120,13 @@ module CPU_Core(
 		);
 	wire [ 6:0] ex_inst;
 	wire [ 2:0] ex_instType;
-	wire [ 4:0] ex_WriteReg;
 	wire [31:0] ex_regData0, ex_regData1,
 				ex_imm;
 	wire		   ex_writeRegIs;
 
 	wire [31:0]	id0_inst, id0_instID;
 	CPU_IDTrans idTrans(
-		.clk(clk), .rst(rst | cRst_o[1]), .stall(cStall_o[1]),
+		.clk(clk), .rst(rst | cRst_o[1]), .stall(cStall_o),
 
 		.i_id(id_instID), .opCode(id_inst),
 		.i_id_o(id0_instID), .opCode_o(id0_inst)
@@ -123,7 +150,10 @@ module CPU_Core(
 
 		.rd0_i(id_regData0), .rd1_i(id_regData1),
 
-		.rd0(ex_regData0), .rd1(ex_regData1), .imm(ex_imm)
+		.rd0(ex_regData0), .rd1(ex_regData1), .imm(ex_imm),
+
+		.lk_o(id_lk), .lkd0(id_lkd0), .lkd1(id_lkd1),
+		.stall_o(watingReg)
 		);
 
 	wire [ 6:0] mem_inst;
@@ -141,7 +171,7 @@ module CPU_Core(
 	wire		ex0_writeRegIs;
 
 	CPU_EXTrans exTrans(
-		.clk(clk), .rst(rst | cRst_o[2]), .stall(cStall_o[2]),
+		.clk(clk), .rst(rst | cRst_o[2]), .stall(cStall_o),
 
 		.i_id(ex_instID), .i_id_o(ex0_instID),
 
@@ -168,11 +198,8 @@ module CPU_Core(
 		.rd0_o(mem_regData0), .rd1_o(mem_regData1), .imm_o(mem_imm),
 		.clear(ex_rst_o)
 		);
-	wire [31:0] out_instID;
-	wire [ 3:0] dCache_type;
-	wire [31:0] dCache_writeData,
-				dCache_writeAddr, dCache_readData;
-	wire		   dCache_is;
+
+
 
 	wire [ 6:0] mem0_inst;
 	wire [ 2:0] mem0_instType;
@@ -182,7 +209,7 @@ module CPU_Core(
 				mem0_imm,
 				mem0_writeData;
 	CPU_MEMTrans memTrans(
-		.clk(clk), .rst(rst | cRst_o[3]), .stall(cStall_o[3]),
+		.clk(clk), .rst(rst | cRst_o[3]), .stall(cStall_o),
 
 		.i_id(mem_instID), .i_id_o(mem0_instID),
 
@@ -207,9 +234,12 @@ module CPU_Core(
 		.memData_o(dCache_writeData), .memAdd(dCache_writeAddr),
 		.memData_i(dCache_readData),
 
-		.wrIs_o(out_writeRegIs), .wr_o(out_writeReg), .wrData_o(out_writeData)
-		);
+		.wrIs_o(out_writeRegIs), .wr_o(out_writeReg), .wrData_o(out_writeData),
 
+		.stall_o(watingdCache),
+		.cacheMiss(dCacheMiss), .cacheReady(dCacheReady),
+		.ulk_o(mem_ulk)
+		);
 
 
 

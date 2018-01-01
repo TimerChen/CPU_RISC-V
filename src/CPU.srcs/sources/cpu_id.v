@@ -36,7 +36,14 @@ module CPU_ID(
 
 	rd0_i, rd1_i,
 
-	rd0, rd1, imm
+	rd0, rd1, imm,
+
+	//lock?
+	lk_o,
+	//locked?
+	lkd0, lkd1,
+	//stall Request
+	stall_o
 	);
 	input wire 		     clk, rst, stall;
 	input wire [ 31 : 0] i_id;
@@ -55,6 +62,9 @@ module CPU_ID(
 	output reg [31 : 0] rd0, rd1;
 	output reg [31 : 0] imm;
 
+	output reg lk_o, stall_o;
+	input wire lkd0, lkd1;
+
 	//Translate Code
 	always @( * ) begin
 		if (rst == `True) begin
@@ -70,6 +80,7 @@ module CPU_ID(
 			rd0    <= 32'b0;
 			rd1    <= 32'b0;
 			imm    <= 32'b0;
+			lk_o   <= 1'b0;
 		end	else if(stall != `True) begin
 			i_id_o <= i_id;
 			opCode <= opCode_i[ 6: 0];
@@ -118,26 +129,28 @@ module CPU_ID(
 					r1    <= opCode_i[24:20];
 					r0_is <= `True;
 					r1_is <= `True;
-					imm <= {{21{opCode_i[31]}}, opCode_i[7], opCode_i[30:25], opCode_i[11:8], 1'b0};
+					imm   <= {{21{opCode_i[31]}}, opCode_i[7], opCode_i[30:25], opCode_i[11:8], 1'b0};
 				end
-
 				`LOAD: begin
-
-					imm <= {{21{opCode_i[31]}}, opCode_i[30:20]};
+					wrIs  <= `True;
+					wr    <= opCode_i[11: 7];
+					r0    <= opCode_i[19:15];
+					r1    <= 5'd0;
+					r0_is <= `True;
+					r1_is <= `False;
+					imm   <= {{21{opCode_i[31]}}, opCode_i[30:20]};
+					$display("[ID]LOAD rd0:%d", opCode_i[19:15]);
 				end
 				`STORE: begin
 					wrIs  <= `False;
-					wr    <= opCode_i[11: 7];
+					wr    <= 5'd0;
 					r0    <= opCode_i[19:15];
-					r1    <= 5'b0;
+					r1    <= opCode_i[24:20];
 					r0_is <= `True;
-					r1_is <= `False;
+					r1_is <= `True;
 					imm   <= {{21{opCode_i[31]}}, opCode_i[30:25], opCode_i[11:7]};
 				end
 				`OP_IMM: begin
-					/*
-					if (`DEBUG == `True)
-						$display("ID: OP_IMM");*/
 					wrIs  <= `True;
 					wr    <= opCode_i[11: 7];
 					r0    <= opCode_i[19:15];
@@ -147,8 +160,6 @@ module CPU_ID(
 					imm   <= {{21{opCode_i[31]}}, opCode_i[30:20]};
 				end
 				`OP: begin
-					if (`DEBUG == `True)
-						$display("ID: OP");
 					wrIs  <= `True;
 					wr    <= opCode_i[11: 7];
 					r0    <= opCode_i[19:15];
@@ -157,61 +168,63 @@ module CPU_ID(
 					r1_is <= `True;
 					imm   <= {{16{opCode_i[31]}},opCode_i[30:25]};
 				end
-				`MISC_MEM: begin
-
-				end
+				//`MISC_MEM: begin end
 				default: begin
 					r0     <= 32'b0;
 					r1     <= 32'b0;
+					r0_is  <= `False;
+					r1_is  <= `False;
 					opCode <= `OP_IMM;
 					opType <= 3'b0;
 					wrIs   <= 1'b0;
 					wr     <= 32'b0;
+					imm    <= 32'd0;
 				end
 			endcase
+			//LOAD lock the write-reg
+			if (opCode_i[6:0] == `LOAD) begin
+				lk_o <= `True;
+			end else begin
+				lk_o <= `False;
+			end
 		end
 	end
 
 	//Get rd0 & rd1
 	always @ ( * ) begin
 		if (rst == `True) begin
-			rd0 <= 32'b0;
-			rd1 <= 32'b1;
+			rd0     <= 32'b0;
+			rd1     <= 32'b1;
+			stall_o <= `False;
 		end else begin
 			case (opCode_i[6:0])
-				`LUI: begin
-					rd0 <= imm;
-					rd1 <= 32'd0;
+				`LUI, `AUIPC, `JAL: begin
+					rd0     <= imm;
+					rd1     <= 32'd0;
+					stall_o <= `False;
 				end
-				`AUIPC: begin
-					rd0 <= imm;
-					rd1 <= 32'd0;
+				`JALR, `LOAD, `OP_IMM: begin
+					$display("[ID] lkd0: %d, ?=%d",lkd0, lkd0==`False);
+					if(lkd0 == `False) begin
+						rd0     <= rd0_i;
+						rd1     <= imm;
+						stall_o <= `False;
+					end else begin
+						stall_o <= `True;
+					end
 				end
-				`JAL: begin
-					rd0 <= imm;
-					rd1 <= 32'd0;
+				`BRANCH, `STORE, `OP: begin
+					if(lkd0 == `False && lkd1 == `False) begin
+						rd0     <= rd0_i;
+						rd1     <= rd1_i;
+						stall_o <= `False;
+						$display("[ID]STORE/BRANCH/OP: (%d, %d)->(%d, %d)", rd0_i, rd1_i, rd0, rd1 );
+					end else begin
+						stall_o <= `True;
+					end
 				end
-				`JALR: begin
-					rd0 <= rd0_i;
-					rd1 <= imm;
-				end
-				`BRANCH: begin
-					rd0 <= rd0_i;
-					rd1 <= rd1_i;
-				end
-				`OP_IMM: begin
-					rd0 <= rd0_i;
-					if (r1_is == `True)
-						rd1 <= rd1_i;
-					else
-						rd1 <= imm;
-				end
-				`OP: begin
-					rd0 <= rd0_i;
-					if (r1_is == `True)
-						rd1 <= rd1_i;
-					else
-						rd1 <= imm;
+				default: begin
+					stall_o <= `False;
 				end
 			endcase
 

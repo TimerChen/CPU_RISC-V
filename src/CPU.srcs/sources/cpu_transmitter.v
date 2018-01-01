@@ -26,15 +26,16 @@ module CPU_IDTrans(
 	i_id_o, opCode_o
 
 	);
-	input wire 		     clk, rst, stall;
-	input wire [ 31 : 0] i_id, opCode;
-	output reg [ 31 : 0] i_id_o, opCode_o;
+	input wire 		    clk, rst;
+	input wire [3  : 0] stall;
+	input wire [31 : 0] i_id, opCode;
+	output reg [31 : 0] i_id_o, opCode_o;
 
 	always @(posedge clk) begin
-		if (rst == `True) begin
+		if (rst == `True || (stall[1]!=`True&&stall[0]==`True)) begin
 			i_id_o   <= 32'b0;
 			opCode_o <= {25'b0,`OP_IMM};
-		end else if(stall != `True) begin
+		end else if(stall[1] != `True) begin
 			i_id_o   <= i_id;
 			opCode_o <= opCode;
 		end
@@ -56,7 +57,8 @@ module CPU_EXTrans (
 	opCode_o, opType_o,
 	rd0_o, rd1_o, imm_o
 	);
-	input wire clk, rst, stall;
+	input wire 		    clk, rst;
+	input wire [3  : 0] stall;
 
 	input wire [31 : 0] i_id;
 	output reg [31 : 0] i_id_o;
@@ -74,7 +76,7 @@ module CPU_EXTrans (
 	output reg [31 : 0] rd0_o, rd1_o, imm_o;
 
 	always @ ( posedge clk ) begin
-		if (rst == `True) begin
+		if (rst == `True || (stall[2]!=`True&&stall[1]==`True)) begin
 			i_id_o   <= 5'b0;
 			wrIs_o   <= `False;
 			wr_o     <= 4'b0;
@@ -83,7 +85,7 @@ module CPU_EXTrans (
 			rd0_o    <= 32'b0;
 			rd1_o    <= 32'b0;
 			imm_o    <= 32'b0;
-		end else begin
+		end else if(!stall[2]) begin
 			i_id_o   <= i_id;
 			wrIs_o   <= `True;
 			wr_o     <= wr;
@@ -110,7 +112,8 @@ module CPU_MEMTrans (
 	wrIs_o, wr_o, wrData_o,
 	rd0_o, rd1_o, imm_o
 	);
-	input wire clk, rst, stall;
+	input wire 		    clk, rst;
+	input wire [3  : 0] stall;
 
 	input wire [ 31:0] i_id;
 	output reg [ 31:0] i_id_o;
@@ -131,7 +134,7 @@ module CPU_MEMTrans (
 	output reg [31:0] rd0_o, rd1_o, imm_o;
 
 	always @ ( posedge clk ) begin
-		if (rst == `True) begin
+		if (rst == `True || (stall[3]!=`True&&stall[2]==`True)) begin
 			i_id_o   <= 5'b0;
 			wrIs_o   <= `False;
 			wr_o     <= 4'b0;
@@ -141,7 +144,7 @@ module CPU_MEMTrans (
 			rd0_o    <= 32'd0;
 			rd1_o    <= 32'd0;
 			imm_o    <= 32'd0;
-		end else begin
+		end else if(!stall[3]) begin
 			i_id_o   <= i_id;
 			wrIs_o   <= wrIs;
 			wr_o     <= wr;

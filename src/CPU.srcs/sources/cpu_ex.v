@@ -91,16 +91,16 @@ module CPU_EX(
 
 			case (opCode)
 			`LUI: begin
-				wrData_o <= imm;
+				wrData_o  <= imm;
 				wPcIs_o   <= 1'b0;
 				wPcData_o <= 32'b0;
-				clear    <= `False;
+				clear     <= `False;
 			end
 			`AUIPC: begin
-				wrData_o <= i_id + imm;
+				wrData_o  <= i_id + imm;
 				wPcIs_o   <= 1'b0;
 				wPcData_o <= 32'b0;
-				clear    <= `False;
+				clear     <= `False;
 			end
 			`JAL: begin
 				wrData_o  <= i_id + 4;
@@ -133,31 +133,38 @@ module CPU_EX(
 				endcase
 				$display("select jump? %d %d", rd0, rd1);
 				if (jumpFlag == 1'b1) begin
-					wPcIs_o     <= `True;
+					wPcIs_o   <= `True;
 					wPcData_o <= i_id + imm;
-					clear <= `True;
+					clear     <= `True;
 				end else begin
 					$display("no jump!");
-					wPcIs_o     <= `False;
+					wPcIs_o   <= `False;
 					wPcData_o <= i_id + 4;
-					clear <= `False;
+					clear     <= `False;
 				end
 			end
 
 			`LOAD: begin
 				wPcIs_o   <= 1'b0;
 				wPcData_o <= 32'b0;
-				clear <= `False;
+				clear     <= `False;
+				wrIs_o    <= `False;
+				wr_o      <= wr;
+				wrData_o  <= rd0 + imm;
+				$display("[MEM]LOAD Addr:%d %d", rd0, imm);
 			end
 			`STORE: begin
 				wPcIs_o   <= 1'b0;
 				wPcData_o <= 32'b0;
-				clear <= `False;
+				clear     <= `False;
+				wrIs_o    <= `False;
+				wr_o      <= 5'd0;
+				wrData_o  <= rd0 + imm;
 			end
 			`OP_IMM: begin
 				wPcIs_o   <= 1'b0;
 				wPcData_o <= 32'b0;
-				clear <= `False;
+				clear     <= `False;
 				case (opType)
 				`ADDI: begin
 					wrData_o <= rd0 + rd1;
