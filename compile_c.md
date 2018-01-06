@@ -6,6 +6,13 @@
 
 * 这篇教程基于win10内嵌的Ubuntu子系统，其它环境可能不适用。
 
+* 这是基于稍旧版本编写的教程，已将旧版本冲突文件更名
+	- /test/build-c.sh -> /test/build-c_old.sh
+	- /test/build-c-o2.sh -> /test/build-c-o2_old.sh
+	- /test/memory.ld -> /test/memory_old.ld
+
+	使用时请注意
+
 
 ## 准备
 
@@ -33,7 +40,7 @@ rom.s的功能是在程序开始时赋值栈寄存器sp，并在程序结束后�
 你的c代码会被编译成ram.o后和rom部分一起链接
 
 memory.ld负责设定rom和ram两部分代码的起始位置和长度
-（ram部分从0x108开始）
+（ram部分从0x108开始）(新版本不是)
 
 你的程序只需要从0开始执行指令即可
 ## 有关memory.mem十六进制文本文件
