@@ -73,7 +73,7 @@ module CPU_Core(
 				mem_writeData, out_writeData;
 	wire	   rf_readReg0Is, rf_readReg1Is,
 				mem_writeRegIs, out_writeRegIs;
-	wire 		id_lk, mem_ulk, id_lkd0, id_lkd1;
+	wire 		ex_lk, id_lkd0, id_lkd1;
 
 	wire [ 4:0] ex_WriteReg;
 	wire [31:0] out_instID;
@@ -81,15 +81,16 @@ module CPU_Core(
 		.clk(clk),
 		.rst(rst),
 		.we(1'b1),
-		//change lock info at start of next clock
-		.lr0(ex_WriteReg), .lk0(id_lk), .lkId0(ex_instID),
-
-		.ulr0(out_writeReg), .ulk0(mem_ulk), .ulkId0(out_instID),
-
-		.lkd0(id_lkd0), .lkd1(id_lkd1),
 
 		.rr0(rf_readReg0), .rr1(rf_readReg1),
 		.rd0(id_regData0), .rd1(id_regData1),
+
+		//change lock info at start of next clock
+		//.lr0(mem_writeReg),
+		.lk0(ex_lk),
+
+		.lkd0(id_lkd0), .lkd1(id_lkd1),
+
 		.wr0Is(mem_writeRegIs),
 		.wr0(mem_writeReg), .wd0(mem_writeData),
 		.wr1Is(out_writeRegIs),
@@ -152,7 +153,7 @@ module CPU_Core(
 
 		.rd0(ex_regData0), .rd1(ex_regData1), .imm(ex_imm),
 
-		.lk_o(id_lk), .lkd0(id_lkd0), .lkd1(id_lkd1),
+		.lkd0(id_lkd0), .lkd1(id_lkd1),
 		.stall_o(watingReg)
 		);
 
@@ -196,7 +197,8 @@ module CPU_Core(
 		.wPcIs_o(pc_writeIs), .wPcData_o(pc_writeData),
 		.opCode_o(mem_inst), .opType_o(mem_instType),
 		.rd0_o(mem_regData0), .rd1_o(mem_regData1), .imm_o(mem_imm),
-		.clear(ex_rst_o)
+
+		.clear(ex_rst_o), .lk_o(ex_lk)
 		);
 
 
@@ -237,8 +239,8 @@ module CPU_Core(
 		.wrIs_o(out_writeRegIs), .wr_o(out_writeReg), .wrData_o(out_writeData),
 
 		.stall_o(watingdCache),
-		.cacheMiss(dCacheMiss), .cacheReady(dCacheReady),
-		.ulk_o(mem_ulk)
+		.cacheMiss(dCacheMiss), .cacheReady(dCacheReady)
+
 		);
 
 

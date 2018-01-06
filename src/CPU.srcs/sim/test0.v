@@ -37,6 +37,7 @@ module test0();
     		//{12'd3, 5'd1, `ADDI, 5'd2, `OP_IMM };
 			32'h93600021;*/
 		$readmemh("insts.mem",	top.cpu.iCache.inst);
+		$readmemh("insts.mem",	top.cpu.dCache.mem);
     	clk = 1'b0;
     	stopFlag = 1'b0;
     	forever begin
@@ -51,11 +52,11 @@ module test0();
 	reg [31:0] count;
 	reg [31:0] i;
 	always @( posedge clk ) begin
-		$display("newCLK");
+		if(`DEBUG == 1'b1)	$display("newCLK");
 		if (rst == `True) begin
 			count <= 0;
 		end else begin
-			if(count == 50) begin
+			if(count == 1000) begin
 				stopFlag = 1'b1;
 				$display("end");
 				#200;
@@ -64,7 +65,7 @@ module test0();
 				end
 				$stop;
 			end
-			$display("[Clock]: %d",count );
+			if(`DEBUG == 1'b1)	$display("[Clock]: %d",count );
 			count <= count + 1;
 		end
 	end

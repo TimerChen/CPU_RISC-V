@@ -1,0 +1,30 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_controller.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module CPU_Controller
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_core.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module CPU_Core
+INFO: [VRFC 10-2458] undeclared symbol mem0_writeRegIs, assumed default net type wire [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_core.v:223]
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_ex.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module CPU_EX
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module CPU_ID
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_if.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module CPU_IF
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module CPU_MEM
+WARNING: [VRFC 10-2379] empty port in module declaration [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_mem.v:43]
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_transmitter.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module CPU_IDTrans
+INFO: [VRFC 10-311] analyzing module CPU_EXTrans
+INFO: [VRFC 10-311] analyzing module CPU_MEMTrans
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Lessons/Architecture/task2/src/CPU.srcs/sources/datacache.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module DataCache
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Lessons/Architecture/task2/src/CPU.srcs/sources/instcache.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module InstCache
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Reg_PC
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Lessons/Architecture/task2/src/CPU.srcs/sources/regfile.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module RegFile
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Lessons/Architecture/task2/src/CPU.srcs/sources/top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Top
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Lessons/Architecture/task2/src/CPU.srcs/sim/test0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module test0

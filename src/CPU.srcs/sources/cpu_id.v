@@ -38,8 +38,6 @@ module CPU_ID(
 
 	rd0, rd1, imm,
 
-	//lock?
-	lk_o,
 	//locked?
 	lkd0, lkd1,
 	//stall Request
@@ -62,7 +60,7 @@ module CPU_ID(
 	output reg [31 : 0] rd0, rd1;
 	output reg [31 : 0] imm;
 
-	output reg lk_o, stall_o;
+	output reg stall_o;
 	input wire lkd0, lkd1;
 
 	//Translate Code
@@ -80,7 +78,6 @@ module CPU_ID(
 			rd0    <= 32'b0;
 			rd1    <= 32'b0;
 			imm    <= 32'b0;
-			lk_o   <= 1'b0;
 		end	else if(stall != `True) begin
 			i_id_o <= i_id;
 			opCode <= opCode_i[ 6: 0];
@@ -139,7 +136,7 @@ module CPU_ID(
 					r0_is <= `True;
 					r1_is <= `False;
 					imm   <= {{21{opCode_i[31]}}, opCode_i[30:20]};
-					$display("[ID]LOAD rd0:%d", opCode_i[19:15]);
+					if(`DEBUG == 1'b1)	$display("[ID]LOAD rd0:%d", opCode_i[19:15]);
 				end
 				`STORE: begin
 					wrIs  <= `False;
@@ -181,12 +178,6 @@ module CPU_ID(
 					imm    <= 32'd0;
 				end
 			endcase
-			//LOAD lock the write-reg
-			if (opCode_i[6:0] == `LOAD) begin
-				lk_o <= `True;
-			end else begin
-				lk_o <= `False;
-			end
 		end
 	end
 
@@ -204,7 +195,7 @@ module CPU_ID(
 					stall_o <= `False;
 				end
 				`JALR, `LOAD, `OP_IMM: begin
-					$display("[ID] lkd0: %d, ?=%d",lkd0, lkd0==`False);
+					if(`DEBUG == 1'b1)	$display("[ID] lkd0: %d, ?=%d",lkd0, lkd0==`False);
 					if(lkd0 == `False) begin
 						rd0     <= rd0_i;
 						rd1     <= imm;
@@ -218,7 +209,7 @@ module CPU_ID(
 						rd0     <= rd0_i;
 						rd1     <= rd1_i;
 						stall_o <= `False;
-						$display("[ID]STORE/BRANCH/OP: (%d, %d)->(%d, %d)", rd0_i, rd1_i, rd0, rd1 );
+						if(`DEBUG == 1'b1)	$display("[ID]STORE/BRANCH/OP: (%d, %d)->(%d, %d)", rd0_i, rd1_i, rd0, rd1 );
 					end else begin
 						stall_o <= `True;
 					end

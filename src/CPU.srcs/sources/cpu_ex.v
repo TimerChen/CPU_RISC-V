@@ -33,7 +33,8 @@ module CPU_EX(
 	opCode_o, opType_o,
 	rd0_o, rd1_o, imm_o,
 
-	clear
+	clear,
+	lk_o
 
 	);
 	input wire clk, rst, state, stall;
@@ -56,7 +57,7 @@ module CPU_EX(
 	output reg [ 2 : 0] opType_o;
 	output reg [31 : 0] rd0_o, rd1_o, imm_o;
 
-	output reg clear;
+	output reg clear, lk_o;
 
 	reg tmp0, tmp1, tmpOut, jumpFlag;
 
@@ -74,11 +75,11 @@ module CPU_EX(
 			rd0_o     <= 32'b0;
 			rd1_o     <= 32'b0;
 			imm_o     <= 32'b0;
-
 			wPcIs_o   <= 1'b0;
 			wPcData_o <= 32'b0;
 
 			clear     <= 1'b0;
+			lk_o      <= `False;
 		end	else if (stall != `True) begin
 			i_id_o   <= i_id;
 			opCode_o <= opCode;
@@ -131,13 +132,13 @@ module CPU_EX(
 				default:
 					jumpFlag = 1'b0;
 				endcase
-				$display("select jump? %d %d", rd0, rd1);
+				if(`DEBUG == 1'b1)	$display("select jump? %d %d", rd0, rd1);
 				if (jumpFlag == 1'b1) begin
 					wPcIs_o   <= `True;
 					wPcData_o <= i_id + imm;
 					clear     <= `True;
 				end else begin
-					$display("no jump!");
+					if(`DEBUG == 1'b1)	$display("no jump!");
 					wPcIs_o   <= `False;
 					wPcData_o <= i_id + 4;
 					clear     <= `False;
@@ -148,17 +149,13 @@ module CPU_EX(
 				wPcIs_o   <= 1'b0;
 				wPcData_o <= 32'b0;
 				clear     <= `False;
-				wrIs_o    <= `False;
-				wr_o      <= wr;
 				wrData_o  <= rd0 + imm;
-				$display("[MEM]LOAD Addr:%d %d", rd0, imm);
+				if(`DEBUG == 1'b1)	$display("[MEM]LOAD Addr:%d %d", rd0, imm);
 			end
 			`STORE: begin
 				wPcIs_o   <= 1'b0;
 				wPcData_o <= 32'b0;
 				clear     <= `False;
-				wrIs_o    <= `False;
-				wr_o      <= 5'd0;
 				wrData_o  <= rd0 + imm;
 			end
 			`OP_IMM: begin
@@ -248,6 +245,10 @@ module CPU_EX(
 			end
 			default: ;
 			endcase
+			if (opCode != `LOAD)
+				lk_o = `False;
+			else
+				lk_o = `True;
 		end
 	end
 

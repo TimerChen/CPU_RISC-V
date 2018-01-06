@@ -2,13 +2,13 @@
 # Webtalk v2017.3 (64-bit)
 # SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
 # IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
-# Start of session at: Mon Jan  1 17:05:06 2018
-# Process ID: 307216
+# Start of session at: Fri Jan  5 11:41:15 2018
+# Process ID: 316156
 # Current directory: D:/Lessons/Architecture/task2/src/CPU.sim/sim_1/behav/xsim
 # Command line: wbtcv.exe -mode batch -source D:/Lessons/Architecture/task2/src/CPU.sim/sim_1/behav/xsim/xsim.dir/test0_behav/webtalk/xsim_webtalk.tcl -notrace
 # Log file: D:/Lessons/Architecture/task2/src/CPU.sim/sim_1/behav/xsim/webtalk.log
 # Journal file: D:/Lessons/Architecture/task2/src/CPU.sim/sim_1/behav/xsim\webtalk.jou
 #-----------------------------------------------------------
 source D:/Lessons/Architecture/task2/src/CPU.sim/sim_1/behav/xsim/xsim.dir/test0_behav/webtalk/xsim_webtalk.tcl -notrace
-INFO: [Common 17-186] 'D:/Lessons/Architecture/task2/src/CPU.sim/sim_1/behav/xsim/xsim.dir/test0_behav/webtalk/usage_statistics_ext_xsim.xml' has been successfully sent to Xilinx on Mon Jan  1 17:05:11 2018. For additional details about this file, please refer to the WebTalk help file at E:/Xilinx/Vivado/2017.3/doc/webtalk_introduction.html.
-INFO: [Common 17-206] Exiting Webtalk at Mon Jan  1 17:05:11 2018...
+INFO: [Common 17-186] 'D:/Lessons/Architecture/task2/src/CPU.sim/sim_1/behav/xsim/xsim.dir/test0_behav/webtalk/usage_statistics_ext_xsim.xml' has been successfully sent to Xilinx on Fri Jan  5 11:41:20 2018. For additional details about this file, please refer to the WebTalk help file at E:/Xilinx/Vivado/2017.3/doc/webtalk_introduction.html.
+INFO: [Common 17-206] Exiting Webtalk at Fri Jan  5 11:41:20 2018...

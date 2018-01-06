@@ -39,7 +39,6 @@ module CPU_MEM(
 	stall_o,
 	cacheMiss, cacheReady,
 
-	ulk_o
 
 	);
 
@@ -70,7 +69,6 @@ module CPU_MEM(
 	input wire cacheMiss, cacheReady;
 	output reg stall_o;
 
-	output reg ulk_o;
 
 	reg wating;
 
@@ -93,14 +91,15 @@ module CPU_MEM(
 			opType_o <= opType;
 			case (opCode)
 				`LOAD: begin
-					$display("[MEM]load");
+
+					if(`DEBUG == 1'b1)	$display("[MEM]load");
 					memIs     <= `True;
 					memType   <= {1'b0, opType};
 					memAdd    <= wrData;
 					memData_o <= 32'b0;
 				end
 				`STORE: begin
-					$display("[MEM]store");
+					if(`DEBUG == 1'b1)	$display("[MEM]store");
 					memIs     <= `True;
 					memType   <= {1'b1, opType};
 					memAdd    <= wrData;
@@ -136,15 +135,12 @@ module CPU_MEM(
 			wrIs_o   <= `False;
 			wr_o     <= 1'b0;
 			wrData_o <= 32'b0;
-			ulk_o    <= `False;
 		end	else if (stall != `True) begin
 			if (opCode == `LOAD && wating != `True) begin
-				ulk_o    <= `True;
 				wrIs_o   <= `True;
 				wr_o     <= wr;
 				wrData_o <= memData_i;
 			end else begin
-				ulk_o    <= `False;
 				wrIs_o   <= wrIs;
 				wr_o     <= wr;
 				wrData_o <= wrData;

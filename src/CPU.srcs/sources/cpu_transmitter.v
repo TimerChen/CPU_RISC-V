@@ -154,6 +154,9 @@ module CPU_MEMTrans (
 			rd0_o    <= rd0;
 			rd1_o    <= rd1;
 			imm_o    <= imm;
+			if(opCode == `STORE && opType == 3'b000 && wrData == 'h104 && `DEBUG == 1'b0)
+				//$write("%c",rd1);
+				$display("%d",rd1);
 		end
 	end
 

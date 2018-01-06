@@ -41,7 +41,7 @@ module DataCache(
 	output reg miss, ready;
 
 
-	reg [7:0] mem[1023:0];
+	reg [7:0] mem[0:1023];
 
 
 	always @ ( * ) begin
@@ -85,7 +85,6 @@ module DataCache(
 					3'b000: begin
 						//8-bit
 						mem[memAdd] <= memData_o[7:0];
-
 					end
 					3'b001: begin
 						//16-bit

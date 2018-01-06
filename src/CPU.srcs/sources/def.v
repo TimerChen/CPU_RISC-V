@@ -1,4 +1,4 @@
-`define DEBUG	1'b1
+`define DEBUG	1'b0
 
 `define True	1'b1
 `define False	1'b0

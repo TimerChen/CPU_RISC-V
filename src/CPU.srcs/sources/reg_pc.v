@@ -36,12 +36,12 @@ module Reg_PC (
 		if (ce == `False) begin
 			pc <= 32'd0;
 		end else if (!stall) begin
-			$display("pc(%d)+4", pc);
+			if(`DEBUG == 1'b1)	$display("pc(%d)+4", pc);
 			pc <= pc + 32'd4;
 		end
 	end
 	always @ ( * ) begin
-		if ({ce, wIs, stall} == 3'b110) begin
+		if ({ce, wIs} == 2'b11) begin
 			pc <= pcIn;
 		end
 	end
