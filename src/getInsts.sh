@@ -13,6 +13,7 @@ if [ $1 = "1" ]; then
 	cd ../../../src
 	cp ../tools/code_gener/cppcode/memory.mem ./insts.mem
 	cp ../tools/code_gener/cppcode/ram.S ./cpp_insts.S
+	cp ../tools/code_gener/cppcode/memory.bin ./insts.bin
 	cp ./insts.mem ./CPU.srcs/sources/insts.mem
 else
 	if [ $1 = "2" ]; then
@@ -23,13 +24,16 @@ else
 	cd ../../../src
 	cp ../tools/code_gener/cppcode/memory.mem ./insts.mem
 	cp ../tools/code_gener/cppcode/ram.S ./cpp_insts.S
+	cp ../tools/code_gener/cppcode/memory.bin ./insts.bin
 	cp ./insts.mem ./CPU.srcs/sources/insts.mem
 	else
 		echo "Getting from S code[${file}.S]..."
 		cp ${file}.S ../tools/code_gener/assembler/insts.S
 		cd ../tools/code_gener/assembler
+		make insts.bin
 		make insts.mem
 		cd ../../../src
+		cp ../tools/code_gener/assembler/insts.bin ./insts.bin
 		cp ../tools/code_gener/assembler/insts.mem ./insts.mem
 		cp ./insts.mem ./CPU.srcs/sources/insts.mem
 	fi
