@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="1319098483fs"></ZoomStartTime>
-      <ZoomEndTime time="6276180304fs"></ZoomEndTime>
-      <Cursor1Time time="3830532000fs"></Cursor1Time>
+      <ZoomStartTime time="1844800000fs"></ZoomStartTime>
+      <ZoomEndTime time="2488300001fs"></ZoomEndTime>
+      <Cursor1Time time="1978800000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="333"></NameColumnWidth>
-      <ValueColumnWidth column_width="260"></ValueColumnWidth>
+      <ValueColumnWidth column_width="256"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="8" />
    <wvobject fp_name="/test0/clk" type="logic">
@@ -31,6 +31,7 @@
    <wvobject fp_name="group50" type="group">
       <obj_property name="label">Stall</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="group54" type="group">
          <obj_property name="label">IF</obj_property>
          <obj_property name="DisplayName">label</obj_property>
@@ -48,39 +49,9 @@
          <obj_property name="label">RegFile</obj_property>
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="isExpanded"></obj_property>
-         <wvobject fp_name="/test0/top/cpu/regFile/locked" type="array">
-            <obj_property name="ElementShortName">locked[31:0]</obj_property>
-            <obj_property name="ObjectShortName">locked[31:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/test0/top/cpu/regFile/lockIdx" type="array">
-            <obj_property name="ElementShortName">lockIdx[31:0][31:0]</obj_property>
-            <obj_property name="ObjectShortName">lockIdx[31:0][31:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/test0/top/cpu/regFile/lr0" type="array">
-            <obj_property name="ElementShortName">lr0[4:0]</obj_property>
-            <obj_property name="ObjectShortName">lr0[4:0]</obj_property>
-         </wvobject>
          <wvobject fp_name="/test0/top/cpu/regFile/lk0" type="logic">
             <obj_property name="ElementShortName">lk0</obj_property>
             <obj_property name="ObjectShortName">lk0</obj_property>
-         </wvobject>
-         <wvobject fp_name="/test0/top/cpu/regFile/lkId0" type="array">
-            <obj_property name="ElementShortName">lkId0[31:0]</obj_property>
-            <obj_property name="ObjectShortName">lkId0[31:0]</obj_property>
-            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-         </wvobject>
-         <wvobject fp_name="/test0/top/cpu/regFile/ulr0" type="array">
-            <obj_property name="ElementShortName">ulr0[4:0]</obj_property>
-            <obj_property name="ObjectShortName">ulr0[4:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/test0/top/cpu/regFile/ulk0" type="logic">
-            <obj_property name="ElementShortName">ulk0</obj_property>
-            <obj_property name="ObjectShortName">ulk0</obj_property>
-         </wvobject>
-         <wvobject fp_name="/test0/top/cpu/regFile/ulkId0" type="array">
-            <obj_property name="ElementShortName">ulkId0[31:0]</obj_property>
-            <obj_property name="ObjectShortName">ulkId0[31:0]</obj_property>
-            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/regFile/rr0" type="array">
             <obj_property name="ElementShortName">rr0[4:0]</obj_property>
@@ -112,10 +83,6 @@
             <obj_property name="ObjectShortName">i_id[31:0]</obj_property>
             <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
-         <wvobject fp_name="/test0/top/cpu/ID/lk_o" type="logic">
-            <obj_property name="ElementShortName">lk_o</obj_property>
-            <obj_property name="ObjectShortName">lk_o</obj_property>
-         </wvobject>
          <wvobject fp_name="/test0/top/cpu/ID/stall_o" type="logic">
             <obj_property name="ElementShortName">stall_o</obj_property>
             <obj_property name="ObjectShortName">stall_o</obj_property>
@@ -136,10 +103,6 @@
          <wvobject fp_name="/test0/top/cpu/MEM/stall_o" type="logic">
             <obj_property name="ElementShortName">stall_o</obj_property>
             <obj_property name="ObjectShortName">stall_o</obj_property>
-         </wvobject>
-         <wvobject fp_name="/test0/top/cpu/MEM/ulk_o" type="logic">
-            <obj_property name="ElementShortName">ulk_o</obj_property>
-            <obj_property name="ObjectShortName">ulk_o</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/MEM/i_id" type="array">
             <obj_property name="ElementShortName">i_id[31:0]</obj_property>
@@ -248,86 +211,107 @@
          <wvobject fp_name="/test0/top/cpu/regFile/regs[31]" type="array">
             <obj_property name="ElementShortName">[31][31:0]</obj_property>
             <obj_property name="ObjectShortName">[31][31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/regFile/regs[30]" type="array">
             <obj_property name="ElementShortName">[30][31:0]</obj_property>
             <obj_property name="ObjectShortName">[30][31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/regFile/regs[29]" type="array">
             <obj_property name="ElementShortName">[29][31:0]</obj_property>
             <obj_property name="ObjectShortName">[29][31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/regFile/regs[28]" type="array">
             <obj_property name="ElementShortName">[28][31:0]</obj_property>
             <obj_property name="ObjectShortName">[28][31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/regFile/regs[27]" type="array">
             <obj_property name="ElementShortName">[27][31:0]</obj_property>
             <obj_property name="ObjectShortName">[27][31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/regFile/regs[26]" type="array">
             <obj_property name="ElementShortName">[26][31:0]</obj_property>
             <obj_property name="ObjectShortName">[26][31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/regFile/regs[25]" type="array">
             <obj_property name="ElementShortName">[25][31:0]</obj_property>
             <obj_property name="ObjectShortName">[25][31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/regFile/regs[24]" type="array">
             <obj_property name="ElementShortName">[24][31:0]</obj_property>
             <obj_property name="ObjectShortName">[24][31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/regFile/regs[23]" type="array">
             <obj_property name="ElementShortName">[23][31:0]</obj_property>
             <obj_property name="ObjectShortName">[23][31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/regFile/regs[22]" type="array">
             <obj_property name="ElementShortName">[22][31:0]</obj_property>
             <obj_property name="ObjectShortName">[22][31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/regFile/regs[21]" type="array">
             <obj_property name="ElementShortName">[21][31:0]</obj_property>
             <obj_property name="ObjectShortName">[21][31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/regFile/regs[20]" type="array">
             <obj_property name="ElementShortName">[20][31:0]</obj_property>
             <obj_property name="ObjectShortName">[20][31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/regFile/regs[19]" type="array">
             <obj_property name="ElementShortName">[19][31:0]</obj_property>
             <obj_property name="ObjectShortName">[19][31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/regFile/regs[18]" type="array">
             <obj_property name="ElementShortName">[18][31:0]</obj_property>
             <obj_property name="ObjectShortName">[18][31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/regFile/regs[17]" type="array">
             <obj_property name="ElementShortName">[17][31:0]</obj_property>
             <obj_property name="ObjectShortName">[17][31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/regFile/regs[16]" type="array">
             <obj_property name="ElementShortName">[16][31:0]</obj_property>
             <obj_property name="ObjectShortName">[16][31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/regFile/regs[15]" type="array">
             <obj_property name="ElementShortName">[15][31:0]</obj_property>
             <obj_property name="ObjectShortName">[15][31:0]</obj_property>
+            <obj_property name="Radix">BINARYRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/regFile/regs[14]" type="array">
             <obj_property name="ElementShortName">[14][31:0]</obj_property>
             <obj_property name="ObjectShortName">[14][31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/regFile/regs[13]" type="array">
             <obj_property name="ElementShortName">[13][31:0]</obj_property>
             <obj_property name="ObjectShortName">[13][31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/regFile/regs[12]" type="array">
             <obj_property name="ElementShortName">[12][31:0]</obj_property>
             <obj_property name="ObjectShortName">[12][31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/regFile/regs[11]" type="array">
             <obj_property name="ElementShortName">[11][31:0]</obj_property>
             <obj_property name="ObjectShortName">[11][31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/regFile/regs[10]" type="array">
             <obj_property name="ElementShortName">[10][31:0]</obj_property>
@@ -337,42 +321,52 @@
          <wvobject fp_name="/test0/top/cpu/regFile/regs[9]" type="array">
             <obj_property name="ElementShortName">[9][31:0]</obj_property>
             <obj_property name="ObjectShortName">[9][31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/regFile/regs[8]" type="array">
             <obj_property name="ElementShortName">[8][31:0]</obj_property>
             <obj_property name="ObjectShortName">[8][31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/regFile/regs[7]" type="array">
             <obj_property name="ElementShortName">[7][31:0]</obj_property>
             <obj_property name="ObjectShortName">[7][31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/regFile/regs[6]" type="array">
             <obj_property name="ElementShortName">[6][31:0]</obj_property>
             <obj_property name="ObjectShortName">[6][31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/regFile/regs[5]" type="array">
             <obj_property name="ElementShortName">[5][31:0]</obj_property>
             <obj_property name="ObjectShortName">[5][31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/regFile/regs[4]" type="array">
             <obj_property name="ElementShortName">[4][31:0]</obj_property>
             <obj_property name="ObjectShortName">[4][31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/regFile/regs[3]" type="array">
             <obj_property name="ElementShortName">[3][31:0]</obj_property>
             <obj_property name="ObjectShortName">[3][31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/regFile/regs[2]" type="array">
             <obj_property name="ElementShortName">[2][31:0]</obj_property>
             <obj_property name="ObjectShortName">[2][31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/regFile/regs[1]" type="array">
             <obj_property name="ElementShortName">[1][31:0]</obj_property>
             <obj_property name="ObjectShortName">[1][31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/regFile/regs[0]" type="array">
             <obj_property name="ElementShortName">[0][31:0]</obj_property>
             <obj_property name="ObjectShortName">[0][31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
       </wvobject>
    </wvobject>
@@ -389,9 +383,10 @@
    <wvobject fp_name="group114" type="group">
       <obj_property name="label">dCache</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/test0/top/cpu/dCache/mem" type="array">
-         <obj_property name="ElementShortName">mem[1023:0][7:0]</obj_property>
-         <obj_property name="ObjectShortName">mem[1023:0][7:0]</obj_property>
+         <obj_property name="ElementShortName">mem[0:1023][7:0]</obj_property>
+         <obj_property name="ObjectShortName">mem[0:1023][7:0]</obj_property>
          <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[1023]" type="array">
             <obj_property name="ElementShortName">[1023][7:0]</obj_property>
@@ -2444,106 +2439,118 @@
          <wvobject fp_name="/test0/top/cpu/dCache/mem[511]" type="array">
             <obj_property name="ElementShortName">[511][7:0]</obj_property>
             <obj_property name="ObjectShortName">[511][7:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[510]" type="array">
             <obj_property name="ElementShortName">[510][7:0]</obj_property>
             <obj_property name="ObjectShortName">[510][7:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[509]" type="array">
             <obj_property name="ElementShortName">[509][7:0]</obj_property>
             <obj_property name="ObjectShortName">[509][7:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[508]" type="array">
             <obj_property name="ElementShortName">[508][7:0]</obj_property>
             <obj_property name="ObjectShortName">[508][7:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[507]" type="array">
             <obj_property name="ElementShortName">[507][7:0]</obj_property>
             <obj_property name="ObjectShortName">[507][7:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[506]" type="array">
             <obj_property name="ElementShortName">[506][7:0]</obj_property>
             <obj_property name="ObjectShortName">[506][7:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[505]" type="array">
             <obj_property name="ElementShortName">[505][7:0]</obj_property>
             <obj_property name="ObjectShortName">[505][7:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[504]" type="array">
             <obj_property name="ElementShortName">[504][7:0]</obj_property>
             <obj_property name="ObjectShortName">[504][7:0]</obj_property>
+            <obj_property name="Radix">ASCIIRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[503]" type="array">
             <obj_property name="ElementShortName">[503][7:0]</obj_property>
             <obj_property name="ObjectShortName">[503][7:0]</obj_property>
+            <obj_property name="Radix">ASCIIRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[502]" type="array">
             <obj_property name="ElementShortName">[502][7:0]</obj_property>
             <obj_property name="ObjectShortName">[502][7:0]</obj_property>
+            <obj_property name="Radix">ASCIIRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[501]" type="array">
             <obj_property name="ElementShortName">[501][7:0]</obj_property>
             <obj_property name="ObjectShortName">[501][7:0]</obj_property>
+            <obj_property name="Radix">ASCIIRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[500]" type="array">
             <obj_property name="ElementShortName">[500][7:0]</obj_property>
             <obj_property name="ObjectShortName">[500][7:0]</obj_property>
+            <obj_property name="Radix">ASCIIRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[499]" type="array">
             <obj_property name="ElementShortName">[499][7:0]</obj_property>
             <obj_property name="ObjectShortName">[499][7:0]</obj_property>
+            <obj_property name="Radix">ASCIIRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[498]" type="array">
             <obj_property name="ElementShortName">[498][7:0]</obj_property>
             <obj_property name="ObjectShortName">[498][7:0]</obj_property>
+            <obj_property name="Radix">ASCIIRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[497]" type="array">
             <obj_property name="ElementShortName">[497][7:0]</obj_property>
             <obj_property name="ObjectShortName">[497][7:0]</obj_property>
+            <obj_property name="Radix">ASCIIRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[496]" type="array">
             <obj_property name="ElementShortName">[496][7:0]</obj_property>
             <obj_property name="ObjectShortName">[496][7:0]</obj_property>
+            <obj_property name="Radix">ASCIIRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[495]" type="array">
             <obj_property name="ElementShortName">[495][7:0]</obj_property>
             <obj_property name="ObjectShortName">[495][7:0]</obj_property>
-            <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+            <obj_property name="Radix">ASCIIRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[494]" type="array">
             <obj_property name="ElementShortName">[494][7:0]</obj_property>
             <obj_property name="ObjectShortName">[494][7:0]</obj_property>
-            <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+            <obj_property name="Radix">ASCIIRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[493]" type="array">
             <obj_property name="ElementShortName">[493][7:0]</obj_property>
             <obj_property name="ObjectShortName">[493][7:0]</obj_property>
-            <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+            <obj_property name="Radix">ASCIIRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[492]" type="array">
             <obj_property name="ElementShortName">[492][7:0]</obj_property>
             <obj_property name="ObjectShortName">[492][7:0]</obj_property>
-            <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+            <obj_property name="Radix">ASCIIRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[491]" type="array">
             <obj_property name="ElementShortName">[491][7:0]</obj_property>
             <obj_property name="ObjectShortName">[491][7:0]</obj_property>
-            <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[490]" type="array">
             <obj_property name="ElementShortName">[490][7:0]</obj_property>
             <obj_property name="ObjectShortName">[490][7:0]</obj_property>
-            <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[489]" type="array">
             <obj_property name="ElementShortName">[489][7:0]</obj_property>
             <obj_property name="ObjectShortName">[489][7:0]</obj_property>
-            <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[488]" type="array">
             <obj_property name="ElementShortName">[488][7:0]</obj_property>
             <obj_property name="ObjectShortName">[488][7:0]</obj_property>
-            <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[487]" type="array">
             <obj_property name="ElementShortName">[487][7:0]</obj_property>
@@ -2580,38 +2587,47 @@
          <wvobject fp_name="/test0/top/cpu/dCache/mem[479]" type="array">
             <obj_property name="ElementShortName">[479][7:0]</obj_property>
             <obj_property name="ObjectShortName">[479][7:0]</obj_property>
+            <obj_property name="Radix">OCTALRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[478]" type="array">
             <obj_property name="ElementShortName">[478][7:0]</obj_property>
             <obj_property name="ObjectShortName">[478][7:0]</obj_property>
+            <obj_property name="Radix">OCTALRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[477]" type="array">
             <obj_property name="ElementShortName">[477][7:0]</obj_property>
             <obj_property name="ObjectShortName">[477][7:0]</obj_property>
+            <obj_property name="Radix">OCTALRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[476]" type="array">
             <obj_property name="ElementShortName">[476][7:0]</obj_property>
             <obj_property name="ObjectShortName">[476][7:0]</obj_property>
+            <obj_property name="Radix">OCTALRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[475]" type="array">
             <obj_property name="ElementShortName">[475][7:0]</obj_property>
             <obj_property name="ObjectShortName">[475][7:0]</obj_property>
+            <obj_property name="Radix">OCTALRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[474]" type="array">
             <obj_property name="ElementShortName">[474][7:0]</obj_property>
             <obj_property name="ObjectShortName">[474][7:0]</obj_property>
+            <obj_property name="Radix">OCTALRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[473]" type="array">
             <obj_property name="ElementShortName">[473][7:0]</obj_property>
             <obj_property name="ObjectShortName">[473][7:0]</obj_property>
+            <obj_property name="Radix">OCTALRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[472]" type="array">
             <obj_property name="ElementShortName">[472][7:0]</obj_property>
             <obj_property name="ObjectShortName">[472][7:0]</obj_property>
+            <obj_property name="Radix">OCTALRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[471]" type="array">
             <obj_property name="ElementShortName">[471][7:0]</obj_property>
             <obj_property name="ObjectShortName">[471][7:0]</obj_property>
+            <obj_property name="Radix">OCTALRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[470]" type="array">
             <obj_property name="ElementShortName">[470][7:0]</obj_property>
@@ -2644,38 +2660,47 @@
          <wvobject fp_name="/test0/top/cpu/dCache/mem[463]" type="array">
             <obj_property name="ElementShortName">[463][7:0]</obj_property>
             <obj_property name="ObjectShortName">[463][7:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[462]" type="array">
             <obj_property name="ElementShortName">[462][7:0]</obj_property>
             <obj_property name="ObjectShortName">[462][7:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[461]" type="array">
             <obj_property name="ElementShortName">[461][7:0]</obj_property>
             <obj_property name="ObjectShortName">[461][7:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[460]" type="array">
             <obj_property name="ElementShortName">[460][7:0]</obj_property>
             <obj_property name="ObjectShortName">[460][7:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[459]" type="array">
             <obj_property name="ElementShortName">[459][7:0]</obj_property>
             <obj_property name="ObjectShortName">[459][7:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[458]" type="array">
             <obj_property name="ElementShortName">[458][7:0]</obj_property>
             <obj_property name="ObjectShortName">[458][7:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[457]" type="array">
             <obj_property name="ElementShortName">[457][7:0]</obj_property>
             <obj_property name="ObjectShortName">[457][7:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[456]" type="array">
             <obj_property name="ElementShortName">[456][7:0]</obj_property>
             <obj_property name="ObjectShortName">[456][7:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[455]" type="array">
             <obj_property name="ElementShortName">[455][7:0]</obj_property>
             <obj_property name="ObjectShortName">[455][7:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[454]" type="array">
             <obj_property name="ElementShortName">[454][7:0]</obj_property>
@@ -3456,6 +3481,7 @@
          <wvobject fp_name="/test0/top/cpu/dCache/mem[260]" type="array">
             <obj_property name="ElementShortName">[260][7:0]</obj_property>
             <obj_property name="ObjectShortName">[260][7:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="/test0/top/cpu/dCache/mem[259]" type="array">
             <obj_property name="ElementShortName">[259][7:0]</obj_property>
