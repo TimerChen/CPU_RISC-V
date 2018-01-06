@@ -1,14 +1,15 @@
-int gcd(int x,int y)
+#include "io.h"
+void solve(int n)
 {
-
-	if(x==0) return y;
-	if(y==0) return x;
-	if(x < y)return gcd(y-x,x);
-	return gcd(x-y,y);
+	for(int i=0;i<n;++i)
+	{
+		for(int j=0;j<=i;++j)
+			print("*");
+		print("\n");
+	}
 }
 int main()
 {
-	int i;
-	i = gcd(7, 1);
-	return i;
+	solve(6);
+	return 0;
 }

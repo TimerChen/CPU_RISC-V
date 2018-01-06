@@ -124,11 +124,11 @@ module CPU_EX(
 				`BLT:
 					jumpFlag = ($signed(rd0) < $signed(rd1)) ? 1'b1 : 1'b0;
 				`BGE:
-					jumpFlag = ($signed(rd0) > $signed(rd1)) ? 1'b1 : 1'b0;
+					jumpFlag = ($signed(rd0) >= $signed(rd1)) ? 1'b1 : 1'b0;
 				`BLTU:
 					jumpFlag = ($unsigned(rd0) < $unsigned(rd1)) ? 1'b1 : 1'b0;
 				`BGEU:
-					jumpFlag = ($unsigned(rd0) > $unsigned(rd1)) ? 1'b1 : 1'b0;
+					jumpFlag = ($unsigned(rd0) >= $unsigned(rd1)) ? 1'b1 : 1'b0;
 				default:
 					jumpFlag = 1'b0;
 				endcase

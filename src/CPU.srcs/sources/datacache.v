@@ -57,11 +57,11 @@ module DataCache(
 				case (memType[2:0])
 					3'b000: begin
 						//8-bit
-						memData_i <= {{24{mem[memAdd][3]}}, mem[memAdd]};
+						memData_i <= {{24{mem[memAdd][7]}}, mem[memAdd]};
 					end
 					3'b001: begin
 						//16-bit
-						memData_i <= {{16{mem[memAdd+1][3]}}, mem[memAdd+1], mem[memAdd]};
+						memData_i <= {{16{mem[memAdd+1][7]}}, mem[memAdd+1], mem[memAdd]};
 					end
 					3'b010: begin
 						//32-bit

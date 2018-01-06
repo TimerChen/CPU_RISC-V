@@ -44,29 +44,55 @@ print:
 	addi	sp,sp,32
 	jr	ra
 	.size	print, .-print
-	.align	2
-	.type	println, @function
-println:
-	addi	sp,sp,-32
-	sw	ra,28(sp)
-	sw	s0,24(sp)
-	addi	s0,sp,32
-	sw	a0,-20(s0)
-	lw	a0,-20(s0)
-	call	print
-	li	a0,10
-	call	outb
-	nop
-	lw	ra,28(sp)
-	lw	s0,24(sp)
-	addi	sp,sp,32
-	jr	ra
-	.size	println, .-println
 	.section	.rodata
 	.align	2
 .LC0:
-	.string	"Hello World!"
+	.string	"*"
+	.align	2
+.LC1:
+	.string	"\n"
 	.text
+	.align	2
+	.globl	solve
+	.type	solve, @function
+solve:
+	addi	sp,sp,-48
+	sw	ra,44(sp)
+	sw	s0,40(sp)
+	addi	s0,sp,48
+	sw	a0,-36(s0)
+	sw	zero,-20(s0)
+	j	.L6
+.L9:
+	sw	zero,-24(s0)
+	j	.L7
+.L8:
+	lui	a5,%hi(.LC0)
+	addi	a0,a5,%lo(.LC0)
+	call	print
+	lw	a5,-24(s0)
+	addi	a5,a5,1
+	sw	a5,-24(s0)
+.L7:
+	lw	a4,-24(s0)
+	lw	a5,-20(s0)
+	ble	a4,a5,.L8
+	lui	a5,%hi(.LC1)
+	addi	a0,a5,%lo(.LC1)
+	call	print
+	lw	a5,-20(s0)
+	addi	a5,a5,1
+	sw	a5,-20(s0)
+.L6:
+	lw	a4,-20(s0)
+	lw	a5,-36(s0)
+	blt	a4,a5,.L9
+	nop
+	lw	ra,44(sp)
+	lw	s0,40(sp)
+	addi	sp,sp,48
+	jr	ra
+	.size	solve, .-solve
 	.align	2
 	.globl	main
 	.type	main, @function
@@ -75,9 +101,8 @@ main:
 	sw	ra,12(sp)
 	sw	s0,8(sp)
 	addi	s0,sp,16
-	lui	a5,%hi(.LC0)
-	addi	a0,a5,%lo(.LC0)
-	call	println
+	li	a0,6
+	call	solve
 	li	a5,0
 	mv	a0,a5
 	lw	ra,12(sp)

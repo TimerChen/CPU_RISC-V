@@ -56,7 +56,7 @@ module test0();
 		if (rst == `True) begin
 			count <= 0;
 		end else begin
-			if(count == 1000) begin
+			if(count == 2000) begin
 				stopFlag = 1'b1;
 				$display("end");
 				#200;
