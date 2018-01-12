@@ -1,0 +1,1205 @@
+#-----------------------------------------------------------
+# Vivado v2017.3 (64-bit)
+# SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
+# IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+# Start of session at: Thu Jan 11 11:59:46 2018
+# Process ID: 10624
+# Current directory: D:/Lessons/Architecture/task2/src/CPU.runs/synth_1
+# Command line: vivado.exe -log Top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Top.tcl
+# Log file: D:/Lessons/Architecture/task2/src/CPU.runs/synth_1/Top.vds
+# Journal file: D:/Lessons/Architecture/task2/src/CPU.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source Top.tcl -notrace
+Command: synth_design -top Top -part xc7a35ticpg236-1L
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35ti'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35ti'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 18656 
+WARNING: [Synth 8-1935] empty port in module declaration [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_mem.v:40]
+WARNING: [Synth 8-1935] empty port in module declaration [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/top.v:25]
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 356.449 ; gain = 112.723
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'Top' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/top.v:23]
+	Parameter CHANNEL_BIT bound to: 1 - type: integer 
+	Parameter MESSAGE_BIT bound to: 72 - type: integer 
+	Parameter CHANNEL bound to: 2 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'uart_comm' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/uart_comm.v:22]
+	Parameter BAUDRATE bound to: 5000000 - type: integer 
+	Parameter CLOCKRATE bound to: 100000000 - type: integer 
+	Parameter SAMPLE_INTERVAL bound to: 20 - type: integer 
+	Parameter STATUS_IDLE bound to: 0 - type: integer 
+	Parameter STATUS_BEGIN bound to: 1 - type: integer 
+	Parameter STATUS_DATA bound to: 2 - type: integer 
+	Parameter STATUS_VALID bound to: 4 - type: integer 
+	Parameter STATUS_END bound to: 8 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'fifo' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/fifo.v:23]
+	Parameter SIZE_BIT bound to: 3 - type: integer 
+	Parameter WIDTH bound to: 8 - type: integer 
+	Parameter SIZE bound to: 8 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'fifo' (1#1) [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/fifo.v:23]
+INFO: [Synth 8-155] case statement is not full and has no default [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/uart_comm.v:96]
+INFO: [Synth 8-155] case statement is not full and has no default [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/uart_comm.v:160]
+WARNING: [Synth 8-6014] Unused sequential element tosend_reg was removed.  [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/uart_comm.v:154]
+INFO: [Synth 8-256] done synthesizing module 'uart_comm' (2#1) [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/uart_comm.v:22]
+INFO: [Synth 8-638] synthesizing module 'multchan_comm' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/multchan_comm.v:23]
+	Parameter PACKET_SIZE bound to: 8 - type: integer 
+	Parameter MESSAGE_BIT bound to: 72 - type: integer 
+	Parameter CHANNEL_BIT bound to: 1 - type: integer 
+	Parameter CHANNEL_PRIORITY bound to: 10'b0100001000 
+	Parameter WIDTH bound to: 77 - type: integer 
+	Parameter CHANNEL bound to: 2 - type: integer 
+	Parameter STATUS_IDLE bound to: 0 - type: integer 
+	Parameter STATUS_CHANNEL bound to: 1 - type: integer 
+	Parameter STATUS_LENGTH bound to: 2 - type: integer 
+	Parameter STATUS_DATA bound to: 4 - type: integer 
+	Parameter STATUS_END bound to: 8 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'simo_fifo' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/mfifo.v:23]
+	Parameter CHANNEL_BIT bound to: 1 - type: integer 
+	Parameter SIZE_BIT bound to: 3 - type: integer 
+	Parameter WIDTH bound to: 77 - type: integer 
+	Parameter CHANNEL bound to: 2 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'fifo__parameterized0' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/fifo.v:23]
+	Parameter SIZE_BIT bound to: 3 - type: integer 
+	Parameter WIDTH bound to: 77 - type: integer 
+	Parameter SIZE bound to: 8 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'fifo__parameterized0' (2#1) [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/fifo.v:23]
+INFO: [Synth 8-256] done synthesizing module 'simo_fifo' (3#1) [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/mfifo.v:23]
+INFO: [Synth 8-638] synthesizing module 'miso_fifo' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/mfifo.v:57]
+	Parameter CHANNEL_BIT bound to: 1 - type: integer 
+	Parameter SIZE_BIT bound to: 3 - type: integer 
+	Parameter WIDTH bound to: 77 - type: integer 
+	Parameter CHANNEL bound to: 2 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'miso_fifo' (4#1) [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/mfifo.v:57]
+INFO: [Synth 8-155] case statement is not full and has no default [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/multchan_comm.v:161]
+INFO: [Synth 8-155] case statement is not full and has no default [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/multchan_comm.v:248]
+WARNING: [Synth 8-6014] Unused sequential element max_priority_array_reg[1] was removed.  [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/multchan_comm.v:104]
+INFO: [Synth 8-256] done synthesizing module 'multchan_comm' (5#1) [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/multchan_comm.v:23]
+INFO: [Synth 8-638] synthesizing module 'memory_controller' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/memory_controller.v:24]
+	Parameter PORT_COUNT bound to: 2 - type: integer 
+	Parameter DATA_WIDTH_BYTE bound to: 4 - type: integer 
+	Parameter ADDR_WIDTH_BYTE bound to: 4 - type: integer 
+	Parameter DATA_WIDTH bound to: 32 - type: integer 
+	Parameter ADDR_WIDTH bound to: 32 - type: integer 
+	Parameter LENGTH_WIDTH bound to: 3 - type: integer 
+	Parameter PORT_COUNT_BIT bound to: 1 - type: integer 
+	Parameter SEND_BYTE bound to: 9 - type: integer 
+	Parameter NO_PORT bound to: 3 - type: integer 
+	Parameter STATE_IDLE bound to: 0 - type: integer 
+	Parameter STATE_WAIT_FOR_RECV bound to: 1 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'memory_controller' (6#1) [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/memory_controller.v:24]
+INFO: [Synth 8-638] synthesizing module 'CPU_Core' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_core.v:24]
+INFO: [Synth 8-638] synthesizing module 'CPU_Controller' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_controller.v:22]
+INFO: [Synth 8-256] done synthesizing module 'CPU_Controller' (7#1) [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_controller.v:22]
+INFO: [Synth 8-638] synthesizing module 'Reg_PC' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:24]
+INFO: [Synth 8-256] done synthesizing module 'Reg_PC' (8#1) [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:24]
+INFO: [Synth 8-638] synthesizing module 'RegFile' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/regfile.v:24]
+INFO: [Synth 8-256] done synthesizing module 'RegFile' (9#1) [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/regfile.v:24]
+INFO: [Synth 8-638] synthesizing module 'CPU_IF' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_if.v:22]
+INFO: [Synth 8-256] done synthesizing module 'CPU_IF' (10#1) [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_if.v:22]
+INFO: [Synth 8-638] synthesizing module 'CPU_IDTrans' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_transmitter.v:22]
+INFO: [Synth 8-256] done synthesizing module 'CPU_IDTrans' (11#1) [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_transmitter.v:22]
+INFO: [Synth 8-638] synthesizing module 'CPU_ID' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:22]
+INFO: [Synth 8-256] done synthesizing module 'CPU_ID' (12#1) [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:22]
+INFO: [Synth 8-638] synthesizing module 'CPU_EXTrans' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_transmitter.v:47]
+INFO: [Synth 8-256] done synthesizing module 'CPU_EXTrans' (13#1) [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_transmitter.v:47]
+INFO: [Synth 8-638] synthesizing module 'CPU_EX' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_ex.v:22]
+INFO: [Synth 8-226] default block is never used [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_ex.v:165]
+INFO: [Synth 8-226] default block is never used [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_ex.v:202]
+INFO: [Synth 8-256] done synthesizing module 'CPU_EX' (14#1) [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_ex.v:22]
+INFO: [Synth 8-638] synthesizing module 'CPU_MEMTrans' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_transmitter.v:102]
+INFO: [Synth 8-256] done synthesizing module 'CPU_MEMTrans' (15#1) [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_transmitter.v:102]
+INFO: [Synth 8-638] synthesizing module 'CPU_MEM' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_mem.v:22]
+INFO: [Synth 8-226] default block is never used [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_mem.v:102]
+WARNING: [Synth 8-308] ignoring empty port [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_mem.v:43]
+INFO: [Synth 8-256] done synthesizing module 'CPU_MEM' (16#1) [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_mem.v:22]
+WARNING: [Synth 8-350] instance 'MEM' of module 'CPU_MEM' requires 28 connections, but only 25 given [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_core.v:252]
+WARNING: [Synth 8-3848] Net state in module/entity CPU_Core does not have driver. [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_core.v:52]
+INFO: [Synth 8-256] done synthesizing module 'CPU_Core' (17#1) [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_core.v:24]
+WARNING: [Synth 8-308] ignoring empty port [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/top.v:26]
+WARNING: [Synth 8-3848] Net COMM_read_flag[1] in module/entity Top does not have driver. [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/top.v:65]
+WARNING: [Synth 8-3848] Net COMM_write_flag[1] in module/entity Top does not have driver. [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/top.v:68]
+WARNING: [Synth 8-3848] Net COMM_write_data[1] in module/entity Top does not have driver. [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/top.v:69]
+WARNING: [Synth 8-3848] Net COMM_write_length[1] in module/entity Top does not have driver. [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/top.v:70]
+INFO: [Synth 8-256] done synthesizing module 'Top' (18#1) [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/top.v:23]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port clk
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port state
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port stall
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port wrIs
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port rd0[31]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port rd0[30]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port rd0[29]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port rd0[28]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port rd0[27]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port rd0[26]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port rd0[25]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port rd0[24]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port rd0[23]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port rd0[22]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port rd0[21]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port rd0[20]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port rd0[19]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port rd0[18]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port rd0[17]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port rd0[16]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port rd0[15]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port rd0[14]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port rd0[13]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port rd0[12]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port rd0[11]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port rd0[10]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port rd0[9]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port rd0[8]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port rd0[7]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port rd0[6]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port rd0[5]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port rd0[4]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port rd0[3]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port rd0[2]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port rd0[1]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port rd0[0]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port imm[31]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port imm[30]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port imm[29]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port imm[28]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port imm[27]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port imm[26]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port imm[25]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port imm[24]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port imm[23]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port imm[22]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port imm[21]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port imm[20]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port imm[19]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port imm[18]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port imm[17]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port imm[16]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port imm[15]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port imm[14]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port imm[13]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port imm[12]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port imm[11]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port imm[10]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port imm[9]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port imm[8]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port imm[7]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port imm[6]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port imm[5]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port imm[4]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port imm[3]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port imm[2]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port imm[1]
+WARNING: [Synth 8-3331] design CPU_MEM has unconnected port imm[0]
+WARNING: [Synth 8-3331] design CPU_MEMTrans has unconnected port stall[1]
+WARNING: [Synth 8-3331] design CPU_MEMTrans has unconnected port stall[0]
+WARNING: [Synth 8-3331] design CPU_EX has unconnected port clk
+WARNING: [Synth 8-3331] design CPU_EX has unconnected port state
+WARNING: [Synth 8-3331] design CPU_EX has unconnected port stall
+WARNING: [Synth 8-3331] design CPU_EXTrans has unconnected port stall[3]
+WARNING: [Synth 8-3331] design CPU_EXTrans has unconnected port stall[0]
+WARNING: [Synth 8-3331] design CPU_EXTrans has unconnected port wrIs
+WARNING: [Synth 8-3331] design CPU_ID has unconnected port clk
+WARNING: [Synth 8-3331] design CPU_ID has unconnected port stall
+WARNING: [Synth 8-3331] design CPU_IDTrans has unconnected port stall[3]
+WARNING: [Synth 8-3331] design CPU_IDTrans has unconnected port stall[2]
+WARNING: [Synth 8-3331] design CPU_IF has unconnected port stall
+WARNING: [Synth 8-3331] design CPU_Controller has unconnected port clk
+WARNING: [Synth 8-3331] design memory_controller has unconnected port recv_data[71]
+WARNING: [Synth 8-3331] design memory_controller has unconnected port recv_data[70]
+WARNING: [Synth 8-3331] design memory_controller has unconnected port recv_data[69]
+WARNING: [Synth 8-3331] design memory_controller has unconnected port recv_data[68]
+WARNING: [Synth 8-3331] design memory_controller has unconnected port recv_data[67]
+WARNING: [Synth 8-3331] design memory_controller has unconnected port recv_data[66]
+WARNING: [Synth 8-3331] design memory_controller has unconnected port recv_data[65]
+WARNING: [Synth 8-3331] design memory_controller has unconnected port recv_data[64]
+WARNING: [Synth 8-3331] design memory_controller has unconnected port recv_data[63]
+WARNING: [Synth 8-3331] design memory_controller has unconnected port recv_data[62]
+WARNING: [Synth 8-3331] design memory_controller has unconnected port recv_data[61]
+WARNING: [Synth 8-3331] design memory_controller has unconnected port recv_data[60]
+WARNING: [Synth 8-3331] design memory_controller has unconnected port recv_data[59]
+WARNING: [Synth 8-3331] design memory_controller has unconnected port recv_data[58]
+WARNING: [Synth 8-3331] design memory_controller has unconnected port recv_data[57]
+WARNING: [Synth 8-3331] design memory_controller has unconnected port recv_data[56]
+WARNING: [Synth 8-3331] design memory_controller has unconnected port recv_data[55]
+WARNING: [Synth 8-3331] design memory_controller has unconnected port recv_data[54]
+INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 408.188 ; gain = 164.461
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 408.188 ; gain = 164.461
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35ticpg236-1L
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 408.188 ; gain = 164.461
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/fifo.v:67]
+INFO: [Device 21-403] Loading part xc7a35ticpg236-1L
+INFO: [Synth 8-5544] ROM "buffer_reg[7]" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "buffer_reg[6]" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "buffer_reg[5]" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "buffer_reg[4]" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "buffer_reg[3]" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "buffer_reg[2]" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "buffer_reg[1]" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "buffer_reg[0]" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+WARNING: [Synth 8-6014] Unused sequential element buffer_size_reg was removed.  [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/fifo.v:45]
+INFO: [Synth 8-802] inferred FSM for state register 'recv_status_reg' in module 'uart_comm'
+INFO: [Synth 8-802] inferred FSM for state register 'send_status_reg' in module 'uart_comm'
+INFO: [Synth 8-5544] ROM "recv_status" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5545] ROM "recv_counter" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "counter" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5544] ROM "send_status" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "recv_clock" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "recv_status" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/fifo.v:67]
+INFO: [Synth 8-5544] ROM "buffer_reg[7]" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "buffer_reg[6]" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "buffer_reg[5]" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "buffer_reg[4]" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "buffer_reg[3]" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "buffer_reg[2]" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "buffer_reg[1]" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "buffer_reg[0]" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+WARNING: [Synth 8-6014] Unused sequential element buffer_size_reg was removed.  [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/fifo.v:45]
+INFO: [Synth 8-5544] ROM "recv_status" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "recv_status" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "recv_status" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "recv_length" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "read_buffer_select" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+WARNING: [Synth 8-6014] Unused sequential element packet_id_reg was removed.  [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/multchan_comm.v:143]
+INFO: [Synth 8-802] inferred FSM for state register 'send_status_reg' in module 'multchan_comm'
+INFO: [Synth 8-5544] ROM "read_data_reg[1]" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "read_data_reg[0]" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "send_flag" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "send_length" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "send_flag" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "send_length" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "pc" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "regs_reg[31]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "regs_reg[30]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "regs_reg[29]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "regs_reg[28]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "regs_reg[27]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "regs_reg[26]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "regs_reg[25]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "regs_reg[24]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "regs_reg[23]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "regs_reg[22]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "regs_reg[21]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "regs_reg[20]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "regs_reg[19]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "regs_reg[18]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "regs_reg[17]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "regs_reg[16]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "regs_reg[15]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "regs_reg[14]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "regs_reg[13]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "regs_reg[12]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "regs_reg[11]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "regs_reg[10]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "regs_reg[9]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "regs_reg[8]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "regs_reg[7]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "regs_reg[6]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "regs_reg[5]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "regs_reg[4]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "regs_reg[3]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "regs_reg[2]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "regs_reg[1]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "regs_reg[0]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rd0" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rd1" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5587] ROM size for "r0_is" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5587] ROM size for "r1_is" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5587] ROM size for "wrIs" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5587] ROM size for "wrData_o" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5546] ROM "wPcIs_o" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "memIs" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "wrIs_o" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "wrIs_o" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "stall_o" won't be mapped to RAM because it is too sparse
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+             STATUS_IDLE |                               00 |                             0000
+             STATUS_DATA |                               01 |                             0010
+            STATUS_VALID |                               10 |                             0100
+              STATUS_END |                               11 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'send_status_reg' using encoding 'sequential' in module 'uart_comm'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                              000 |                             0000
+                 iSTATE0 |                              001 |                             0001
+                 iSTATE1 |                              010 |                             0010
+                 iSTATE2 |                              011 |                             0100
+                 iSTATE3 |                              100 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'recv_status_reg' using encoding 'sequential' in module 'uart_comm'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+             STATUS_IDLE |                              000 |                             0000
+          STATUS_CHANNEL |                              001 |                             0001
+           STATUS_LENGTH |                              010 |                             0010
+             STATUS_DATA |                              011 |                             0100
+              STATUS_END |                              100 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'send_status_reg' using encoding 'sequential' in module 'multchan_comm'
+WARNING: [Synth 8-327] inferring latch for variable 'pc_reg' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:44]
+WARNING: [Synth 8-327] inferring latch for variable 'rd0_reg' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/regfile.v:55]
+WARNING: [Synth 8-327] inferring latch for variable 'rd1_reg' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/regfile.v:80]
+WARNING: [Synth 8-327] inferring latch for variable 'rd0_reg' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:187]
+WARNING: [Synth 8-327] inferring latch for variable 'rd0_reg' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:78]
+WARNING: [Synth 8-327] inferring latch for variable 'rd1_reg' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:188]
+WARNING: [Synth 8-327] inferring latch for variable 'rd1_reg' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:79]
+WARNING: [Synth 8-327] inferring latch for variable 'wrData_o_reg' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_ex.v:72]
+WARNING: [Synth 8-327] inferring latch for variable 'wPcIs_o_reg' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_ex.v:78]
+WARNING: [Synth 8-327] inferring latch for variable 'wPcData_o_reg' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_ex.v:79]
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 461.652 ; gain = 217.926
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 8     
+	   3 Input     32 Bit       Adders := 1     
+	   2 Input     10 Bit       Adders := 2     
+	   2 Input      9 Bit       Adders := 2     
+	   2 Input      6 Bit       Adders := 1     
+	   2 Input      5 Bit       Adders := 4     
+	   2 Input      4 Bit       Adders := 6     
+	   2 Input      3 Bit       Adders := 16    
++---XORs : 
+	   2 Input     32 Bit         XORs := 1     
+	   2 Input      1 Bit         XORs := 2     
++---Registers : 
+	               77 Bit    Registers := 2     
+	               72 Bit    Registers := 1     
+	               32 Bit    Registers := 52    
+	                9 Bit    Registers := 2     
+	                8 Bit    Registers := 3     
+	                7 Bit    Registers := 2     
+	                5 Bit    Registers := 9     
+	                4 Bit    Registers := 8     
+	                3 Bit    Registers := 6     
+	                2 Bit    Registers := 5     
+	                1 Bit    Registers := 20    
++---Muxes : 
+	   2 Input     77 Bit        Muxes := 5     
+	   6 Input     77 Bit        Muxes := 2     
+	   2 Input     69 Bit        Muxes := 3     
+	   2 Input     32 Bit        Muxes := 67    
+	  10 Input     32 Bit        Muxes := 1     
+	   4 Input     32 Bit        Muxes := 2     
+	  11 Input     32 Bit        Muxes := 1     
+	   3 Input     32 Bit        Muxes := 2     
+	   5 Input      9 Bit        Muxes := 1     
+	   2 Input      9 Bit        Muxes := 1     
+	   6 Input      9 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 2     
+	   5 Input      8 Bit        Muxes := 1     
+	  10 Input      7 Bit        Muxes := 1     
+	   2 Input      7 Bit        Muxes := 3     
+	   2 Input      5 Bit        Muxes := 18    
+	   6 Input      5 Bit        Muxes := 2     
+	  10 Input      5 Bit        Muxes := 3     
+	   3 Input      5 Bit        Muxes := 1     
+	   5 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 22    
+	   4 Input      4 Bit        Muxes := 1     
+	   4 Input      3 Bit        Muxes := 1     
+	   5 Input      3 Bit        Muxes := 2     
+	   6 Input      3 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 9     
+	  10 Input      3 Bit        Muxes := 1     
+	   4 Input      2 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 47    
+	   6 Input      2 Bit        Muxes := 1     
+	   3 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 239   
+	   4 Input      1 Bit        Muxes := 11    
+	   5 Input      1 Bit        Muxes := 16    
+	   6 Input      1 Bit        Muxes := 5     
+	   7 Input      1 Bit        Muxes := 1     
+	   3 Input      1 Bit        Muxes := 4     
+	  10 Input      1 Bit        Muxes := 3     
+	  11 Input      1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module Top 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 2     
+Module fifo 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      4 Bit       Adders := 1     
+	   2 Input      3 Bit       Adders := 2     
++---Registers : 
+	                4 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 19    
+Module uart_comm 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 2     
+	   2 Input      3 Bit       Adders := 2     
++---XORs : 
+	   2 Input      1 Bit         XORs := 2     
++---Registers : 
+	               32 Bit    Registers := 2     
+	                8 Bit    Registers := 2     
+	                3 Bit    Registers := 2     
+	                1 Bit    Registers := 6     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input      8 Bit        Muxes := 2     
+	   5 Input      8 Bit        Muxes := 1     
+	   4 Input      3 Bit        Muxes := 1     
+	   5 Input      3 Bit        Muxes := 1     
+	   6 Input      3 Bit        Muxes := 1     
+	   4 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 10    
+	   4 Input      1 Bit        Muxes := 8     
+	   5 Input      1 Bit        Muxes := 6     
+Module fifo__parameterized0 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      4 Bit       Adders := 1     
+	   2 Input      3 Bit       Adders := 2     
++---Registers : 
+	                4 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 19    
+Module miso_fifo 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input     77 Bit        Muxes := 1     
+Module multchan_comm 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     10 Bit       Adders := 2     
+	   2 Input      9 Bit       Adders := 2     
+	   2 Input      5 Bit       Adders := 4     
+	   2 Input      3 Bit       Adders := 2     
++---Registers : 
+	               77 Bit    Registers := 2     
+	                9 Bit    Registers := 2     
+	                8 Bit    Registers := 1     
+	                5 Bit    Registers := 6     
+	                3 Bit    Registers := 2     
+	                1 Bit    Registers := 6     
++---Muxes : 
+	   2 Input     77 Bit        Muxes := 4     
+	   6 Input     77 Bit        Muxes := 2     
+	   5 Input      9 Bit        Muxes := 1     
+	   2 Input      9 Bit        Muxes := 1     
+	   6 Input      9 Bit        Muxes := 1     
+	   2 Input      5 Bit        Muxes := 9     
+	   6 Input      5 Bit        Muxes := 2     
+	   5 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 6     
+	   5 Input      3 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 19    
+	   5 Input      1 Bit        Muxes := 10    
+	   6 Input      1 Bit        Muxes := 5     
+	   7 Input      1 Bit        Muxes := 1     
+Module memory_controller 
+Detailed RTL Component Info : 
++---Registers : 
+	               72 Bit    Registers := 1     
+	               32 Bit    Registers := 6     
+	                5 Bit    Registers := 1     
+	                4 Bit    Registers := 2     
+	                2 Bit    Registers := 5     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input     69 Bit        Muxes := 3     
+	   2 Input     32 Bit        Muxes := 30    
+	   2 Input      4 Bit        Muxes := 15    
+	   4 Input      4 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 46    
+	   2 Input      1 Bit        Muxes := 60    
+Module CPU_Controller 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input      4 Bit        Muxes := 2     
+Module Reg_PC 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 2     
++---Registers : 
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 1     
+Module RegFile 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 32    
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input      1 Bit        Muxes := 34    
+	   3 Input      1 Bit        Muxes := 2     
+Module CPU_IF 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 6     
+Module CPU_IDTrans 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 2     
+Module CPU_ID 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+	  10 Input     32 Bit        Muxes := 1     
+	   4 Input     32 Bit        Muxes := 1     
+	  10 Input      7 Bit        Muxes := 1     
+	   2 Input      7 Bit        Muxes := 1     
+	  10 Input      5 Bit        Muxes := 3     
+	   2 Input      5 Bit        Muxes := 3     
+	  10 Input      3 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 1     
+	  10 Input      1 Bit        Muxes := 3     
+	   4 Input      1 Bit        Muxes := 2     
+Module CPU_EXTrans 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 4     
+	                7 Bit    Registers := 1     
+	                5 Bit    Registers := 1     
+	                3 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+Module CPU_EX 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 4     
+	   3 Input     32 Bit       Adders := 1     
+	   2 Input      6 Bit       Adders := 1     
++---XORs : 
+	   2 Input     32 Bit         XORs := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 8     
+	  11 Input     32 Bit        Muxes := 1     
+	   2 Input      7 Bit        Muxes := 1     
+	   2 Input      5 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 1     
+	  11 Input      1 Bit        Muxes := 2     
+Module CPU_MEMTrans 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 5     
+	                7 Bit    Registers := 1     
+	                5 Bit    Registers := 1     
+	                3 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+Module CPU_MEM 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 14    
+	   3 Input     32 Bit        Muxes := 2     
+	   4 Input     32 Bit        Muxes := 1     
+	   2 Input      7 Bit        Muxes := 1     
+	   3 Input      5 Bit        Muxes := 1     
+	   2 Input      5 Bit        Muxes := 5     
+	   2 Input      4 Bit        Muxes := 4     
+	   2 Input      3 Bit        Muxes := 1     
+	   6 Input      2 Bit        Muxes := 1     
+	   3 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+	   3 Input      1 Bit        Muxes := 2     
+	   4 Input      1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5545] ROM "counter" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "recv_counter" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+WARNING: [Synth 8-6014] Unused sequential element recv_buffer/buffer_size_reg was removed.  [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/fifo.v:45]
+WARNING: [Synth 8-6014] Unused sequential element send_buffer/buffer_size_reg was removed.  [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/fifo.v:45]
+WARNING: [Synth 8-6014] Unused sequential element genblk1[0].buffer/buffer_size_reg was removed.  [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/fifo.v:45]
+WARNING: [Synth 8-6014] Unused sequential element genblk1[1].buffer/buffer_size_reg was removed.  [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/fifo.v:45]
+WARNING: [Synth 8-6014] Unused sequential element genblk1[0].buffer/buffer_size_reg was removed.  [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/fifo.v:45]
+WARNING: [Synth 8-6014] Unused sequential element genblk1[1].buffer/buffer_size_reg was removed.  [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/fifo.v:45]
+WARNING: [Synth 8-6014] Unused sequential element packet_id_reg was removed.  [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/multchan_comm.v:143]
+INFO: [Synth 8-5587] ROM size for "wrData_o" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5546] ROM "wPcIs_o" won't be mapped to RAM because it is too sparse
+WARNING: [Synth 8-6014] Unused sequential element memTrans/i_id_o_reg was removed.  [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_transmitter.v:138]
+WARNING: [Synth 8-6014] Unused sequential element memTrans/wrIs_o_reg was removed.  [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_transmitter.v:139]
+WARNING: [Synth 8-6014] Unused sequential element memTrans/rd0_o_reg was removed.  [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_transmitter.v:144]
+WARNING: [Synth 8-6014] Unused sequential element memTrans/imm_o_reg was removed.  [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_transmitter.v:146]
+INFO: [Synth 8-5587] ROM size for "ID/r0_is" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5587] ROM size for "ID/r1_is" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5587] ROM size for "ID/wrIs" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/\recv_status_reg[4] )
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/send_length_reg[4]' (FDCE) to 'MEM_CTRL/send_data_reg[69]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/send_length_reg[1]' (FDCE) to 'MEM_CTRL/send_data_reg[69]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/send_data_reg[71]' (FDCE) to 'MEM_CTRL/send_data_reg[69]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/send_data_reg[69]' (FDCE) to 'MEM_CTRL/send_data_reg[70]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\MEM_CTRL/send_data_reg[70] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/write_ptr_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/write_ptr_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/write_ptr_reg[0] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (CORE/\exTrans/opCode_o_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[7][76] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[6][76] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[5][76] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[4][76] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[3][76] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[2][76] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[1][76] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[0][76] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[7][75] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[6][75] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[5][75] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[4][75] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[3][75] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[2][75] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[1][75] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[0][75] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[7][74] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[6][74] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[5][74] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[4][74] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[3][74] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[2][74] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[1][74] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[0][74] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[7][73] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[6][73] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[5][73] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[4][73] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[3][73] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[2][73] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[1][73] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[0][73] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[7][63] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[6][63] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[5][63] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[4][63] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[3][63] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[2][63] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[1][63] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[0][63] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[7][31] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[6][31] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[5][31] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[4][31] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[3][31] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[2][31] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[1][31] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[0][31] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[7][47] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[6][47] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[5][47] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[4][47] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[3][47] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[2][47] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[1][47] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[0][47] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[7][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[6][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[5][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[4][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[3][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[2][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[1][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[0][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[7][55] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[6][55] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[5][55] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[4][55] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[3][55] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[2][55] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[1][55] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[0][55] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[7][23] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[6][23] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[5][23] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[4][23] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[3][23] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[2][23] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[1][23] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[0][23] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[7][39] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[6][39] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[5][39] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[4][39] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[3][39] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[2][39] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[1][39] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[0][39] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[7][71] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[6][71] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[5][71] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[4][71] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[3][71] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (COMM/write_buffer/\genblk1[1].buffer/buffer_reg[2][71] )
+INFO: [Common 17-14] Message 'Synth 8-3333' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][76]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][75]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][74]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][73]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][72]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][71]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][70]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][69]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][68]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][67]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][66]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][65]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][64]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][63]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][62]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][61]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][60]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][59]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][58]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][57]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][56]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][55]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][54]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][53]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][52]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][51]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][50]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][49]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][48]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][47]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][46]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][45]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][44]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][43]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][42]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][41]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][40]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][39]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][38]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][37]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][36]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][35]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][34]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][33]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[7][32]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][76]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][75]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][74]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][73]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][72]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][71]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][70]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][69]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][68]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][67]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][66]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][65]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][64]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][63]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][62]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][61]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][60]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][59]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][58]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][57]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][56]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][55]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][54]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][53]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][52]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][51]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][50]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][49]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][48]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][47]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][46]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][45]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][44]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][43]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][42]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][41]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][40]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][39]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][38]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][37]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][36]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][35]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][34]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][33]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[6][32]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[5][76]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[5][75]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[5][74]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[5][73]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[5][72]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[5][71]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[5][70]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[5][69]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[5][68]) is unused and will be removed from module simo_fifo.
+WARNING: [Synth 8-3332] Sequential element (genblk1[0].buffer/buffer_reg[5][67]) is unused and will be removed from module simo_fifo.
+INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CORE/regpc/pc_reg[0]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_data_reg[1][31]' (FDCE) to 'MEM_CTRL/pending_write_data_reg[1][0]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_data_reg[1][15]' (FDCE) to 'MEM_CTRL/pending_write_data_reg[1][0]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_data_reg[1][23]' (FDCE) to 'MEM_CTRL/pending_write_data_reg[1][0]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_data_reg[1][7]' (FDCE) to 'MEM_CTRL/pending_write_data_reg[1][0]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_data_reg[1][27]' (FDCE) to 'MEM_CTRL/pending_write_data_reg[1][0]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_data_reg[1][11]' (FDCE) to 'MEM_CTRL/pending_write_data_reg[1][0]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_data_reg[1][19]' (FDCE) to 'MEM_CTRL/pending_write_data_reg[1][0]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_mask_reg[1][3]' (FDCE) to 'MEM_CTRL/pending_write_mask_reg[1][2]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_data_reg[1][3]' (FDCE) to 'MEM_CTRL/pending_write_data_reg[1][0]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_data_reg[1][29]' (FDCE) to 'MEM_CTRL/pending_write_data_reg[1][0]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_data_reg[1][13]' (FDCE) to 'MEM_CTRL/pending_write_data_reg[1][0]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_data_reg[1][21]' (FDCE) to 'MEM_CTRL/pending_write_data_reg[1][0]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_data_reg[1][5]' (FDCE) to 'MEM_CTRL/pending_write_data_reg[1][0]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_data_reg[1][25]' (FDCE) to 'MEM_CTRL/pending_write_data_reg[1][0]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_data_reg[1][9]' (FDCE) to 'MEM_CTRL/pending_write_data_reg[1][0]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_data_reg[1][17]' (FDCE) to 'MEM_CTRL/pending_write_data_reg[1][0]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_mask_reg[1][1]' (FDCE) to 'MEM_CTRL/pending_write_mask_reg[1][2]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_data_reg[1][1]' (FDCE) to 'MEM_CTRL/pending_write_data_reg[1][0]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_data_reg[1][30]' (FDCE) to 'MEM_CTRL/pending_write_data_reg[1][0]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_data_reg[1][14]' (FDCE) to 'MEM_CTRL/pending_write_data_reg[1][0]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_data_reg[1][22]' (FDCE) to 'MEM_CTRL/pending_write_data_reg[1][0]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_data_reg[1][6]' (FDCE) to 'MEM_CTRL/pending_write_data_reg[1][0]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_data_reg[1][26]' (FDCE) to 'MEM_CTRL/pending_write_data_reg[1][0]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_data_reg[1][10]' (FDCE) to 'MEM_CTRL/pending_write_data_reg[1][0]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_data_reg[1][18]' (FDCE) to 'MEM_CTRL/pending_write_data_reg[1][0]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_mask_reg[1][2]' (FDCE) to 'MEM_CTRL/pending_write_mask_reg[1][0]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_data_reg[1][2]' (FDCE) to 'MEM_CTRL/pending_write_data_reg[1][0]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_data_reg[1][28]' (FDCE) to 'MEM_CTRL/pending_write_data_reg[1][0]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_data_reg[1][12]' (FDCE) to 'MEM_CTRL/pending_write_data_reg[1][0]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_data_reg[1][20]' (FDCE) to 'MEM_CTRL/pending_write_data_reg[1][0]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_data_reg[1][4]' (FDCE) to 'MEM_CTRL/pending_write_data_reg[1][0]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_data_reg[1][24]' (FDCE) to 'MEM_CTRL/pending_write_data_reg[1][0]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_data_reg[1][8]' (FDCE) to 'MEM_CTRL/pending_write_data_reg[1][0]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_data_reg[1][16]' (FDCE) to 'MEM_CTRL/pending_write_data_reg[1][0]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/pending_write_data_reg[1][0]' (FDCE) to 'MEM_CTRL/pending_addr_reg[1][0]'
+INFO: [Synth 8-3886] merging instance 'MEM_CTRL/send_length_reg[3]' (FDCE) to 'MEM_CTRL/send_data_reg[68]'
+INFO: [Synth 8-3886] merging instance 'COMM/write_buffer/genblk1[0].buffer/buffer_reg[7][75]' (FDCE_1) to 'COMM/write_buffer/genblk1[0].buffer/buffer_reg[7][68]'
+INFO: [Synth 8-3886] merging instance 'COMM/write_buffer/genblk1[0].buffer/buffer_reg[6][75]' (FDCE_1) to 'COMM/write_buffer/genblk1[0].buffer/buffer_reg[6][68]'
+INFO: [Synth 8-3886] merging instance 'COMM/write_buffer/genblk1[0].buffer/buffer_reg[5][75]' (FDCE_1) to 'COMM/write_buffer/genblk1[0].buffer/buffer_reg[5][68]'
+INFO: [Synth 8-3886] merging instance 'COMM/write_buffer/genblk1[0].buffer/buffer_reg[4][75]' (FDCE_1) to 'COMM/write_buffer/genblk1[0].buffer/buffer_reg[4][68]'
+INFO: [Synth 8-3886] merging instance 'COMM/write_buffer/genblk1[0].buffer/buffer_reg[3][75]' (FDCE_1) to 'COMM/write_buffer/genblk1[0].buffer/buffer_reg[3][68]'
+INFO: [Synth 8-3886] merging instance 'COMM/write_buffer/genblk1[0].buffer/buffer_reg[2][75]' (FDCE_1) to 'COMM/write_buffer/genblk1[0].buffer/buffer_reg[2][68]'
+INFO: [Synth 8-3886] merging instance 'COMM/write_buffer/genblk1[0].buffer/buffer_reg[1][75]' (FDCE_1) to 'COMM/write_buffer/genblk1[0].buffer/buffer_reg[1][68]'
+INFO: [Synth 8-3886] merging instance 'COMM/write_buffer/genblk1[0].buffer/buffer_reg[0][75]' (FDCE_1) to 'COMM/write_buffer/genblk1[0].buffer/buffer_reg[0][68]'
+INFO: [Synth 8-3886] merging instance 'COMM/write_buffer_read_data_buf_reg[75]' (FDCE) to 'COMM/write_buffer_read_data_buf_reg[68]'
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:43 ; elapsed = 00:00:44 . Memory (MB): peak = 632.020 ; gain = 388.293
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:45 ; elapsed = 00:00:45 . Memory (MB): peak = 632.020 ; gain = 388.293
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 664.242 ; gain = 420.516
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:50 ; elapsed = 00:00:51 . Memory (MB): peak = 664.242 ; gain = 420.516
+---------------------------------------------------------------------------------
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[31] with 1st driver pin 'CORE/regpc/pc_reg[31]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:44]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[31] with 2nd driver pin 'CORE/regpc/pc_reg[31]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[30] with 1st driver pin 'CORE/regpc/pc_reg[30]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:44]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[30] with 2nd driver pin 'CORE/regpc/pc_reg[30]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[29] with 1st driver pin 'CORE/regpc/pc_reg[29]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:44]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[29] with 2nd driver pin 'CORE/regpc/pc_reg[29]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[28] with 1st driver pin 'CORE/regpc/pc_reg[28]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:44]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[28] with 2nd driver pin 'CORE/regpc/pc_reg[28]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[27] with 1st driver pin 'CORE/regpc/pc_reg[27]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:44]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[27] with 2nd driver pin 'CORE/regpc/pc_reg[27]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[26] with 1st driver pin 'CORE/regpc/pc_reg[26]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:44]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[26] with 2nd driver pin 'CORE/regpc/pc_reg[26]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[25] with 1st driver pin 'CORE/regpc/pc_reg[25]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:44]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[25] with 2nd driver pin 'CORE/regpc/pc_reg[25]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[24] with 1st driver pin 'CORE/regpc/pc_reg[24]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:44]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[24] with 2nd driver pin 'CORE/regpc/pc_reg[24]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[23] with 1st driver pin 'CORE/regpc/pc_reg[23]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:44]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[23] with 2nd driver pin 'CORE/regpc/pc_reg[23]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[22] with 1st driver pin 'CORE/regpc/pc_reg[22]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:44]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[22] with 2nd driver pin 'CORE/regpc/pc_reg[22]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[21] with 1st driver pin 'CORE/regpc/pc_reg[21]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:44]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[21] with 2nd driver pin 'CORE/regpc/pc_reg[21]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[20] with 1st driver pin 'CORE/regpc/pc_reg[20]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:44]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[20] with 2nd driver pin 'CORE/regpc/pc_reg[20]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[19] with 1st driver pin 'CORE/regpc/pc_reg[19]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:44]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[19] with 2nd driver pin 'CORE/regpc/pc_reg[19]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[18] with 1st driver pin 'CORE/regpc/pc_reg[18]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:44]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[18] with 2nd driver pin 'CORE/regpc/pc_reg[18]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[17] with 1st driver pin 'CORE/regpc/pc_reg[17]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:44]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[17] with 2nd driver pin 'CORE/regpc/pc_reg[17]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[16] with 1st driver pin 'CORE/regpc/pc_reg[16]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:44]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[16] with 2nd driver pin 'CORE/regpc/pc_reg[16]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[15] with 1st driver pin 'CORE/regpc/pc_reg[15]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:44]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[15] with 2nd driver pin 'CORE/regpc/pc_reg[15]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[14] with 1st driver pin 'CORE/regpc/pc_reg[14]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:44]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[14] with 2nd driver pin 'CORE/regpc/pc_reg[14]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[13] with 1st driver pin 'CORE/regpc/pc_reg[13]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:44]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[13] with 2nd driver pin 'CORE/regpc/pc_reg[13]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[12] with 1st driver pin 'CORE/regpc/pc_reg[12]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:44]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[12] with 2nd driver pin 'CORE/regpc/pc_reg[12]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[11] with 1st driver pin 'CORE/regpc/pc_reg[11]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:44]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[11] with 2nd driver pin 'CORE/regpc/pc_reg[11]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[10] with 1st driver pin 'CORE/regpc/pc_reg[10]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:44]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[10] with 2nd driver pin 'CORE/regpc/pc_reg[10]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[9] with 1st driver pin 'CORE/regpc/pc_reg[9]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:44]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[9] with 2nd driver pin 'CORE/regpc/pc_reg[9]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[8] with 1st driver pin 'CORE/regpc/pc_reg[8]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:44]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[8] with 2nd driver pin 'CORE/regpc/pc_reg[8]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[7] with 1st driver pin 'CORE/regpc/pc_reg[7]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:44]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[7] with 2nd driver pin 'CORE/regpc/pc_reg[7]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[6] with 1st driver pin 'CORE/regpc/pc_reg[6]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:44]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[6] with 2nd driver pin 'CORE/regpc/pc_reg[6]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[5] with 1st driver pin 'CORE/regpc/pc_reg[5]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:44]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[5] with 2nd driver pin 'CORE/regpc/pc_reg[5]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[4] with 1st driver pin 'CORE/regpc/pc_reg[4]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:44]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[4] with 2nd driver pin 'CORE/regpc/pc_reg[4]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[3] with 1st driver pin 'CORE/regpc/pc_reg[3]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:44]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[3] with 2nd driver pin 'CORE/regpc/pc_reg[3]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[2] with 1st driver pin 'CORE/regpc/pc_reg[2]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:44]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[2] with 2nd driver pin 'CORE/regpc/pc_reg[2]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[1] with 1st driver pin 'CORE/regpc/pc_reg[1]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:44]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/pc[1] with 2nd driver pin 'CORE/regpc/pc_reg[1]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/reg_pc.v:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[31] with 1st driver pin 'CORE/ID/rd0_reg[31]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:187]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[31] with 2nd driver pin 'CORE/ID/rd0_reg[31]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:78]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[30] with 1st driver pin 'CORE/ID/rd0_reg[30]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:187]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[30] with 2nd driver pin 'CORE/ID/rd0_reg[30]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:78]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[29] with 1st driver pin 'CORE/ID/rd0_reg[29]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:187]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[29] with 2nd driver pin 'CORE/ID/rd0_reg[29]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:78]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[28] with 1st driver pin 'CORE/ID/rd0_reg[28]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:187]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[28] with 2nd driver pin 'CORE/ID/rd0_reg[28]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:78]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[27] with 1st driver pin 'CORE/ID/rd0_reg[27]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:187]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[27] with 2nd driver pin 'CORE/ID/rd0_reg[27]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:78]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[26] with 1st driver pin 'CORE/ID/rd0_reg[26]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:187]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[26] with 2nd driver pin 'CORE/ID/rd0_reg[26]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:78]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[25] with 1st driver pin 'CORE/ID/rd0_reg[25]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:187]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[25] with 2nd driver pin 'CORE/ID/rd0_reg[25]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:78]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[24] with 1st driver pin 'CORE/ID/rd0_reg[24]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:187]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[24] with 2nd driver pin 'CORE/ID/rd0_reg[24]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:78]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[23] with 1st driver pin 'CORE/ID/rd0_reg[23]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:187]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[23] with 2nd driver pin 'CORE/ID/rd0_reg[23]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:78]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[22] with 1st driver pin 'CORE/ID/rd0_reg[22]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:187]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[22] with 2nd driver pin 'CORE/ID/rd0_reg[22]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:78]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[21] with 1st driver pin 'CORE/ID/rd0_reg[21]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:187]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[21] with 2nd driver pin 'CORE/ID/rd0_reg[21]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:78]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[20] with 1st driver pin 'CORE/ID/rd0_reg[20]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:187]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[20] with 2nd driver pin 'CORE/ID/rd0_reg[20]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:78]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[19] with 1st driver pin 'CORE/ID/rd0_reg[19]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:187]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[19] with 2nd driver pin 'CORE/ID/rd0_reg[19]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:78]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[18] with 1st driver pin 'CORE/ID/rd0_reg[18]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:187]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[18] with 2nd driver pin 'CORE/ID/rd0_reg[18]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:78]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[17] with 1st driver pin 'CORE/ID/rd0_reg[17]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:187]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[17] with 2nd driver pin 'CORE/ID/rd0_reg[17]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:78]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[16] with 1st driver pin 'CORE/ID/rd0_reg[16]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:187]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[16] with 2nd driver pin 'CORE/ID/rd0_reg[16]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:78]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[15] with 1st driver pin 'CORE/ID/rd0_reg[15]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:187]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[15] with 2nd driver pin 'CORE/ID/rd0_reg[15]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:78]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[14] with 1st driver pin 'CORE/ID/rd0_reg[14]/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:187]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net CORE/ex_regData0[14] with 2nd driver pin 'CORE/ID/rd0_reg[14]__0/Q' [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/cpu_id.v:78]
+INFO: [Common 17-14] Message 'Synth 8-3352' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|       95|Failed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:50 ; elapsed = 00:00:51 . Memory (MB): peak = 664.242 ; gain = 420.516
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:50 ; elapsed = 00:00:51 . Memory (MB): peak = 664.242 ; gain = 420.516
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:50 ; elapsed = 00:00:51 . Memory (MB): peak = 664.242 ; gain = 420.516
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:50 ; elapsed = 00:00:51 . Memory (MB): peak = 664.242 ; gain = 420.516
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:50 ; elapsed = 00:00:51 . Memory (MB): peak = 664.242 ; gain = 420.516
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     7|
+|2     |CARRY4 |   101|
+|3     |LUT1   |    42|
+|4     |LUT2   |   277|
+|5     |LUT3   |   196|
+|6     |LUT4   |   429|
+|7     |LUT5   |   406|
+|8     |LUT6   |  1472|
+|9     |MUXF7  |   318|
+|10    |FDCE   |  1517|
+|11    |FDPE   |     7|
+|12    |FDRE   |  1328|
+|13    |FDSE   |     5|
+|14    |LD     |    95|
+|15    |LDC    |   191|
+|16    |LDP    |     1|
+|17    |IBUF   |     3|
+|18    |OBUF   |     1|
++------+-------+------+
+
+Report Instance Areas: 
++------+--------------------------+-----------------------+------+
+|      |Instance                  |Module                 |Cells |
++------+--------------------------+-----------------------+------+
+|1     |top                       |                       |  6396|
+|2     |  COMM                    |multchan_comm          |  1650|
+|3     |    read_buffer           |simo_fifo              |   398|
+|4     |      \genblk1[0].buffer  |fifo__parameterized0_2 |   386|
+|5     |      \genblk1[1].buffer  |fifo__parameterized0_3 |    12|
+|6     |    write_buffer          |miso_fifo              |   875|
+|7     |      \genblk1[0].buffer  |fifo__parameterized0   |   833|
+|8     |      \genblk1[1].buffer  |fifo__parameterized0_1 |    42|
+|9     |  CORE                    |CPU_Core               |  3696|
+|10    |    EX                    |CPU_EX                 |   130|
+|11    |    ID                    |CPU_ID                 |   128|
+|12    |    IF                    |CPU_IF                 |    31|
+|13    |    exTrans               |CPU_EXTrans            |  1006|
+|14    |    idTrans               |CPU_IDTrans            |   229|
+|15    |    memTrans              |CPU_MEMTrans           |   172|
+|16    |    regFile               |RegFile                |  1888|
+|17    |    regpc                 |Reg_PC                 |   112|
+|18    |  MEM_CTRL                |memory_controller      |   526|
+|19    |  UART                    |uart_comm              |   511|
+|20    |    recv_buffer           |fifo                   |   147|
+|21    |    send_buffer           |fifo_0                 |   127|
++------+--------------------------+-----------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:50 ; elapsed = 00:00:51 . Memory (MB): peak = 664.242 ; gain = 420.516
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 193 critical warnings and 1956 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:50 ; elapsed = 00:00:51 . Memory (MB): peak = 664.242 ; gain = 420.516
+Synthesis Optimization Complete : Time (s): cpu = 00:00:50 ; elapsed = 00:00:51 . Memory (MB): peak = 664.242 ; gain = 420.516
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 709 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 287 instances were transformed.
+  LD => LDCE: 95 instances
+  LDC => LDCE: 191 instances
+  LDP => LDPE: 1 instances
+
+INFO: [Common 17-83] Releasing license: Synthesis
+301 Infos, 236 Warnings, 101 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:57 ; elapsed = 00:01:01 . Memory (MB): peak = 705.828 ; gain = 475.234
+INFO: [Common 17-1381] The checkpoint 'D:/Lessons/Architecture/task2/src/CPU.runs/synth_1/Top.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file Top_utilization_synth.rpt -pb Top_utilization_synth.pb
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.158 . Memory (MB): peak = 705.828 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Thu Jan 11 12:00:55 2018...

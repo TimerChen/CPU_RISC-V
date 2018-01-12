@@ -1,0 +1,41 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Lessons/Architecture/task2/src/CPU.sim/sim_1/synth/timing/xsim/sim_cpu_time_synth.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module CPU_Core
+INFO: [VRFC 10-311] analyzing module CPU_EX
+INFO: [VRFC 10-311] analyzing module CPU_EXTrans
+INFO: [VRFC 10-311] analyzing module CPU_ID
+INFO: [VRFC 10-311] analyzing module CPU_IDTrans
+INFO: [VRFC 10-311] analyzing module CPU_IF
+INFO: [VRFC 10-311] analyzing module CPU_MEMTrans
+INFO: [VRFC 10-311] analyzing module RegFile
+INFO: [VRFC 10-311] analyzing module Reg_PC
+INFO: [VRFC 10-311] analyzing module Top
+INFO: [VRFC 10-311] analyzing module fifo
+INFO: [VRFC 10-311] analyzing module fifo_0
+INFO: [VRFC 10-311] analyzing module fifo__parameterized0
+INFO: [VRFC 10-311] analyzing module fifo__parameterized0_1
+INFO: [VRFC 10-311] analyzing module fifo__parameterized0_2
+INFO: [VRFC 10-311] analyzing module fifo__parameterized0_3
+INFO: [VRFC 10-311] analyzing module memory_controller
+INFO: [VRFC 10-311] analyzing module miso_fifo
+INFO: [VRFC 10-311] analyzing module multchan_comm
+INFO: [VRFC 10-311] analyzing module simo_fifo
+INFO: [VRFC 10-311] analyzing module uart_comm
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Lessons/Architecture/task2/src/CPU.srcs/sources/fifo.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo
+WARNING: [VRFC 10-1195] overwriting previous definition of module fifo [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/fifo.v:23]
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Lessons/Architecture/task2/src/CPU.srcs/sources/mfifo.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module simo_fifo
+WARNING: [VRFC 10-1195] overwriting previous definition of module simo_fifo [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/mfifo.v:23]
+INFO: [VRFC 10-311] analyzing module miso_fifo
+WARNING: [VRFC 10-1195] overwriting previous definition of module miso_fifo [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/mfifo.v:57]
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Lessons/Architecture/task2/src/CPU.srcs/sources/multchan_comm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module multchan_comm
+WARNING: [VRFC 10-1195] overwriting previous definition of module multchan_comm [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/multchan_comm.v:23]
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Lessons/Architecture/task2/src/CPU.srcs/sim/sim_memory.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sim_memory
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Lessons/Architecture/task2/src/CPU.srcs/sources/uart_comm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module uart_comm
+WARNING: [VRFC 10-1195] overwriting previous definition of module uart_comm [D:/Lessons/Architecture/task2/src/CPU.srcs/sources/uart_comm.v:22]
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Lessons/Architecture/task2/src/CPU.srcs/sim/sim_cpu.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sim_cpu

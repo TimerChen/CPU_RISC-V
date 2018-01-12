@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2017.3 (64-bit)
+# SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
+# IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+# Start of session at: Thu Jan 11 12:01:03 2018
+# Process ID: 22256
+# Current directory: D:/Lessons/Architecture/task2/src/CPU.runs/impl_1
+# Command line: vivado.exe -log Top.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source Top.tcl -notrace
+# Log file: D:/Lessons/Architecture/task2/src/CPU.runs/impl_1/Top.vdi
+# Journal file: D:/Lessons/Architecture/task2/src/CPU.runs/impl_1\vivado.jou
+#-----------------------------------------------------------
+source Top.tcl -notrace

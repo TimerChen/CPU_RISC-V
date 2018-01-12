@@ -1,0 +1,26 @@
+Vivado Simulator 2017.3
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: E:/Xilinx/Vivado/2017.3/bin/unwrapped/win64.o/xelab.exe -wto 5a0d34fd0d0f4b298de6c04e6889c475 --incr --debug typical --relax --mt 2 --maxdelay -L xil_defaultlib -L simprims_ver -L secureip --snapshot sim_cpu_time_synth -transport_int_delays -pulse_r 0 -pulse_int_r 0 -pulse_e 0 -pulse_int_e 0 xil_defaultlib.sim_cpu xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+ERROR: [VRFC 10-426] cannot find port state_reg_0 on this module [D:/Lessons/Architecture/task2/src/CPU.sim/sim_1/synth/timing/xsim/sim_cpu_time_synth.v:34964]
+ERROR: [VRFC 10-426] cannot find port state_reg on this module [D:/Lessons/Architecture/task2/src/CPU.sim/sim_1/synth/timing/xsim/sim_cpu_time_synth.v:34963]
+ERROR: [VRFC 10-426] cannot find port serv_port_reg[1]_0 on this module [D:/Lessons/Architecture/task2/src/CPU.sim/sim_1/synth/timing/xsim/sim_cpu_time_synth.v:34962]
+ERROR: [VRFC 10-426] cannot find port serv_port_reg[1] on this module [D:/Lessons/Architecture/task2/src/CPU.sim/sim_1/synth/timing/xsim/sim_cpu_time_synth.v:34961]
+ERROR: [VRFC 10-426] cannot find port send_length_reg[2] on this module [D:/Lessons/Architecture/task2/src/CPU.sim/sim_1/synth/timing/xsim/sim_cpu_time_synth.v:34960]
+ERROR: [VRFC 10-426] cannot find port recv_status_reg[1]_0 on this module [D:/Lessons/Architecture/task2/src/CPU.sim/sim_1/synth/timing/xsim/sim_cpu_time_synth.v:34959]
+ERROR: [VRFC 10-426] cannot find port recv_flag_reg_0 on this module [D:/Lessons/Architecture/task2/src/CPU.sim/sim_1/synth/timing/xsim/sim_cpu_time_synth.v:34958]
+ERROR: [VRFC 10-426] cannot find port recv_bit_reg[2]_5 on this module [D:/Lessons/Architecture/task2/src/CPU.sim/sim_1/synth/timing/xsim/sim_cpu_time_synth.v:34957]
+ERROR: [VRFC 10-426] cannot find port recv_bit_reg[2]_4 on this module [D:/Lessons/Architecture/task2/src/CPU.sim/sim_1/synth/timing/xsim/sim_cpu_time_synth.v:34956]
+ERROR: [VRFC 10-426] cannot find port recv_bit_reg[2]_3 on this module [D:/Lessons/Architecture/task2/src/CPU.sim/sim_1/synth/timing/xsim/sim_cpu_time_synth.v:34955]
+ERROR: [VRFC 10-426] cannot find port recv_bit_reg[2]_2 on this module [D:/Lessons/Architecture/task2/src/CPU.sim/sim_1/synth/timing/xsim/sim_cpu_time_synth.v:34954]
+ERROR: [VRFC 10-426] cannot find port recv_bit_reg[2]_1 on this module [D:/Lessons/Architecture/task2/src/CPU.sim/sim_1/synth/timing/xsim/sim_cpu_time_synth.v:34953]
+ERROR: [VRFC 10-426] cannot find port recv_bit_reg[2]_0 on this module [D:/Lessons/Architecture/task2/src/CPU.sim/sim_1/synth/timing/xsim/sim_cpu_time_synth.v:34952]
+ERROR: [VRFC 10-426] cannot find port recv_bit_reg[1]_1 on this module [D:/Lessons/Architecture/task2/src/CPU.sim/sim_1/synth/timing/xsim/sim_cpu_time_synth.v:34951]
+ERROR: [VRFC 10-426] cannot find port recv_bit_reg[1]_0 on this module [D:/Lessons/Architecture/task2/src/CPU.sim/sim_1/synth/timing/xsim/sim_cpu_time_synth.v:34950]
+ERROR: [VRFC 10-426] cannot find port recv_bit_reg[0]_3 on this module [D:/Lessons/Architecture/task2/src/CPU.sim/sim_1/synth/timing/xsim/sim_cpu_time_synth.v:34949]
+ERROR: [VRFC 10-426] cannot find port recv_bit_reg[0]_2 on this module [D:/Lessons/Architecture/task2/src/CPU.sim/sim_1/synth/timing/xsim/sim_cpu_time_synth.v:34948]
+ERROR: [VRFC 10-426] cannot find port recv_bit_reg[0]_1 on this module [D:/Lessons/Architecture/task2/src/CPU.sim/sim_1/synth/timing/xsim/sim_cpu_time_synth.v:34947]
+ERROR: [VRFC 10-426] cannot find port recv_bit_reg[0]_0 on this module [D:/Lessons/Architecture/task2/src/CPU.sim/sim_1/synth/timing/xsim/sim_cpu_time_synth.v:34946]
+INFO: [#UNDEF] Sorry, too many errors..
+ERROR: [XSIM 43-3322] Static elaboration of top level Verilog design unit(s) in library work failed.

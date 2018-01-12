@@ -1,0 +1,139 @@
+
+*** Running vivado
+    with args -log Top.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source Top.tcl -notrace
+
+
+****** Vivado v2017.3 (64-bit)
+  **** SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
+  **** IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+source Top.tcl -notrace
+Command: link_design -top Top -part xc7a35ticpg236-1L
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
+INFO: [Netlist 29-17] Analyzing 422 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2017.3
+INFO: [Device 21-403] Loading part xc7a35ticpg236-1L
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+7 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+link_design completed successfully
+link_design: Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 544.277 ; gain = 303.844
+Command: opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7a35ti'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a35ti'
+Running DRC as a precondition to command opt_design
+
+Starting DRC Task
+INFO: [DRC 23-27] Running DRC with 2 threads
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/Q[0] has multiple drivers: CORE/ID/rd0_reg[0]/Q, and CORE/ID/rd0_reg[0]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/Q[10] has multiple drivers: CORE/ID/rd0_reg[10]__0/Q, and CORE/ID/rd0_reg[10]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/Q[11] has multiple drivers: CORE/ID/rd0_reg[11]__0/Q, and CORE/ID/rd0_reg[11]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/Q[12] has multiple drivers: CORE/ID/rd0_reg[12]__0/Q, and CORE/ID/rd0_reg[12]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/Q[13] has multiple drivers: CORE/ID/rd0_reg[13]/Q, and CORE/ID/rd0_reg[13]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/Q[14] has multiple drivers: CORE/ID/rd0_reg[14]/Q, and CORE/ID/rd0_reg[14]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/Q[15] has multiple drivers: CORE/ID/rd0_reg[15]__0/Q, and CORE/ID/rd0_reg[15]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/Q[16] has multiple drivers: CORE/ID/rd0_reg[16]__0/Q, and CORE/ID/rd0_reg[16]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/Q[17] has multiple drivers: CORE/ID/rd0_reg[17]__0/Q, and CORE/ID/rd0_reg[17]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/Q[18] has multiple drivers: CORE/ID/rd0_reg[18]__0/Q, and CORE/ID/rd0_reg[18]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/Q[19] has multiple drivers: CORE/ID/rd0_reg[19]/Q, and CORE/ID/rd0_reg[19]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/Q[1] has multiple drivers: CORE/ID/rd0_reg[1]/Q, and CORE/ID/rd0_reg[1]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/Q[20] has multiple drivers: CORE/ID/rd0_reg[20]/Q, and CORE/ID/rd0_reg[20]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/Q[21] has multiple drivers: CORE/ID/rd0_reg[21]/Q, and CORE/ID/rd0_reg[21]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/Q[22] has multiple drivers: CORE/ID/rd0_reg[22]/Q, and CORE/ID/rd0_reg[22]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/Q[23] has multiple drivers: CORE/ID/rd0_reg[23]__0/Q, and CORE/ID/rd0_reg[23]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/Q[24] has multiple drivers: CORE/ID/rd0_reg[24]/Q, and CORE/ID/rd0_reg[24]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/Q[25] has multiple drivers: CORE/ID/rd0_reg[25]__0/Q, and CORE/ID/rd0_reg[25]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/Q[26] has multiple drivers: CORE/ID/rd0_reg[26]__0/Q, and CORE/ID/rd0_reg[26]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/Q[27] has multiple drivers: CORE/ID/rd0_reg[27]__0/Q, and CORE/ID/rd0_reg[27]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/Q[28] has multiple drivers: CORE/ID/rd0_reg[28]__0/Q, and CORE/ID/rd0_reg[28]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/Q[29] has multiple drivers: CORE/ID/rd0_reg[29]/Q, and CORE/ID/rd0_reg[29]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/Q[2] has multiple drivers: CORE/ID/rd0_reg[2]/Q, and CORE/ID/rd0_reg[2]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/Q[30] has multiple drivers: CORE/ID/rd0_reg[30]/Q, and CORE/ID/rd0_reg[30]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/Q[31] has multiple drivers: CORE/ID/rd0_reg[31]__0/Q, and CORE/ID/rd0_reg[31]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/Q[3] has multiple drivers: CORE/ID/rd0_reg[3]__0/Q, and CORE/ID/rd0_reg[3]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/Q[4] has multiple drivers: CORE/ID/rd0_reg[4]/Q, and CORE/ID/rd0_reg[4]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/Q[5] has multiple drivers: CORE/ID/rd0_reg[5]/Q, and CORE/ID/rd0_reg[5]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/Q[6] has multiple drivers: CORE/ID/rd0_reg[6]__0/Q, and CORE/ID/rd0_reg[6]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/Q[7] has multiple drivers: CORE/ID/rd0_reg[7]/Q, and CORE/ID/rd0_reg[7]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/Q[8] has multiple drivers: CORE/ID/rd0_reg[8]/Q, and CORE/ID/rd0_reg[8]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/Q[9] has multiple drivers: CORE/ID/rd0_reg[9]__0/Q, and CORE/ID/rd0_reg[9]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/rd1_o_reg[31][0] has multiple drivers: CORE/ID/rd1_reg[0]/Q, and CORE/ID/rd1_reg[0]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/rd1_o_reg[31][10] has multiple drivers: CORE/ID/rd1_reg[10]/Q, and CORE/ID/rd1_reg[10]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/rd1_o_reg[31][11] has multiple drivers: CORE/ID/rd1_reg[11]__0/Q, and CORE/ID/rd1_reg[11]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/rd1_o_reg[31][12] has multiple drivers: CORE/ID/rd1_reg[12]__0/Q, and CORE/ID/rd1_reg[12]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/rd1_o_reg[31][13] has multiple drivers: CORE/ID/rd1_reg[13]/Q, and CORE/ID/rd1_reg[13]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/rd1_o_reg[31][14] has multiple drivers: CORE/ID/rd1_reg[14]/Q, and CORE/ID/rd1_reg[14]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/rd1_o_reg[31][15] has multiple drivers: CORE/ID/rd1_reg[15]/Q, and CORE/ID/rd1_reg[15]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/rd1_o_reg[31][16] has multiple drivers: CORE/ID/rd1_reg[16]/Q, and CORE/ID/rd1_reg[16]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/rd1_o_reg[31][17] has multiple drivers: CORE/ID/rd1_reg[17]/Q, and CORE/ID/rd1_reg[17]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/rd1_o_reg[31][18] has multiple drivers: CORE/ID/rd1_reg[18]/Q, and CORE/ID/rd1_reg[18]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/rd1_o_reg[31][19] has multiple drivers: CORE/ID/rd1_reg[19]__0/Q, and CORE/ID/rd1_reg[19]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/rd1_o_reg[31][1] has multiple drivers: CORE/ID/rd1_reg[1]/Q, and CORE/ID/rd1_reg[1]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/rd1_o_reg[31][20] has multiple drivers: CORE/ID/rd1_reg[20]/Q, and CORE/ID/rd1_reg[20]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/rd1_o_reg[31][21] has multiple drivers: CORE/ID/rd1_reg[21]/Q, and CORE/ID/rd1_reg[21]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/rd1_o_reg[31][22] has multiple drivers: CORE/ID/rd1_reg[22]/Q, and CORE/ID/rd1_reg[22]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/rd1_o_reg[31][23] has multiple drivers: CORE/ID/rd1_reg[23]__0/Q, and CORE/ID/rd1_reg[23]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/rd1_o_reg[31][24] has multiple drivers: CORE/ID/rd1_reg[24]/Q, and CORE/ID/rd1_reg[24]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/rd1_o_reg[31][25] has multiple drivers: CORE/ID/rd1_reg[25]__0/Q, and CORE/ID/rd1_reg[25]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/rd1_o_reg[31][26] has multiple drivers: CORE/ID/rd1_reg[26]/Q, and CORE/ID/rd1_reg[26]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/rd1_o_reg[31][27] has multiple drivers: CORE/ID/rd1_reg[27]/Q, and CORE/ID/rd1_reg[27]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/rd1_o_reg[31][28] has multiple drivers: CORE/ID/rd1_reg[28]/Q, and CORE/ID/rd1_reg[28]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/rd1_o_reg[31][29] has multiple drivers: CORE/ID/rd1_reg[29]__0/Q, and CORE/ID/rd1_reg[29]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/rd1_o_reg[31][2] has multiple drivers: CORE/ID/rd1_reg[2]/Q, and CORE/ID/rd1_reg[2]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/rd1_o_reg[31][30] has multiple drivers: CORE/ID/rd1_reg[30]/Q, and CORE/ID/rd1_reg[30]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/rd1_o_reg[31][31] has multiple drivers: CORE/ID/rd1_reg[31]/Q, and CORE/ID/rd1_reg[31]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/rd1_o_reg[31][3] has multiple drivers: CORE/ID/rd1_reg[3]/Q, and CORE/ID/rd1_reg[3]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/rd1_o_reg[31][4] has multiple drivers: CORE/ID/rd1_reg[4]__0/Q, and CORE/ID/rd1_reg[4]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/rd1_o_reg[31][5] has multiple drivers: CORE/ID/rd1_reg[5]/Q, and CORE/ID/rd1_reg[5]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/rd1_o_reg[31][6] has multiple drivers: CORE/ID/rd1_reg[6]/Q, and CORE/ID/rd1_reg[6]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/rd1_o_reg[31][7] has multiple drivers: CORE/ID/rd1_reg[7]__0/Q, and CORE/ID/rd1_reg[7]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/rd1_o_reg[31][8] has multiple drivers: CORE/ID/rd1_reg[8]/Q, and CORE/ID/rd1_reg[8]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/ID/rd1_o_reg[31][9] has multiple drivers: CORE/ID/rd1_reg[9]__0/Q, and CORE/ID/rd1_reg[9]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/regpc/Q[0] has multiple drivers: CORE/regpc/pc_reg[1]__0/Q, and CORE/regpc/pc_reg[1]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/regpc/Q[10] has multiple drivers: CORE/regpc/pc_reg[11]__0/Q, and CORE/regpc/pc_reg[11]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/regpc/Q[11] has multiple drivers: CORE/regpc/pc_reg[12]/Q, and CORE/regpc/pc_reg[12]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/regpc/Q[12] has multiple drivers: CORE/regpc/pc_reg[13]/Q, and CORE/regpc/pc_reg[13]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/regpc/Q[13] has multiple drivers: CORE/regpc/pc_reg[14]/Q, and CORE/regpc/pc_reg[14]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/regpc/Q[14] has multiple drivers: CORE/regpc/pc_reg[15]__0/Q, and CORE/regpc/pc_reg[15]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/regpc/Q[15] has multiple drivers: CORE/regpc/pc_reg[16]/Q, and CORE/regpc/pc_reg[16]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/regpc/Q[16] has multiple drivers: CORE/regpc/pc_reg[17]/Q, and CORE/regpc/pc_reg[17]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/regpc/Q[17] has multiple drivers: CORE/regpc/pc_reg[18]__0/Q, and CORE/regpc/pc_reg[18]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/regpc/Q[18] has multiple drivers: CORE/regpc/pc_reg[19]/Q, and CORE/regpc/pc_reg[19]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/regpc/Q[19] has multiple drivers: CORE/regpc/pc_reg[20]/Q, and CORE/regpc/pc_reg[20]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/regpc/Q[1] has multiple drivers: CORE/regpc/pc_reg[2]/Q, and CORE/regpc/pc_reg[2]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/regpc/Q[20] has multiple drivers: CORE/regpc/pc_reg[21]__0/Q, and CORE/regpc/pc_reg[21]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/regpc/Q[21] has multiple drivers: CORE/regpc/pc_reg[22]/Q, and CORE/regpc/pc_reg[22]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/regpc/Q[22] has multiple drivers: CORE/regpc/pc_reg[23]/Q, and CORE/regpc/pc_reg[23]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/regpc/Q[23] has multiple drivers: CORE/regpc/pc_reg[24]/Q, and CORE/regpc/pc_reg[24]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/regpc/Q[24] has multiple drivers: CORE/regpc/pc_reg[25]/Q, and CORE/regpc/pc_reg[25]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/regpc/Q[25] has multiple drivers: CORE/regpc/pc_reg[26]/Q, and CORE/regpc/pc_reg[26]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/regpc/Q[26] has multiple drivers: CORE/regpc/pc_reg[27]/Q, and CORE/regpc/pc_reg[27]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/regpc/Q[27] has multiple drivers: CORE/regpc/pc_reg[28]/Q, and CORE/regpc/pc_reg[28]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/regpc/Q[28] has multiple drivers: CORE/regpc/pc_reg[29]/Q, and CORE/regpc/pc_reg[29]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/regpc/Q[29] has multiple drivers: CORE/regpc/pc_reg[30]__0/Q, and CORE/regpc/pc_reg[30]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/regpc/Q[2] has multiple drivers: CORE/regpc/pc_reg[3]__0/Q, and CORE/regpc/pc_reg[3]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/regpc/Q[30] has multiple drivers: CORE/regpc/pc_reg[31]/Q, and CORE/regpc/pc_reg[31]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/regpc/Q[3] has multiple drivers: CORE/regpc/pc_reg[4]/Q, and CORE/regpc/pc_reg[4]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/regpc/Q[4] has multiple drivers: CORE/regpc/pc_reg[5]__0/Q, and CORE/regpc/pc_reg[5]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/regpc/Q[5] has multiple drivers: CORE/regpc/pc_reg[6]/Q, and CORE/regpc/pc_reg[6]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/regpc/Q[6] has multiple drivers: CORE/regpc/pc_reg[7]/Q, and CORE/regpc/pc_reg[7]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/regpc/Q[7] has multiple drivers: CORE/regpc/pc_reg[8]/Q, and CORE/regpc/pc_reg[8]__0/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/regpc/Q[8] has multiple drivers: CORE/regpc/pc_reg[9]__0/Q, and CORE/regpc/pc_reg[9]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net CORE/regpc/Q[9] has multiple drivers: CORE/regpc/pc_reg[10]__0/Q, and CORE/regpc/pc_reg[10]/Q.
+INFO: [Project 1-461] DRC finished with 95 Errors
+INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
+ERROR: [Vivado_Tcl 4-78] Error(s) found during DRC. Opt_design not run.
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 560.395 ; gain = 16.117
+INFO: [Common 17-83] Releasing license: Implementation
+12 Infos, 0 Warnings, 0 Critical Warnings and 96 Errors encountered.
+opt_design failed
+ERROR: [Common 17-39] 'opt_design' failed due to earlier errors.
+
+INFO: [Common 17-206] Exiting Vivado at Thu Jan 11 12:01:19 2018...

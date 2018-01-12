@@ -1,6 +1,7 @@
 ./CPU.srcs/sim/test0.v
 
 
+
 ./CPU.srcs/sources/cpu_core.v
 ./CPU.srcs/sources/cpu_ex.v
 ./CPU.srcs/sources/cpu_id.v
@@ -15,3 +16,8 @@
 
 ./CPU.srcs/sources/cpu_transmitter.v
 ./CPU.srcs/sources/cpu_controller.v
+
+./CPU.srcs/sources/multchan_comm.v
+./CPU.srcs/sources/mfifo.v
+./CPU.srcs/sources/fifo.v
+./CPU.srcs/sources/uart_comm.v

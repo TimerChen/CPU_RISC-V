@@ -1,0 +1,11 @@
+0.6
+2017.3
+Oct  4 2017
+20:11:37
+D:/Lessons/Architecture/task2/src/CPU.sim/sim_1/synth/timing/xsim/sim_cpu_time_synth.v,1515644301,verilog,,D:/Lessons/Architecture/task2/src/CPU.srcs/sources/fifo.v,,CPU_Core;CPU_EX;CPU_EXTrans;CPU_ID;CPU_IDTrans;CPU_IF;CPU_MEMTrans;RegFile;Reg_PC;Top;fifo_0;fifo__parameterized0;fifo__parameterized0_1;fifo__parameterized0_2;fifo__parameterized0_3;glbl;memory_controller,,,../../../../../CPU.srcs;../../../../../CPU.srcs/sources_1/ip/clk_wiz_0,,,,,
+D:/Lessons/Architecture/task2/src/CPU.srcs/sim/sim_cpu.v,1515295989,verilog,,,,sim_cpu,,,../../../../../CPU.srcs;../../../../../CPU.srcs/sources_1/ip/clk_wiz_0,,,,,
+D:/Lessons/Architecture/task2/src/CPU.srcs/sim/sim_memory.v,1515263950,verilog,,D:/Lessons/Architecture/task2/src/CPU.srcs/sources/uart_comm.v,,sim_memory,,,../../../../../CPU.srcs;../../../../../CPU.srcs/sources_1/ip/clk_wiz_0,,,,,
+D:/Lessons/Architecture/task2/src/CPU.srcs/sources/fifo.v,1515077559,verilog,,D:/Lessons/Architecture/task2/src/CPU.srcs/sources/mfifo.v,,fifo,,,../../../../../CPU.srcs;../../../../../CPU.srcs/sources_1/ip/clk_wiz_0,,,,,
+D:/Lessons/Architecture/task2/src/CPU.srcs/sources/mfifo.v,1515077559,verilog,,D:/Lessons/Architecture/task2/src/CPU.srcs/sources/multchan_comm.v,,miso_fifo;simo_fifo,,,../../../../../CPU.srcs;../../../../../CPU.srcs/sources_1/ip/clk_wiz_0,,,,,
+D:/Lessons/Architecture/task2/src/CPU.srcs/sources/multchan_comm.v,1515077559,verilog,,D:/Lessons/Architecture/task2/src/CPU.srcs/sim/sim_memory.v,,multchan_comm,,,../../../../../CPU.srcs;../../../../../CPU.srcs/sources_1/ip/clk_wiz_0,,,,,
+D:/Lessons/Architecture/task2/src/CPU.srcs/sources/uart_comm.v,1515077559,verilog,,D:/Lessons/Architecture/task2/src/CPU.srcs/sim/sim_cpu.v,,uart_comm,,,../../../../../CPU.srcs;../../../../../CPU.srcs/sources_1/ip/clk_wiz_0,,,,,

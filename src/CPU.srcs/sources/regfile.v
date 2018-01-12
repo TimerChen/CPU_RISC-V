@@ -52,24 +52,24 @@ module RegFile (
 	//read0
 	always @(*) begin
 		if (rst == `True) begin
-			rd0  <= 32'd0;
-			lkd0 <= `False;
+			rd0  = 32'd0;
+			lkd0 = `False;
 		end else begin
 			if (rr0 == 5'd0) begin
-				lkd0 <= `False;
-				rd0 <= 32'd0;
+				lkd0 = `False;
+				rd0 = 32'd0;
 			//wr0 == lr0
 			end else if ({lk0, wr0} == {1'b1, rr0}) begin
-				lkd0 <= `True;
+				lkd0 = `True;
 			end else if (wr0Is == `True && rr0 == wr0) begin
-				lkd0 <= `False;
-				rd0  <= wd0;
+				lkd0 = `False;
+				rd0  = wd0;
 			end else if (wr1Is == `True && rr0 == wr1) begin
-				lkd0 <= `False;
-				rd0  <= wd1;
+				lkd0 = `False;
+				rd0  = wd1;
 			end else begin
-				lkd0 <= `False;
-				rd0  <= regs[rr0];
+				lkd0 = `False;
+				rd0  = regs[rr0];
 			end
 		end
 	end
@@ -77,23 +77,23 @@ module RegFile (
 	//read1
 	always @(*) begin
 		if (rst == `True) begin
-			rd1  <= 32'd0;
-			lkd1 <= `False;
+			rd1  = 32'd0;
+			lkd1 = `False;
 		end else begin
 			if (rr1 == 5'd0) begin
-				lkd1 <= `False;
-				rd1  <= 32'd0;
+				lkd1 = `False;
+				rd1  = 32'd0;
 			end else if ({lk0, wr0} == {1'b1, rr1}) begin
-				lkd1 <= `True;
+				lkd1 = `True;
 			end else if (wr0Is == `True && rr1 == wr0) begin
-				lkd1 <= `False;
-				rd1  <= wd0;
+				lkd1 = `False;
+				rd1  = wd0;
 			end else if (wr1Is == `True && rr1 == wr1) begin
-				lkd1 <= `False;
-				rd1  <= wd1;
+				lkd1 = `False;
+				rd1  = wd1;
 			end else begin
-				lkd1 <= `False;
-				rd1  <= regs[rr1];
+				lkd1 = `False;
+				rd1  = regs[rr1];
 			end
 		end
 	end

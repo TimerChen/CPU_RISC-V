@@ -32,15 +32,15 @@ module CPU_Controller(
 	always @ ( * ) begin
 		//$display("Control %d %d %d", rst, stall_i, rst_i);
 		if(rst == `True) begin
-			stall_o <= 4'b0000;
-			rst_o   <= 4'b1111;
+			stall_o = 4'b0000;
+			rst_o   = 4'b1111;
 		end else begin
 			stall_o = 	 stall_i |
 						(stall_i >> 1) |
 						(stall_i >> 2) |
 						(stall_i >> 3);
 
-			rst_o <= 	/*((-stall_o) >> 1) |*/
+			rst_o = 	/*((-stall_o) >> 1) |*/
 						(
 						 rst_i |
 						(rst_i >> 1) |

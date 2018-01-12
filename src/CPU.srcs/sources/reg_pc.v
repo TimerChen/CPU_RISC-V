@@ -30,7 +30,6 @@ module Reg_PC (
 	input wire [31:0] pcIn;
 	output reg [31:0] pc;
 	output reg ce;
-	reg [31:0] regs[31:0];
 
 	always @ ( posedge clk ) begin
 		if (ce == `False) begin
@@ -42,7 +41,7 @@ module Reg_PC (
 	end
 	always @ ( * ) begin
 		if ({ce, wIs} == 2'b11) begin
-			pc <= pcIn;
+			pc = pcIn - 4;
 		end
 	end
 	always @ ( posedge clk ) begin

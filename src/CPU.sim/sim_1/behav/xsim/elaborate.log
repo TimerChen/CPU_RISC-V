@@ -1,17 +1,24 @@
 Vivado Simulator 2017.3
 Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
-Running: E:/Xilinx/Vivado/2017.3/bin/unwrapped/win64.o/xelab.exe -wto 5a0d34fd0d0f4b298de6c04e6889c475 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot test0_behav xil_defaultlib.test0 xil_defaultlib.glbl -log elaborate.log 
+Running: E:/Xilinx/Vivado/2017.3/bin/unwrapped/win64.o/xelab.exe -wto 5a0d34fd0d0f4b298de6c04e6889c475 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot sim_cpu_behav xil_defaultlib.sim_cpu xil_defaultlib.glbl -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
+WARNING: [VRFC 10-278] actual bit length 77 differs from formal bit length 154 for port read_datas [D:/Lessons/Architecture/task2/src/CPU.srcs/sim/sim_memory.v:73]
+WARNING: [VRFC 10-278] actual bit length 77 differs from formal bit length 154 for port write_datas [D:/Lessons/Architecture/task2/src/CPU.srcs/sim/sim_memory.v:74]
 Completed static elaboration
 Starting simulation data flow analysis
 Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.fifo_default
+Compiling module xil_defaultlib.uart_comm(BAUDRATE=5000000)
+Compiling module xil_defaultlib.fifo(WIDTH=77)
+Compiling module xil_defaultlib.simo_fifo(WIDTH=77)
+Compiling module xil_defaultlib.miso_fifo(WIDTH=77)
+Compiling module xil_defaultlib.multchan_comm(MESSAGE_BIT=72)
+Compiling module xil_defaultlib.memory_controller_default
 Compiling module xil_defaultlib.CPU_Controller
 Compiling module xil_defaultlib.Reg_PC
 Compiling module xil_defaultlib.RegFile
-Compiling module xil_defaultlib.InstCache
-Compiling module xil_defaultlib.DataCache
 Compiling module xil_defaultlib.CPU_IF
 Compiling module xil_defaultlib.CPU_IDTrans
 Compiling module xil_defaultlib.CPU_ID
@@ -20,7 +27,8 @@ Compiling module xil_defaultlib.CPU_EX
 Compiling module xil_defaultlib.CPU_MEMTrans
 Compiling module xil_defaultlib.CPU_MEM
 Compiling module xil_defaultlib.CPU_Core
-Compiling module xil_defaultlib.Top
-Compiling module xil_defaultlib.test0
+Compiling module xil_defaultlib.Top_default
+Compiling module xil_defaultlib.sim_memory
+Compiling module xil_defaultlib.sim_cpu
 Compiling module xil_defaultlib.glbl
-Built simulation snapshot test0_behav
+Built simulation snapshot sim_cpu_behav

@@ -22,10 +22,29 @@
 
 
 module CPU_Core(
-	clk, rst
+	clk, rst,
+	MEM_rw_flag, MEM_addr,
+	MEM_read_data, MEM_write_data, MEM_write_mask,
+	MEM_busy, MEM_done
     );
 
-	input wire clk, rst;
+	input clk, rst;
+	output [2*2-1:0]	MEM_rw_flag;
+	output [2*32-1:0]	MEM_addr;
+	input [2*32-1:0]	MEM_read_data;
+	output [2*32-1:0]	MEM_write_data;
+	output [2*4-1:0]	MEM_write_mask;
+	input [1:0]		MEM_busy;
+	input [1:0]		MEM_done;
+
+	//assign MEM_addr[63:32] = pc;
+	assign MEM_write_data[63:32] = 32'b0;
+	assign MEM_write_mask[7:4] = 4'b1111;
+
+	// always @ ( posedge clk ) begin
+	// 	MEM_write_data[63:32] = 32'b0;
+	// 	MEM_write_mask[7:4] = 4'b1111;
+	// end
 
 	wire 		pc_writeIs;
 	wire [31:0]	pc_writeData;
@@ -96,6 +115,7 @@ module CPU_Core(
 		.wr1Is(out_writeRegIs),
 		.wr1(out_writeReg), .wd1(out_writeData)
 		);
+		/*
 	InstCache iCache(
 		.clk(clk), .rst(rst), .ce(ce), .stall(cStall_o[0]),
 		.pc(pc),
@@ -111,13 +131,19 @@ module CPU_Core(
 		.memData_i(dCache_readData),
 
 		.miss(dCacheMiss), .ready(dCacheReady)
-		);
+		);*/
 	CPU_IF IF(
 		.clk(clk), .rst(rst), .stall(cStall_o[0]),
 		.pc(pc),
-		.i_datain(if_inst),
+		.i_datain(MEM_read_data[63:32]),//*
 		.i_id(id_instID),
-		.opCode(id_inst)
+		.opCode(id_inst),
+
+		.iAddr(MEM_addr[63:32]),
+		.rw_flag(MEM_rw_flag[3:2]),//*
+		.busy(MEM_busy[1]),//*
+		.done(MEM_done[1]),//*
+		.stall_o(watingiCache)
 		);
 	wire [ 6:0] ex_inst;
 	wire [ 2:0] ex_instType;
@@ -232,14 +258,16 @@ module CPU_Core(
 		.opCode(mem0_inst), .opType(mem0_instType),
 		.rd0(mem0_regData0), .rd1(mem0_regData1), .imm(mem0_imm),
 
-		.memIs(dCache_is), .memType(dCache_type),
-		.memData_o(dCache_writeData), .memAdd(dCache_writeAddr),
-		.memData_i(dCache_readData),
+		.memIs(MEM_rw_flag[1:0]), .memType(MEM_write_mask[3:0]), //new
+		.memData_o(MEM_write_data[31:0]), //new
+		.memAdd(MEM_addr[31:0]), //new
+		.memData_i(MEM_read_data[31:0]), //new
 
 		.wrIs_o(out_writeRegIs), .wr_o(out_writeReg), .wrData_o(out_writeData),
 
 		.stall_o(watingdCache),
-		.cacheMiss(dCacheMiss), .cacheReady(dCacheReady)
+		.cacheMiss(MEM_busy[0]), //new
+		.cacheReady(MEM_done[0]) //new
 
 		);
 
